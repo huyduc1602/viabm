@@ -13,9 +13,9 @@
                             <th><?=lang(77);?></th>
                             <th width="10%" class="text-center"><?=lang(85);?></th>
                             <th width="10%" class="text-center"><?=lang(78);?></th>
-                            <?php if($CMSNT->site('display_sold') == 'ON') { ?>
-                            <th width="10%" class="text-center"><?=lang(140);?></th>
-                            <?php }?>
+<!--                            --><?php //if($CMSNT->site('display_sold') == 'ON') { ?>
+<!--                            <th width="10%" class="text-center">--><?//=lang(140);?><!--</th>-->
+<!--                            --><?php //}?>
                             <th width="10%" class="text-center"><?=lang(74);?></th>
                             <th width="15%" class="text-center"><?=lang(79);?></th>
                         </tr>
@@ -39,11 +39,11 @@
                                 <img width="40px" src="<?=BASE_URL('template/flag/'.$row['quocgia'].'.svg');?>" />
                                 <?php }?>
                             </td>
-                            <td class="text-center">
-                                <b style="color: red;;">
-                                    <?=format_cash($conlai);?>
-                                </b>
-                            </td>
+<!--                            <td class="text-center">-->
+<!--                                <b style="color: red;;">-->
+<!--                                    --><?//=format_cash($conlai);?>
+<!--                                </b>-->
+<!--                            </td>-->
                             <?php if($CMSNT->site('display_sold') == 'ON') { ?>
                             <td class="text-center">
                                 <b style="color: green;;">

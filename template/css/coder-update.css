@@ -38,3 +38,7 @@
         max-width: 20%;
     }
 }
+.table.table-padded thead tr th {
+    white-space:nowrap;
+}
+
