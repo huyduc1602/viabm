@@ -8,3 +8,23 @@
 .activity-boxes-w .activity-box{
     font-size: 1rem;
 }
+
+.element-balances .balance{
+    background-color: #fff;
+    border-left: 3px solid #047bf8!important;
+}
+.element-balances .balance+.balance{
+    background-color: #fff;
+    border-left: 3px solid #047bf8!important;
+}
+.element-balances{
+    flex-flow: wrap;
+}
+.element-balances .balance{
+    flex:1 1 auto;
+    margin: 20px
+}
+.element-balances .balance+.balance{
+    margin: 20px
+}
+
