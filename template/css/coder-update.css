@@ -12,19 +12,15 @@
 .element-balances .balance{
     background-color: #fff;
     border-left: 3px solid #047bf8!important;
-}
-.element-balances .balance+.balance{
-    background-color: #fff;
-    border-left: 3px solid #047bf8!important;
-}
-.element-balances{
-    flex-flow: wrap;
-}
-.element-balances .balance{
     flex:1 1 auto;
     margin: 20px
 }
 .element-balances .balance+.balance{
+    background-color: #fff;
+    border-left: 3px solid #047bf8!important;
     margin: 20px
+}
+.element-balances{
+    flex-flow: wrap;
 }
 
