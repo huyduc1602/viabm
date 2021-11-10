@@ -38,6 +38,7 @@
     <link href="<?=BASE_URL('template/');?>bower_components/slick-carousel/slick/slick.css" rel="stylesheet">
     <link href="<?=BASE_URL('template/');?>css/main.css?version=4.5.0" rel="stylesheet">
     <link rel="stylesheet" href="<?=BASE_URL('template/');?>sweetalert2/default.css">
+    <link href="<?=BASE_URL('template/');?>css/coder-update.css?version=1.0.0" rel="stylesheet">
     <script src="<?=BASE_URL('template/');?>sweetalert2/sweetalert2.js"></script>
     <script src="<?=BASE_URL('template/');?>jquery.min.js"></script>
     <style>
