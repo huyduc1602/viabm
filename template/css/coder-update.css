@@ -1,1 +1,10 @@
 /*Add custom css here*/
+.profile-tile .profile-tile-meta ul li{
+    font-size: .9rem;
+}
+.profile-tile .profile-tile-meta ul li .active-user{
+    margin-left: 0;
+}
+.activity-boxes-w .activity-box{
+    font-size: 1rem;
+}

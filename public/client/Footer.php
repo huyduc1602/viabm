@@ -10,14 +10,14 @@
                 </a>
                 <div class="profile-tile-meta">
                     <ul>
-                        <li><?=lang(40);?>:<strong style="color: green;"><?=lang(39);?></strong></li>
+                        <li><?=lang(40);?>:</br><strong style="color: green;" class="active-user"><?=lang(39);?></strong></li>
                         <li><?=lang(41);?>:<strong style="color: red;"><?=$getUser['chietkhau'];?>%</strong></li>
                         <li><?=lang(31);?>:<strong><?=format_currency($getUser['money']);?></strong></li>
                         <li><?=lang(30);?>:<strong><?=format_currency($getUser['total_money']);?></strong>
                         </li>
                         <li><?=lang(32);?>:<strong><?=format_currency($getUser['used_money']);?></strong></li>
                     </ul>
-                    <div class="pt-btn"><a class="btn btn-danger btn-block btn-sm"
+                    <div class="pt-btn"><a class="btn btn-danger btn-block"
                             href="<?=BASE_URL('Auth/Logout');?>"><?=lang(63);?></a>
                     </div>
                 </div>
