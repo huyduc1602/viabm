@@ -1,0 +1,1 @@
+<?php echo file_get_contents("https://card24h.com/api/loaithe.php");?>
