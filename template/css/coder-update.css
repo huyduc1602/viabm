@@ -30,4 +30,11 @@
     .element-balances .balance+.balance{
         margin:5px;
     }
+    .top-bar.color-scheme-bright{
+        display: flex;
+        flex-direction: row;
+    }
+    .top-bar .fancy-selector-w .fancy-selector-current{
+        max-width: 20%;
+    }
 }
