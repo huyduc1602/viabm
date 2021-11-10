@@ -23,4 +23,11 @@
 .element-balances{
     flex-flow: wrap;
 }
-
+@media (max-width: 767px) {
+    .element-balances .balance{
+        margin:5px;
+    }
+    .element-balances .balance+.balance{
+        margin:5px;
+    }
+}
