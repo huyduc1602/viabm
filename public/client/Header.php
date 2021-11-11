@@ -36,6 +36,7 @@
     <link href="<?=BASE_URL('template/');?>bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css"
         rel="stylesheet">
     <link href="<?=BASE_URL('template/');?>bower_components/slick-carousel/slick/slick.css" rel="stylesheet">
+    <link href="<?=BASE_URL('template/');?>bower_components/toastr/toastr.min.css" rel="stylesheet">
     <link href="<?=BASE_URL('template/');?>css/main.css?version=4.5.0" rel="stylesheet">
     <link rel="stylesheet" href="<?=BASE_URL('template/');?>sweetalert2/default.css">
     <link href="<?=BASE_URL('template/');?>css/coder-update.css?version=1.0.0" rel="stylesheet">
