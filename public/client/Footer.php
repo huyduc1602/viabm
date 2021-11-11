@@ -1,17 +1,17 @@
 <!--    Thêm nút liên hệ và messager-->
 <div id="button-contact-vr" class="">
     <div id="gom-all-in-one">
-        <div id="zalo-vr" class="button-contact">
-            <div class="phone-vr">
-                <div class="phone-vr-circle-fill"></div>
-                <div class="phone-vr-img-circle">
-                    <a target="_blank" href="https://zalo.me/0985630916">
-                        <img data-lazyloaded="1" data-placeholder-resp="100x95" src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/zalo.png" width="100" height="95" data-src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/zalo.png" class="litespeed-loaded" data-was-processed="true">
-                        <noscript><img width="100" height="95" src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/zalo.png" /></noscript>
-                    </a>
-                </div>
-            </div>
-        </div>
+<!--        <div id="zalo-vr" class="button-contact">-->
+<!--            <div class="phone-vr">-->
+<!--                <div class="phone-vr-circle-fill"></div>-->
+<!--                <div class="phone-vr-img-circle">-->
+<!--                    <a target="_blank" href="https://zalo.me/0985630916">-->
+<!--                        <img data-lazyloaded="1" data-placeholder-resp="100x95" src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/zalo.png" width="100" height="95" data-src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/zalo.png" class="litespeed-loaded" data-was-processed="true">-->
+<!--                        <noscript><img width="100" height="95" src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/zalo.png" /></noscript>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
         <div id="phone-vr" class="button-contact">
             <div class="phone-vr">
                 <div class="phone-vr-circle-fill"></div>
@@ -175,33 +175,33 @@ $("#add_phone").on("click", function() {
 <?php }?>
 
 <!--Thêm messager-->
-<!-- Messenger Plugin chat Code -->
-<div id="fb-root"></div>
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
 
-<!-- Your Plugin chat code -->
-<div id="fb-customer-chat" class="fb-customerchat">
-</div>
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
 
-<script>
-    var chatbox = document.getElementById('fb-customer-chat');
-    chatbox.setAttribute("page_id", "1875643646095338");
-    chatbox.setAttribute("attribution", "biz_inbox");
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "110302188130824");
+        chatbox.setAttribute("attribution", "biz_inbox");
 
-    window.fbAsyncInit = function() {
-        FB.init({
-            xfbml            : true,
-            version          : 'v12.0'
-        });
-    };
+        window.fbAsyncInit = function() {
+            FB.init({
+                xfbml            : true,
+                version          : 'v12.0'
+            });
+        };
 
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 <!--Thêm messager-->
 
 <?=$CMSNT->site('script');?>
@@ -233,9 +233,11 @@ $("#add_phone").on("click", function() {
 <script src="<?=BASE_URL('template/');?>bower_components/bootstrap/js/dist/tab.js"></script>
 <script src="<?=BASE_URL('template/');?>bower_components/bootstrap/js/dist/tooltip.js"></script>
 <script src="<?=BASE_URL('template/');?>bower_components/bootstrap/js/dist/popover.js"></script>
+<script src="<?=BASE_URL('template/');?>bower_components/toastr/toastr.min.js"></script>
 <script src="<?=BASE_URL('template/');?>js/main.js?version=4.5.0"></script>
 <script src="<?=BASE_URL('template/');?>js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+<script src="<?=BASE_URL('template/');?>js/coder-update.js?version=1.0.0"></script>
 <script>
 new ClipboardJS('.copy');
 </script>
