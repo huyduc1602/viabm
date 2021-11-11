@@ -4,8 +4,117 @@
     $title = lang(1).' | '.$CMSNT->site('tenweb');
     require_once("../../public/client/Header.php");
 ?>
+<style>
+    .vodiapicker{
+        display: none;
+    }
 
+    #langlg{
+        padding-left: 0px;
+        margin-bottom: 0;
+    }
+
+    #langlg img, .btn-select img{
+        width: 35px;
+
+    }
+
+    #langlg li{
+        list-style: none;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    #langlg li:hover{
+        background-color: #F4F3F3;
+    }
+
+    #langlg li img{
+        margin: 5px;
+    }
+
+    #langlg span, .btn-select li span{
+        margin-left: 30px;
+    }
+
+    /* item list */
+
+    .boxlang{
+        display: none;
+        width: 100%;
+        max-width: 50px;
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .lang-select .open{
+        display: show !important;
+    }
+
+    .btn-select{
+        margin-top: 10px;
+        width: 100%;
+        max-width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+
+    }
+    .btn-select li{
+        list-style: none;
+        float: left;
+        padding-bottom: 0px;
+    }
+
+    .btn-select:hover li{
+        margin-left: 0px;
+    }
+
+    .btn-select:hover{
+        background-color: #F4F3F3;
+        border: 1px solid transparent;
+        box-shadow: inset 0 0px 0px 1px #ccc;
+
+
+    }
+
+    .btn-select:focus{
+        outline:none;
+    }
+
+    .lang-select{
+        margin-left: 50px;
+        position: absolute;
+        left: 5%;
+        z-index: 999;
+    }
+    @media (max-width: 767px) {
+        .lang-select{
+            left: 50%;
+            transform: translate(-50%, 0);
+            margin-left: 0;
+        }
+        .boxlang{
+            background: #2b65b1;
+        }
+    }
+
+</style>
 <body class="auth-wrapper">
+    <select class="vodiapicker">
+        <option value="vn" data-thumbnail="<?=BASE_URL('template/img/flags-icons/vn.png');?>"></option>
+        <option value="en" class="test" data-thumbnail="<?=BASE_URL('template/img/flags-icons/en.png');?>"></option>
+    </select>
+
+    <div class="lang-select">
+        <button class="btn-select" value=""></button>
+        <div class="boxlang">
+            <ul id="langlg"></ul>
+        </div>
+    </div>
     <div class="all-wrapper menu-side with-pattern">
         <div class="auth-box-w">
             <div class="logo-w"><a href="<?=BASE_URL('');?>"><img alt="" width="100%"
@@ -137,7 +246,7 @@ function showlog() {
 <?php }?>
 <?=$CMSNT->site('script');?>
 <!-- ĐƠN VỊ THIẾT KẾ WEB WWW.CMSNT.CO | ZALO: 0947838128 | FACEBOOK: FB.COM/NTGTANETWORK -->
-<script type="text/javascript">
+    <script type="text/javascript">
 $("#Login").on("click", function() {
 
     $('#Login').html('<?=lang(9);?>').prop('disabled',
@@ -166,9 +275,69 @@ $("#Login").on("click", function() {
         }
     });
 });
-</script>
 
+//language
+var langArray = [];
+$('.vodiapicker option').each(function(){
+    var img = $(this).attr("data-thumbnail");
+    var text = this.innerText;
+    var value = $(this).val();
+    var item = '<li><img src="'+ img +'" alt="" value="'+value+'"/><span>'+ text +'</span></li>';
+    langArray.push(item);
+})
 
+$('#langlg').html(langArray);
+
+//Set the button value to the first el of the array
+$('.btn-select').html(langArray[0]);
+$('.btn-select').attr('value', 'en');
+
+//change button stuff on click
+$('#langlg li').click(function(){
+    var img = $(this).find('img').attr("src");
+    var value = $(this).find('img').attr('value');
+    var text = this.innerText;
+    var item = '<li><img src="'+ img +'" alt="" /><span>'+ text +'</span></li>';
+    $('.btn-select').html(item);
+    $('.btn-select').attr('value', value);
+    $(".boxlang").toggle();
+    if(value == 'en'){
+        $.ajax({
+            url: "<?=BASE_URL("assets/ajaxs/Lang.php");?>",
+            method: "POST",
+            data: {
+                type: 'ChangeLanguage',
+                lang: 'en'
+            },
+            success: function(response) {
+                setTimeout(function() {
+                    location.href = ""
+                }, 0);
+            }
+        });
+    }
+    if(value == 'vn'){
+        $.ajax({
+            url: "<?=BASE_URL("assets/ajaxs/Lang.php");?>",
+            method: "POST",
+            data: {
+                type: 'ChangeLanguage',
+                lang: 'vn'
+            },
+            success: function(response) {
+                setTimeout(function() {
+                    location.href = ""
+                }, 0);
+            }
+        });
+    }
+});
+
+$(".btn-select").click(function(){
+    $(".boxlang").toggle();
+});
+
+    </script>
 <?php 
     //require_once("../../public/client/Footer.php");
 ?>

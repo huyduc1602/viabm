@@ -1,3 +1,33 @@
+<!--    Thêm nút liên hệ và messager-->
+<div id="button-contact-vr" class="">
+    <div id="gom-all-in-one">
+        <div id="zalo-vr" class="button-contact">
+            <div class="phone-vr">
+                <div class="phone-vr-circle-fill"></div>
+                <div class="phone-vr-img-circle">
+                    <a target="_blank" href="https://zalo.me/0985630916">
+                        <img data-lazyloaded="1" data-placeholder-resp="100x95" src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/zalo.png" width="100" height="95" data-src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/zalo.png" class="litespeed-loaded" data-was-processed="true">
+                        <noscript><img width="100" height="95" src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/zalo.png" /></noscript>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="phone-vr" class="button-contact">
+            <div class="phone-vr">
+                <div class="phone-vr-circle-fill"></div>
+                <div class="phone-vr-img-circle">
+                    <a href="tel:0985630916">
+                        <img data-lazyloaded="1" data-placeholder-resp="50x50" src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/phone.png" width="50" height="50" data-src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/phone.png" class="litespeed-loaded" data-was-processed="true">
+                        <noscript><img width="50" height="50" src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/phone.png" /></noscript>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--    Thêm nút liên hệ và messager-->
+
+
 <?php if($CMSNT->site('right_panel') == 'ON') { ?>
 <div class="content-panel">
     <div class="content-panel-close"><i class="os-icon os-icon-close"></i></div>
@@ -106,6 +136,7 @@ function showlog() {
         </div>
     </div>
 </div>
+
 <script type="text/javascript">
 $(document).ready(function() {
     setTimeout(e => {
@@ -143,7 +174,35 @@ $("#add_phone").on("click", function() {
 </script>
 <?php }?>
 
+<!--Thêm messager-->
+<!-- Messenger Plugin chat Code -->
+<div id="fb-root"></div>
 
+<!-- Your Plugin chat code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
+
+<script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "1875643646095338");
+    chatbox.setAttribute("attribution", "biz_inbox");
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml            : true,
+            version          : 'v12.0'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<!--Thêm messager-->
 
 <?=$CMSNT->site('script');?>
 <script src="<?=BASE_URL('template/');?>bower_components/jquery/dist/jquery.min.js"></script>
