@@ -12,6 +12,6 @@ function showAlertBuy() {
     var index = 0;
     setInterval(function(){
         toastr.success(arr[index++ % arr.length])
-    }, 3000);
+    }, 10000);
 }
 showAlertBuy();
