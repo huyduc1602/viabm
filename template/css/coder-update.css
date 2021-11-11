@@ -77,8 +77,9 @@
 
 #button-contact-vr {
     position: fixed;
-    bottom: 0;
+    bottom: 80px;
     z-index: 99999;
+    right: 16px;
 }
 /*phone*/
 #button-contact-vr .button-contact {
