@@ -19,20 +19,20 @@
                         <table class="table table-hover">
                             <tbody>
                                 <tr>
-                                    <td style="text-align: right;">SDT: </td>
+                                    <td style="text-align: right;"><?=langByVn('Số điện thoại');?>: </td>
                                     <td style="text-align: left; color: #00cc99;">
                                         <b><?=$CMSNT->site('sdt_momo');?></b>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: right;">Chủ tài khoản:
+                                    <td style="text-align: right;"><?=langByVn('Chủ tài khoản');?>:
                                     </td>
                                     <td style="text-align: left;">
                                         <b><?=$CMSNT->site('name_momo');?></b>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: right;">Nội dung chuyển tiền:
+                                    <td style="text-align: right;"><?=langByVn('Nội dung chuyển tiền');?>:
                                     </td>
                                     <td style="text-align: left;">
                                         <b id="copy" style="color:red;"><?=$CMSNT->site("noidung_naptien").$getUser['id'];?></b> <a class="copy" data-clipboard-target="#copy"><i class="os-icon os-icon-copy"></i></a>
@@ -50,24 +50,24 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="element-wrapper">
-                    <h6 class="element-header">LỊCH SỬ NẠP MOMO</h6>
+                    <h6 class="element-header"><?=langByVn('LỊCH SỬ NẠP MOMO');?></h6>
                     <div class="element-box">
                         <div class="table-responsive">
                             <table id="datatable" class="table table-padded">
                                 <thead>
                                     <tr>
-                                        <th>Trạng thái</th>
-                                        <th>Thời gian</th>
-                                        <th>Nội dung</th>
-                                        <th class="text-center">Mã GD</th>
-                                        <th class="text-right">Số tiền</th>
+                                        <th><?=langByVn('Trạng thái');?></th>
+                                        <th><?=langByVn('Thời gian');?></th>
+                                        <th><?=langByVn('Nội dung');?></th>
+                                        <th class="text-center"><?=langByVn('Mã GD');?></th>
+                                        <th class="text-right"><?=langByVn('Số tiền');?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach($CMSNT->get_list("SELECT * FROM `momo` WHERE `username` = '".$getUser['username']."' ") as $momo) { ?>
                                     <tr>
-                                        <td class="nowrap"><span class="status-pill smaller green"></span><span>Hoàn
-                                                thành</span>
+                                        <td class="nowrap"><span class="status-pill smaller green"></span>
+                                            <span><?=langByVn('Hoàn thành');?></span>
                                         </td>
                                         <td><span><?=$momo['time'];?></span></td>
                                         <td class="cell-with-media"><?=$momo['comment'];?></td>
