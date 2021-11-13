@@ -249,7 +249,7 @@
                                             </a>
                                         </li>
                                     <?php }?>
-                                    <?php if($CMSNT->site('status_paypal') != 'OFF') { ?>
+                                    <?php if($CMSNT->site('status_usdt') != 'OFF') { ?>
                                         <li><a href="<?=BASE_URL('Recharge-Crypto');?>"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/BTC_Logo.svg" width="30px"> Crypto
                                                 <!--                                                <strong class="badge badge-danger">Auto</strong>-->
                                             </a>
