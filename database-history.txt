@@ -13,5 +13,10 @@ INSERT INTO lang(id,vn,en) VALUES (167,'tháng trước','last month');
 INSERT INTO lang(id,vn,en) VALUES (168,'năm trước','last year');
 INSERT INTO lang(id,vn,en) VALUES (168,'năm trước','last year');
 ==  Add paypal option
-INSERT INTO `options`(`name`,`value`) VALUES("status_paypal","ON")
+INSERT INTO `options`(`name`,`value`) VALUES("status_paypal","ON");
+INSERT INTO `options`(`name`,`value`) VALUES("tk_paypal","0947838128");
+INSERT INTO `options`(`name`,`value`) VALUES("name_paypal","NGUYEN TAN THANH");
+INSERT INTO `options`(`name`,`value`) VALUES("paypal_note","Vui lòng nhập đúng nội dung");
+INSERT INTO `options`(`name`,`value`) VALUES("status_paypal","ON");
+INSERT INTO `options`(`name`,`value`) VALUES("token_paypal","");
 

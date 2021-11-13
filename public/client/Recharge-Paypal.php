@@ -21,14 +21,14 @@
                                 <tr>
                                     <td style="text-align: right;"><?=langByVn('Số tài khoản');?>: </td>
                                     <td style="text-align: left; color: #00cc99;">
-                                        <b><?=$CMSNT->site('sdt_zalopay');?></b>
+                                        <b><?=$CMSNT->site('tk_paypal');?></b>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="text-align: right;"><?=langByVn('Chủ tài khoản');?>:
                                     </td>
                                     <td style="text-align: left;">
-                                        <b><?=$CMSNT->site('name_zalopay');?></b>
+                                        <b><?=$CMSNT->site('name_paypal');?></b>
                                     </td>
                                 </tr>
                                 <tr>
@@ -39,7 +39,7 @@
                                     </td>
                                 </tr>
                                 <tr class="text-center">
-                                    <td colspan="2"><b><?=$CMSNT->site('zalopay_note');?></b></td>
+                                    <td colspan="2"><b><?=$CMSNT->site('paypal_note');?></b></td>
                                 </tr>
                             </tbody>
                         </table>
