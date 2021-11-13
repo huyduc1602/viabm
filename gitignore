@@ -37,6 +37,7 @@ package-lock.json
 
 #config
 /config
+config.php
 
 #backup
 /backup
