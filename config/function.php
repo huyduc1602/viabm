@@ -119,6 +119,17 @@ function insert_lang($id, $vn, $en)
         ]);
     }
 }
+function insert_lang_text($vn, $en)
+{
+    global $CMSNT;
+    if(!$CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' "))
+    {
+        $CMSNT->insert("lang", [
+            'vn'    => $vn,
+            'en'    => $en
+        ]);
+    }
+}
 function format_currency($amount)
 {
     if(isset($_SESSION['lang']))
