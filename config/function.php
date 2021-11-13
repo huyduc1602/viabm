@@ -159,21 +159,23 @@ function lang($id)
 function langByVn($vn)
 {
     global $CMSNT;
+    $textTran = $vn;
     if(isset($_SESSION['lang']))
     {
         if($_SESSION['lang'] == 'en')
         {
-            return $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['en'];
+            $textTran = $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['en'] ? $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['en'] : $textTran;
         }
         else
         {
-            return $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['vn'];
+            $textTran =  $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['vn'] ? $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['vn'] : $textTran;
         }
     }
     else
     {
-        return $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['vn'];
+        $textTran = $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['vn'] ? $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['vn'] : $textTran;
     }
+    return $textTran;
 }
 function format_date($time){
     return date("H:i:s d/m/Y", $time);
