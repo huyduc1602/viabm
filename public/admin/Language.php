@@ -40,6 +40,16 @@ if(isset($_POST['btnSaveLangVN']) && $getUser['level'] == 'admin')
     }
     admin_msg_success('Lưu thành công', '', 500);
 }
+
+if(isset($_POST['btnAddLang']) && $getUser['level'] == 'admin')
+{
+    if($CMSNT->site('status_demo') == 'ON')
+    {
+        admin_msg_error("Chức năng này không khả dụng trên trang web DEMO!", "", 2000);
+    }
+    insert_lang_text($_POST['vn-text'],$_POST['en-text']);
+    admin_msg_success('Lưu thành công', '', 500);
+}
 ?>
 
 
@@ -50,6 +60,9 @@ if(isset($_POST['btnSaveLangVN']) && $getUser['level'] == 'admin')
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Cấu hình ngôn ngữ quốc tế</h1>
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-primary mt-sm-2 float-md-right btn-add-language" data-toggle="modal" data-target="#addLanguage">Thêm</button>
                 </div>
             </div>
         </div>
@@ -139,7 +152,31 @@ if(isset($_POST['btnSaveLangVN']) && $getUser['level'] == 'admin')
         </div>
     </section>
 </div>
-
+    <div class="modal fade" id="addLanguage" tabindex="-1" role="dialog" aria-labelledby="addLanguageLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm ngôn ngữ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <label for="vn-text" class="col-form-label">Tiếng việt:</label>
+                            <input type="text" class="form-control" id="vn-text" name="vn-text">
+                        </div>
+                        <div class="form-group">
+                            <label for="en-text" class="col-form-label">Tiếng anh:</label>
+                            <input type="text" class="form-control" id="en-text" name="en-text">
+                        </div>
+                        <button type="submit" name="btnAddLang" class="btn btn-primary">Lưu</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 <script>
 $(function() {
     // Summernote

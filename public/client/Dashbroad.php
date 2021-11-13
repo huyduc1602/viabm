@@ -14,7 +14,7 @@
         <?php if(empty($getUser['email'])){ ?>
         <div class="alert alert-warning">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            Vui lòng <a href="<?=BASE_URL('Auth/Profile');?>">cập nhật</a> địa chỉ Email để bảo mật tài khoản.
+            <?=langByVn('Vui lòng');?>  <a href="<?=BASE_URL('Auth/Profile');?>"><?=langByVn('cập nhật');?></a> <?=langByVn('địa chỉ Email để bảo mật tài khoản.');?>
         </div>
         <?php }?>
         <div class="row">
@@ -80,38 +80,35 @@
                                 <?php if($CMSNT->site('api_card') != '') { ?>
                                 <div class="col-sm-12">
                                     <a class="mr-2 mb-2 btn btn-primary btn-lg btn-block"
-                                        href="<?=BASE_URL('Recharge-Card');?>" type="button"> NẠP THẺ CÀO TỰ ĐỘNG</a>
+                                        href="<?=BASE_URL('Recharge-Card');?>" type="button"> <?=langByVn('NẠP THẺ CÀO TỰ ĐỘNG');?></a>
                                 </div>
                                 <?php }?>
                                 <?php if($CMSNT->site('status_cron_momo') == 'ON') { ?>
                                 <div class="col-sm-12">
                                     <a class="mr-2 mb-2 btn btn-warning btn-lg btn-block"
-                                        href="<?=BASE_URL('Recharge-Momo');?>" type="button"> NẠP QUA VÍ MOMO TỰ
-                                        ĐỘNG</a>
+                                        href="<?=BASE_URL('Recharge-Momo');?>" type="button"> <?=langByVn('NẠP QUA VÍ MOMO TỰ ĐỘNG');?></a>
                                 </div>
                                 <?php }?>
                                 <?php if($CMSNT->site('status_zalopay') == 'ON') { ?>
                                 <div class="col-sm-12">
                                     <a class="mr-2 mb-2 btn btn-danger btn-lg btn-block"
-                                        href="<?=BASE_URL('Recharge-ZaloPay');?>" type="button"> NẠP QUA VÍ ZALO PAY TỰ
-                                        ĐỘNG</a>
+                                        href="<?=BASE_URL('Recharge-ZaloPay');?>" type="button"> <?=langByVn('NẠP QUA VÍ ZALO PAY TỰ ĐỘNG');?></a>
                                 </div>
                                 <?php }?>
                                 <?php if($CMSNT->site('tk_tsr') != '' && $CMSNT->site('mk_tsr') != '') { ?>
                                 <div class="col-sm-12">
                                     <a class="mr-2 mb-2 btn btn-danger btn-lg btn-block"
-                                        href="<?=BASE_URL('Recharge-Thesieure');?>" type="button"> NẠP QUA
-                                        THESIEURE.COM</a>
+                                        href="<?=BASE_URL('Recharge-Thesieure');?>" type="button"> <?=langByVn('NẠP QUA THESIEURE.COM');?></a>
                                 </div>
                                 <?php }?>
                                 <div class="col-sm-12">
                                     <a class="mr-2 mb-2 btn btn-success btn-lg btn-block"
-                                        href="<?=BASE_URL('Recharge-Bank');?>" type="button"> NẠP QUA NGÂN HÀNG</a>
+                                        href="<?=BASE_URL('Recharge-Bank');?>" type="button"> <?=langByVn('NẠP QUA NGÂN HÀNG');?></a>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer"><button class="btn btn-secondary" data-dismiss="modal" type="button">
-                                Đóng</button></div>
+                                <?=langByVn('Đóng');?></button></div>
                     </div>
                 </div>
             </div>

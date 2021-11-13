@@ -58,18 +58,18 @@
                             <table id="datatable" class="table table-padded">
                                 <thead>
                                     <tr>
-                                        <th>Trạng thái</th>
-                                        <th>Thời gian</th>
-                                        <th>Nội dung</th>
-                                        <th class="text-center">Mã GD</th>
-                                        <th class="text-right">Số tiền</th>
+                                        <th><?=langByVn('Trạng thái');?></th>
+                                        <th><?=langByVn('Thời gian');?></th>
+                                        <th><?=langByVn('Nội dung');?></th>
+                                        <th class="text-center"><?=langByVn('Mã GD');?></th>
+                                        <th class="text-right"><?=langByVn('Số tiền');?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach($CMSNT->get_list("SELECT * FROM `bank_auto` WHERE `username` = '".$getUser['username']."' ") as $bank_auto) { ?>
                                     <tr>
-                                        <td class="nowrap"><span class="status-pill smaller green"></span><span>Hoàn
-                                                thành</span>
+                                        <td class="nowrap"><span class="status-pill smaller green"></span>
+                                            <span><?=langByVn('Hoàn thành');?></span>
                                         </td>
                                         <td><span><?=$bank_auto['time'];?></span></td>
                                         <td class="cell-with-media"><?=$bank_auto['description'];?></td>

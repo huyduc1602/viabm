@@ -1,7 +1,7 @@
 <?php
     require_once("../../config/config.php");
     require_once("../../config/function.php");
-    $title = 'THAY ĐỔI MẬT KHẨU | '.$CMSNT->site('tenweb');
+    $title = langByVn('THAY ĐỔI MẬT KHẨU').' | '.$CMSNT->site('tenweb');
     require_once("../../public/client/Header.php");
 ?>
 
@@ -25,8 +25,10 @@
                         placeholder="<?=lang(124);?>" type="password">
                     <div class="pre-icon os-icon os-icon-fingerprint"></div>
                 </div>
-                <div class="buttons-w"><button class="btn btn-primary btn-block" id="ChangePassword" type="submit">ĐỔI
-                        MẬT KHẨU</button>
+                <div class="buttons-w">
+                    <button class="btn btn-primary btn-block" id="ChangePassword" type="submit">
+                        <?=langByVn('ĐỔI MẬT KHẨU');?>
+                    </button>
                 </div>
             </form>
         </div>

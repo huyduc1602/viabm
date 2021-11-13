@@ -38,7 +38,7 @@
                             </a>
                             <ul class="sub-menu">
                                 <?php foreach($CMSNT->get_list("SELECT * FROM `category` WHERE `display` = 'SHOW' ") as $category) { ?>
-                                <li><a href="<?=BASE_URL('Category/'.$category['id']);?>"><?=$category['title'];?></a>
+                                <li><a href="<?=BASE_URL('Category/'.$category['id']);?>"><?=langByVn($category['title']);?></a>
                                 </li>
                                 <?php }?>
                             </ul>
@@ -139,7 +139,7 @@
                         <li class=""><a href="<?=BASE_URL('Admin');?>">
                                 <div class="icon-w">
                                     <div class="os-icon os-icon-settings"></div>
-                                </div><span>Quản Trị Website</span>
+                                </div><span><?=langByVn('Quản Trị Website');?></span>
                             </a>
                         </li>
                         <?php }?>
@@ -204,7 +204,7 @@
                                 <ul class="sub-menu">
                                     <?php foreach($CMSNT->get_list("SELECT * FROM `category` WHERE `display` = 'SHOW' ") as $category) { ?>
                                     <li><a
-                                            href="<?=BASE_URL('Category/'.$category['id']);?>"><?=$category['title'];?></a>
+                                            href="<?=BASE_URL('Category/'.$category['id']);?>"><?=langByVn($category['title']);?></a>
                                     </li>
                                     <?php }?>
                                 </ul>
@@ -228,7 +228,7 @@
                             <div class="sub-menu-i">
                                 <ul class="sub-menu">
                                     <?php if($CMSNT->site('api_card') != '') { ?>
-                                    <li><a href="<?=BASE_URL('Recharge-Card');?>"><img src="<?=BASE_URL('assets/img/the-cao.png');?>" width="30px"> Thẻ cào <strong
+                                    <li><a href="<?=BASE_URL('Recharge-Card');?>"><img src="<?=BASE_URL('assets/img/the-cao.png');?>" width="30px"> <?=langByVn('Thẻ cào');?> <strong
                                                 class="badge badge-danger">Auto</strong></a></li>
                                     <?php }?>
                                     <?php if($CMSNT->site('status_cron_momo') != 'OFF') { ?>
@@ -324,7 +324,7 @@
                     <li class="selected"><a href="<?=BASE_URL('Admin');?>">
                             <div class="icon-w">
                                 <div class="os-icon os-icon-settings"></div>
-                            </div><span>Quản Trị Website</span>
+                            </div><span><?=langByVn('Quản Trị Website');?></span>
                         </a>
                     </li>
                     <?php }?>

@@ -17,15 +17,15 @@
                         <div id="thongbao"></div>
                         <form>
                             <div class="form-group row">
-                                <label class="col-sm-12 col-md-4 col-form-label">Nhập mã giao dịch:</label>
+                                <label class="col-sm-12 col-md-4 col-form-label"><?=langByVn('Nhập mã giao dịch');?>:</label>
                                 <div class="col-sm-12 col-md-8">
                                     <input class="form-control" type="text" id="magiaodich"
-                                        placeholder="Vui lòng nhập mã đơn VD: W604E0EA769E25">
+                                        placeholder="<?=langByVn('Vui lòng nhập mã đơn VD');?>: W604E0EA769E25">
                                 </div>
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" id="submit" class="btn btn-primary">
-                                    <span>XÁC NHẬN</span>
+                                    <span><?=langByVn('XÁC NHẬN');?></span>
                                 </button>
                             </div>
                         </form>
@@ -44,21 +44,21 @@
                         <table class="table table-hover">
                             <tbody>
                                 <tr>
-                                    <td style="text-align: right;">TÀI KHOẢN NHẬN TIỀN: </td>
+                                    <td style="text-align: right;"><?=langByVn('TÀI KHOẢN NHẬN TIỀN');?>: </td>
                                     <td style="text-align: left; color: #00cc99;">
                                         <b><?=$CMSNT->site('tk_tsr');?></b>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="text-align: right;">Nội dung chuyển tiền:
+                                    <td style="text-align: right;"><?=langByVn('Nội dung chuyển tiền');?>:
                                     </td>
                                     <td style="text-align: left;">
                                         <b style="color:red;" id="copy"><?=$CMSNT->site("noidung_naptien");?></b> <a class="copy" data-clipboard-target="#copy"><i class="os-icon os-icon-copy"></i></a>
                                     </td>
                                 </tr>
                                 <tr class="text-center">
-                                    <td colspan="2"><b>Vui lòng nhập đúng nội dung sau đó nhập mã giao dịch vào ô bên
-                                            trái.</b></td>
+                                    <td colspan="2"><b><?=langByVn('Vui lòng nhập đúng nội dung sau đó nhập mã giao dịch vào ô bên
+                                            trái.');?></b></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -69,24 +69,24 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="element-wrapper">
-                    <h6 class="element-header">LỊCH SỬ NẠP THESIEURE</h6>
+                    <h6 class="element-header"><?=langByVn('LỊCH SỬ NẠP THESIEURE');?></h6>
                     <div class="element-box">
                         <div class="table-responsive">
                             <table id="datatable" class="table table-padded">
                                 <thead>
                                     <tr>
-                                        <th>Trạng thái</th>
-                                        <th>Thời gian</th>
-                                        <th>Nội dung</th>
-                                        <th class="text-center">Mã GD</th>
-                                        <th class="text-right">Số tiền</th>
+                                        <th><?=langByVn('Trạng thái');?></th>
+                                        <th><?=langByVn('Thời gian');?></th>
+                                        <th><?=langByVn('Nội dung');?></th>
+                                        <th class="text-center"><?=langByVn('Mã GD');?></th>
+                                        <th class="text-right"><?=langByVn('Số tiền');?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach($CMSNT->get_list("SELECT * FROM `thesieure` WHERE `username` = '".$getUser['username']."' ") as $momo) { ?>
                                     <tr>
-                                        <td class="nowrap"><span class="status-pill smaller green"></span><span>Hoàn
-                                                thành</span>
+                                        <td class="nowrap"><span class="status-pill smaller green"></span>
+                                            <span><?=langByVn('Hoàn thành');?></span>
                                         </td>
                                         <td><span><?=$momo['time'];?></span></td>
                                         <td class="cell-with-media"><?=$momo['noidung'];?></td>

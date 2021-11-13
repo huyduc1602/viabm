@@ -119,6 +119,17 @@ function insert_lang($id, $vn, $en)
         ]);
     }
 }
+function insert_lang_text($vn, $en)
+{
+    global $CMSNT;
+    if(!$CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' "))
+    {
+        $CMSNT->insert("lang", [
+            'vn'    => $vn,
+            'en'    => $en
+        ]);
+    }
+}
 function format_currency($amount)
 {
     if(isset($_SESSION['lang']))
@@ -154,6 +165,25 @@ function lang($id)
     else
     {
         return $CMSNT->get_row("SELECT * FROM `lang` WHERE `id` = '$id' ")['vn'];
+    }
+}
+function langByVn($vn)
+{
+    global $CMSNT;
+    if(isset($_SESSION['lang']))
+    {
+        if($_SESSION['lang'] == 'en')
+        {
+            return $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['en'] ?? $vn;
+        }
+        else
+        {
+            return  $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['vn'] ?? $vn;
+        }
+    }
+    else
+    {
+        return $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['vn'] ?? $vn;
     }
 }
 function format_date($time){
@@ -815,44 +845,44 @@ function timeAgo($time_ago)
     // Seconds
     if($seconds <= 60)
     {
-        return "$seconds giây trước";
+        return "$seconds ".lang(161);
     }
     //Minutes
     else if($minutes <= 60)
     {
-        return "$minutes phút trước";
+        return "$minutes ".lang(162);
     }
     //Hours
     else if($hours <= 24)
     {
-        return "$hours tiếng trước";
+        return "$hours ".lang(163);
     }
     //Days
     else if($days <= 7)
     {
         if($days == 1)
         {
-            return "Hôm qua";
+            return lang(164);
         }
         else
         {
-            return "$days ngày trước";
+            return "$days ".lang(165);
         }
     }
     //Weeks
     else if($weeks <= 4.3)
     {
-        return "$weeks tuần trước";
+        return "$weeks ".lang(166);
     }
     //Months
     else if($months <=12)
     {
-        return "$months tháng trước";
+        return "$months ".lang(167);
     }
     //Years
     else
     {
-        return "$years năm trước";
+        return "$years ".lang(168);
     }
 }
 function dirToArray($dir) {
