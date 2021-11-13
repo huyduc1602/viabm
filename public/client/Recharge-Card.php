@@ -13,39 +13,39 @@
         <div class="row">
             <div class="col-sm-7">
                 <div class="element-wrapper">
-                    <div class="element-header"> NẠP THẺ CÀO</div>
+                    <div class="element-header"> <?=langByVn('NẠP THẺ CÀO');?></div>
                     <div class="element-box">
                         <div id="thongbao"></div>
                         <form>
                             <div class="form-group row">
-                                <label class="col-sm-12 col-md-2 col-form-label">Loại thẻ:</label>
+                                <label class="col-sm-12 col-md-2 col-form-label"><?=langByVn('Loại thẻ');?>:</label>
                                 <div class="col-sm-12 col-md-10">
                                     <select class="custom-select" id="loaithe" required="">
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-12 col-md-2 col-form-label">Mệnh giá:</label>
+                                <label class="col-sm-12 col-md-2 col-form-label"><?=langByVn('Mệnh giá');?>:</label>
                                 <div class="col-sm-12 col-md-10">
                                     <select class="custom-select" id="menhgia" required="">
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-12 col-md-2 col-form-label">Nhập seri:</label>
+                                <label class="col-sm-12 col-md-2 col-form-label"><?=langByVn('Nhập seri');?>:</label>
                                 <div class="col-sm-12 col-md-10">
                                     <input class="form-control" type="text" id="seri" placeholder="10006139342354">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-sm-12 col-md-2 col-form-label">Nhập mã thẻ:</label>
+                                <label class="col-sm-12 col-md-2 col-form-label"><?=langByVn('Nhập mã thẻ');?>:</label>
                                 <div class="col-sm-12 col-md-10">
                                     <input class="form-control" type="text" id="pin" placeholder="313036630666891">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <button type="button" id="NapThe" class="btn btn-primary btn-block">
-                                    <span>NẠP NGAY</span>
+                                    <span><?=langByVn('NẠP NGAY');?></span>
                                 </button>
                             </div>
                         </form>
@@ -54,7 +54,7 @@
             </div>
             <div class="col-sm-5">
                 <div class="element-wrapper">
-                    <div class="element-header"> LƯU Ý</div>
+                    <div class="element-header"> <?=langByVn('LƯU Ý');?></div>
                     <div class="alert alert-warning borderless">
                         <?=$CMSNT->site('luuy_naptien');?>
                     </div>
@@ -64,21 +64,21 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="element-wrapper">
-                    <h6 class="element-header">LỊCH SỬ NẠP THẺ</h6>
+                    <h6 class="element-header"><?=langByVn('LỊCH SỬ NẠP THẺ');?></h6>
                     <div class="element-box">
                         <div class="table-responsive">
                             <table id="datatable" class="table table-padded">
                                 <thead>
                                     <tr>
-                                        <th>STT</th>
-                                        <th>SERI</th>
-                                        <th>PIN</th>
-                                        <th>LOẠI THẺ</th>
-                                        <th>MỆNH GIÁ</th>
-                                        <th>THỰC NHẬN</th>
-                                        <th>THỜI GIAN</th>
-                                        <th>TRẠNG THÁI</th>
-                                        <th>GHI CHÚ</th>
+                                        <th><?=langByVn('STT');?></th>
+                                        <th><?=langByVn('SERI');?></th>
+                                        <th><?=langByVn('PIN');?></th>
+                                        <th><?=langByVn('LOẠI THẺ');?></th>
+                                        <th><?=langByVn('MỆNH GIÁ');?></th>
+                                        <th><?=langByVn('THỰC NHẬN');?></th>
+                                        <th><?=langByVn('THỜI GIAN');?></th>
+                                        <th><?=langByVn('TRẠNG THÁI');?></th>
+                                        <th><?=langByVn('GHI CHÚ');?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
