@@ -1,0 +1,17 @@
+// Date: 13/10/2021
+== Add language
+INSERT INTO lang(id,vn,en) VALUES (158,'vừa mua','bought');
+INSERT INTO lang(id,vn,en) VALUES (159,'tài khoản','account');
+INSERT INTO lang(id,vn,en) VALUES (160,'THÔNG BÁO','NOTIFICATION');
+INSERT INTO lang(id,vn,en) VALUES (161,'giây trước','seconds ago');
+INSERT INTO lang(id,vn,en) VALUES (162,'phút trước','minute ago');
+INSERT INTO lang(id,vn,en) VALUES (163,'tiếng trước','hour ago');
+INSERT INTO lang(id,vn,en) VALUES (164,'Hôm qua','Yesterday');
+INSERT INTO lang(id,vn,en) VALUES (165,'ngày trước','yesterday');
+INSERT INTO lang(id,vn,en) VALUES (166,'tuần trước','last week');
+INSERT INTO lang(id,vn,en) VALUES (167,'tháng trước','last month');
+INSERT INTO lang(id,vn,en) VALUES (168,'năm trước','last year');
+INSERT INTO lang(id,vn,en) VALUES (168,'năm trước','last year');
+==  Add paypal option
+INSERT INTO `options`(`name`,`value`) VALUES("status_paypal","ON")
+
