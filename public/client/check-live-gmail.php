@@ -2,7 +2,7 @@
     require_once("../../config/config.php");
     require_once("../../config/function.php");
     require_once(__DIR__."/../../includes/login.php");
-    $title = 'CHECK LIVE GMAIL | '.$CMSNT->site('tenweb');
+    $title = langByVn('CHECK LIVE GMAIL').' | '.$CMSNT->site('tenweb');
     require_once("../../public/client/Header.php");
     require_once("../../public/client/Nav.php");
 ?>
@@ -14,7 +14,7 @@
             <div class="col-sm-12">
                 <div class="element-wrapper">
                     <div class="element-header">
-                        CHECK LIVE GMAIL
+                        <?=langByVn('CHECK LIVE GMAIL');?>
                     </div>
                     <div class="element-box">
                         <div id="thongbao"></div>
@@ -24,21 +24,21 @@
                             </div>
                             <div id='form_box'>
                                 <div class="form-group">
-                                    <label class="col-sm-12 control-label" style='text-align:left'>Nhập Danh Sách GMAIL</label>
+                                    <label class="col-sm-12 control-label" style='text-align:left'> <?=langByVn('Nhập Danh Sách GMAIL');?></label>
                                     <div class="col-sm-12">
                                         <textarea style='height:150px;white-space:pre;overflow-wrap:normal;'
-                                            class="form-control" id='fb_ids' placeholder="Mỗi dòng 1 GMAIL, có thể nhập full định dạng như: GMAIL|PASS|..." value=''></textarea>
+                                            class="form-control" id='fb_ids' placeholder="<?=langByVn('Mỗi dòng 1 GMAIL, có thể nhập full định dạng như: GMAIL|PASS|...');?>" value=''></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <span onClick='check_live_account()'
-                                            class="btn btn-warning btn_control_box btn-block">Bắt đầu</span>
+                                            class="btn btn-warning btn_control_box btn-block"><?=langByVn('Bắt đầu');?></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-12 control-label text-success" style='text-align:left'>Nick Live
+                                <label class="col-sm-12 control-label text-success" style='text-align:left'><?=langByVn('Nick Live');?>
                                     <span class='badge badge-success px-3' style="background-color:#4caf50;"><span
                                             id='total_live'>0</span> / <span id='total_fb_id1'>0</span></span></label>
                                 <div class="col-sm-12">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-12 control-label text-error" style='text-align:left'>Nick Die <span
+                                <label class="col-sm-12 control-label text-error" style='text-align:left'><?=langByVn('Nick Die');?> <span
                                         class='badge badge-danger px-3' style="background-color:#f44336;"><span
                                             id='total_die'>0</span> / <span id='total_fb_id2'>0</span></span></label>
                                 <div class="col-sm-12">
