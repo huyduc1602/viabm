@@ -1,0 +1,29 @@
+// Date: 13/10/2021
+== Add language
+INSERT INTO lang(id,vn,en) VALUES (158,'vừa mua','bought');
+INSERT INTO lang(id,vn,en) VALUES (159,'tài khoản','account');
+INSERT INTO lang(id,vn,en) VALUES (160,'THÔNG BÁO','NOTIFICATION');
+INSERT INTO lang(id,vn,en) VALUES (161,'giây trước','seconds ago');
+INSERT INTO lang(id,vn,en) VALUES (162,'phút trước','minute ago');
+INSERT INTO lang(id,vn,en) VALUES (163,'tiếng trước','hour ago');
+INSERT INTO lang(id,vn,en) VALUES (164,'Hôm qua','Yesterday');
+INSERT INTO lang(id,vn,en) VALUES (165,'ngày trước','yesterday');
+INSERT INTO lang(id,vn,en) VALUES (166,'tuần trước','last week');
+INSERT INTO lang(id,vn,en) VALUES (167,'tháng trước','last month');
+INSERT INTO lang(id,vn,en) VALUES (168,'năm trước','last year');
+INSERT INTO lang(id,vn,en) VALUES (168,'năm trước','last year');
+==  Add paypal option
+INSERT INTO `options`(`name`,`value`) VALUES("status_paypal","ON");
+INSERT INTO `options`(`name`,`value`) VALUES("tk_paypal","0947838128");
+INSERT INTO `options`(`name`,`value`) VALUES("name_paypal","NGUYEN TAN THANH");
+INSERT INTO `options`(`name`,`value`) VALUES("paypal_note","Vui lòng nhập đúng nội dung");
+INSERT INTO `options`(`name`,`value`) VALUES("status_paypal","ON");
+INSERT INTO `options`(`name`,`value`) VALUES("token_paypal","");
+==  Add crypto option
+INSERT INTO `options`(`name`,`value`) VALUES("wallet_address_usdt","0xbc69e9c7dd58928382d8fa92255990a57afe120a3");
+INSERT INTO `options`(`name`,`value`) VALUES("network_usdt","BSC (BEP20)");
+INSERT INTO `options`(`name`,`value`) VALUES("usdt_note","Vui lòng nhập đúng nội dung");
+INSERT INTO `options`(`name`,`value`) VALUES("status_usdt","ON");
+INSERT INTO `options`(`name`,`value`) VALUES("currency_usdt","USDT (TetherUS)");
+INSERT INTO `options`(`name`,`value`) VALUES("qrcode_usdt","https://bmface.net/img/qr-usdt-bep20.png");
+
