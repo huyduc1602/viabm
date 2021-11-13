@@ -62,7 +62,7 @@
                 <div class="activity-box-w">
                     <div class="activity-time"><?=timeAgo($orders['time']);?></div>
                     <div class="activity-box">
-                        ****<?=substr($orders['username'], 4);?> vừa mua <?=$orders['soluong'];?> tài khoản
+                        ****<?=substr($orders['username'], 4);?> <?=lang(158);?> <?=$orders['soluong'];?> <?=lang(159);?>
                         <?=$orders['dichvu'];?>
                     </div>
                 </div>
@@ -81,13 +81,13 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">THÔNG BÁO</h5>
+                <h5 class="modal-title"><?=lang(160);?></h5>
             </div>
             <div class="modal-body">
                 <?=$CMSNT->site('thongbao');?>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><?=lang(76);?></button>
             </div>
         </div>
     </div>
