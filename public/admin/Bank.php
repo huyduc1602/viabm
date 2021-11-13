@@ -344,6 +344,179 @@ if(isset($_POST['btnSaveOption']) && $getUser['level'] == 'admin')
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="card card-outline card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">CẤU HÌNH NẠP PAYPAL</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                        class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Token ví Paypal </label>
+                                <div class="col-sm-9">
+                                    <div class="form-line">
+                                        <input type="text" name="token_zalopay" placeholder="VD: 78A76A10-6DA98-B4BA-6079-07953B4D1F74" value="<?=$CMSNT->site('token_paypal');?>"
+                                               class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Tài khoản ví Paypal</label>
+                                <div class="col-sm-9">
+                                    <div class="form-line">
+                                        <input type="text" name="tk_paypal" placeholder="VD: 0947838128"
+                                               value="<?=$CMSNT->site('tk_paypal');?>" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Tên chủ ví Paypal</label>
+                                <div class="col-sm-9">
+                                    <div class="form-line">
+                                        <input type="text" name="name_paypal" placeholder="VD: NGUYEN TAN THANH"
+                                               value="<?=$CMSNT->site('name_paypal');?>" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword3" class="col-sm-3 col-form-label">ON/OFF Auto Paypal</label>
+                                <div class="col-sm-9">
+                                    <select class="custom-select" name="status_paypal">
+                                        <option value="ON" <?=$CMSNT->site('status_paypal') == 'ON' ? 'selected' : '';?> >ON</option>
+                                        <option value="OFF" <?=$CMSNT->site('status_paypal') == 'OFF' ? 'selected' : '';?> >OFF</option>
+                                    </select>
+                                    <i>Khi bạn chọn OFF, hệ thống sẽ tạm dừng quá trình Auto Zalo Pay.</i>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Số tiền nạp tối thiểu</label>
+                                <div class="col-sm-9">
+                                    <div class="form-line">
+                                        <input type="number" name="recharge_min" placeholder="VD: 1000"
+                                               value="<?=$CMSNT->site('recharge_min');?>" class="form-control">
+                                    </div>
+                                    <i>Nếu người dùng nạp bé hơn số tiền tối thiểu, hệ thống sẽ không cộng tiền cho user đó.</i>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Nội dung nạp tiền</label>
+                                <div class="col-sm-9">
+                                    <div class="form-line">
+                                        <input type="text" name="noidung_naptien" placeholder="VD: NAPTIEN"
+                                               value="<?=$CMSNT->site('noidung_naptien');?>" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Ghi chú nạp tiền</label>
+                                <div class="col-sm-9">
+                                    <div class="form-line">
+                                        <textarea class="form-control" name="paypal_note"><?=$CMSNT->site('paypal_note');?></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" name="btnSaveOption" class="btn btn-primary btn-block">
+                                <span>LƯU</span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-outline card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">CẤU HÌNH NẠP VÍ USDT</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                        class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Tiền tệ (Coin)</label>
+                                <div class="col-sm-9">
+                                    <div class="form-line">
+                                        <input type="text" name="currency_usdt" placeholder="VD: USDT (TetherUS)"
+                                               value="<?=$CMSNT->site('currency_usdt');?>" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Địa chỉ ví</label>
+                                <div class="col-sm-9">
+                                    <div class="form-line">
+                                        <input type="text" name="wallet_address_usdt" placeholder="VD: 0xbc69e9c7dd58928382d8fa92255990a57afe120a3"
+                                               value="<?=$CMSNT->site('wallet_address_usdt');?>" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Mạng</label>
+                                <div class="col-sm-9">
+                                    <div class="form-line">
+                                        <input type="text" name="network_usdt" placeholder="VD: BSC (BEP20)"
+                                               value="<?=$CMSNT->site('network_usdt');?>" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Mã QR CODE</label>
+                                <div class="col-sm-9">
+                                    <div class="form-line">
+                                        <input type="text" name="qrcode_usdt" placeholder="VD: https://bmface.net/img/qr-usdt-bep20.png"
+                                               value="<?=$CMSNT->site('qrcode_usdt');?>" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword3" class="col-sm-3 col-form-label">ON/OFF Auto Zalo Pay</label>
+                                <div class="col-sm-9">
+                                    <select class="custom-select" name="status_zalopay">
+                                        <option value="ON" <?=$CMSNT->site('status_zalopay') == 'ON' ? 'selected' : '';?> >ON</option>
+                                        <option value="OFF" <?=$CMSNT->site('status_zalopay') == 'OFF' ? 'selected' : '';?> >OFF</option>
+                                    </select>
+                                    <i>Khi bạn chọn OFF, hệ thống sẽ tạm dừng quá trình Auto Zalo Pay.</i>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Số tiền nạp tối thiểu</label>
+                                <div class="col-sm-9">
+                                    <div class="form-line">
+                                        <input type="number" name="recharge_min" placeholder="VD: 1000"
+                                               value="<?=$CMSNT->site('recharge_min');?>" class="form-control">
+                                    </div>
+                                    <i>Nếu người dùng nạp bé hơn số tiền tối thiểu, hệ thống sẽ không cộng tiền cho user đó.</i>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Nội dung nạp tiền</label>
+                                <div class="col-sm-9">
+                                    <div class="form-line">
+                                        <input type="text" name="noidung_naptien" placeholder="VD: NAPTIEN"
+                                               value="<?=$CMSNT->site('noidung_naptien');?>" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Ghi chú nạp tiền</label>
+                                <div class="col-sm-9">
+                                    <div class="form-line">
+                                        <textarea class="form-control" name="zalopay_note"><?=$CMSNT->site('zalopay_note');?></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" name="btnSaveOption" class="btn btn-primary btn-block">
+                                <span>LƯU</span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-12">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
