@@ -21,7 +21,7 @@ INSERT INTO `options`(`name`,`value`) VALUES("status_paypal","ON");
 INSERT INTO `options`(`name`,`value`) VALUES("token_paypal","");
 ==  Add crypto option
 INSERT INTO `options`(`name`,`value`) VALUES("wallet_address_usdt","0xbc69e9c7dd58928382d8fa92255990a57afe120a3");
-INSERT INTO `options`(`name`,`value`) VALUES("network_paypal","BSC (BEP20)");
+INSERT INTO `options`(`name`,`value`) VALUES("network_usdt","BSC (BEP20)");
 INSERT INTO `options`(`name`,`value`) VALUES("usdt_note","Vui lòng nhập đúng nội dung");
 INSERT INTO `options`(`name`,`value`) VALUES("status_usdt","ON");
 INSERT INTO `options`(`name`,`value`) VALUES("currency_usdt","USDT (TetherUS)");
