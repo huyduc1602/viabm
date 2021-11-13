@@ -19,7 +19,7 @@
                         <table class="table table-hover">
                             <tbody>
                                 <tr>
-                                    <td style="text-align: right;"><?=langByVn('Tài khoản');?>: </td>
+                                    <td style="text-align: right;"><?=langByVn('Email paypal');?>: </td>
                                     <td style="text-align: left; color: #00cc99;">
                                         <b><?=$CMSNT->site('tk_paypal');?></b>
                                     </td>
