@@ -156,6 +156,25 @@ function lang($id)
         return $CMSNT->get_row("SELECT * FROM `lang` WHERE `id` = '$id' ")['vn'];
     }
 }
+function langByVn($vn)
+{
+    global $CMSNT;
+    if(isset($_SESSION['lang']))
+    {
+        if($_SESSION['lang'] == 'en')
+        {
+            return $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['en'];
+        }
+        else
+        {
+            return $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['vn'];
+        }
+    }
+    else
+    {
+        return $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['vn'];
+    }
+}
 function format_date($time){
     return date("H:i:s d/m/Y", $time);
 }
