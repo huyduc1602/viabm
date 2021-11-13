@@ -237,6 +237,7 @@ $("#add_phone").on("click", function() {
 <script src="<?=BASE_URL('template/');?>js/main.js?version=4.5.0"></script>
 <script src="<?=BASE_URL('template/');?>js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
+<script src="<?=BASE_URL('template/');?>js/papaparse.min.js"></script>
 <script src="<?=BASE_URL('template/');?>js/coder-update.js?version=1.0.0"></script>
 <script>
 new ClipboardJS('.copy');
