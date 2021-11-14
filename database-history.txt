@@ -34,7 +34,7 @@ CREATE TABLE category_blog(
     slug varchar(255) NULL,
 	parentId int NOT NULL default(0)
 );
-INSERT category_blog VALUES ('Uncategorized','uncategorized');
+INSERT INTO category_blog(name,slug,parentId) VALUES('Uncategorized','uncategorized',1)
 
 CREATE TABLE blog (
 	id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
