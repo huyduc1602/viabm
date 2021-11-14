@@ -22,7 +22,7 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
     if(!isset($_SESSION['username'])){
         admin_msg_success("Vui lòng đăng nhập", BASE_URL('Auth/Login'), 1000);
     }
-    $userId =  $CMSNT->getUser($_SESSION['username']);
+    $userId =  $getUser['id'];
     $name = check_string($_POST['name']);
     if(strlen($name) < 2 || strlen($name) > 255)
     {
@@ -41,7 +41,19 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
     {
         admin_msg_error("Vui lòng chọn danh mục", '', 1000);
     }
-    $imgUpload = uploadImage($_FILES["fileupload"],'/uploads/image/');
+//    $imgUpload = uploadImage($_FILES["fileupload"],'/uploads/image/');
+
+    if(check_img('img') == true)
+    {
+        $rand = random("QWERTYUIOPASDFGHJKLZXCVBNM0123456789", 12);
+        $uploads_dir = '../../assets/storage/images';
+        $tmp_name = $_FILES['img']['tmp_name'];
+        $url_img = "/blog_".$rand.".png";
+        $create = move_uploaded_file($tmp_name, $uploads_dir.$url_img);
+        $imgUpload = 'assets/storage/images'.$url_img;
+    }else{
+        $imgUpload = 'template/img/default.jpg';
+    }
     $detail = $_POST['detail'];
     if(!isset($detail) || $detail == '')
     {
@@ -53,7 +65,7 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
         admin_msg_error("Vui lòng nhập mô tả ngắn", '', 1000);
     }
     $display = $_POST['display'];
-    if(!isset($status))
+    if(!isset($display))
     {
         admin_msg_error("Vui lòng chọn 1 trạng thái", '', 1000);
     }
@@ -128,10 +140,10 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                 <label class="col-sm-3 col-form-label">Ảnh</label>
                                 <div class="col-sm-9">
                                     <div class="form-line">
-                                        <input type="file" name="fileupload"
+                                        <input type="file" name="img"
                                             id="fileupload" class="form-control" required>
                                     </div>
-                                    <img src="https://lh3.googleusercontent.com/proxy/Di8xO7cS-XErquhA5cfZfMcrg6XI9wmFHuI3onblumgc7x31EBKRv15V-izLK2dxSj_TupccpjMFmKgjyY4YNv3CULXmZKCRuX1SdfU9YDjfYHitS6aU2MUdcu3S" class="mt-2" id="showInputFile" width="100px" height="auto" alt="Image">
+                                    <img src="<?=BASE_URL('template/img/default.jpg');?>" class="mt-2" id="showInputFile" width="100px" height="auto" onerror="this.src='<?=BASE_URL('template/img/default.jpg');?>';" alt="Image">
                                 </div>
                             </div>
                             <div class="form-group row">

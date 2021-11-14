@@ -71,13 +71,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($CMSNT->get_list(" SELECT * FROM `blog` ORDER BY id DESC ") as $row){ ?>
+                                    <?php foreach($CMSNT->get_list(" SELECT * FROM `blog` ORDER BY id DESC ") as $row){
+                                        if($row['categoryId'] >= 1){
+                                            $categoryParent = $CMSNT->get_row("SELECT * FROM `category_blog` WHERE `id` = '".$row['categoryId']."' ");
+                                        }else{
+                                            $categoryParent = $CMSNT->get_row("SELECT * FROM `category_blog` WHERE `id` = '1' ");
+                                        }
+                                        $userCreated['username'] = 'Không tìm thấy';
+                                        if($row['userId'] >= 1){
+                                           $userCreated = $CMSNT->get_row("SELECT * FROM `users` WHERE `id` = '".$row['userId']."' ");
+                                        }
+                                        ?>
                                     <tr>
                                         <td><?=$row['id'];?></td>
                                         <td><b><?=$row['name'];?></b></td>
                                         <td><?=$row['slug'];?></td>
-                                        <td><?=display_loai($row['categoryId']);?></td>
-                                        <td><?=$row['userId'];?></td>
+                                        <td><?=$categoryParent['name'];?></td>
+                                        <td><?=$userCreated['username'];?></td>
                                         <td>
                                             <a type="button" href="<?=BASE_URL('Admin/Blog/Edit/');?><?=$row['id'];?>"
                                                 class="btn bg-black">

@@ -11,7 +11,7 @@ require_once(__DIR__."/../../includes/checkLicense.php");
 <?php
 if(isset($_GET['id']) && $getUser['level'] == 'admin')
 {
-    $row = $CMSNT->get_row(" SELECT * FROM `blog` WHERE `id` = '".check_string($_GET['id'])."' AND `userId` = '".$getUser['userId']."' ");
+    $row = $CMSNT->get_row(" SELECT * FROM `blog` WHERE `id` = '".check_string($_GET['id'])."' AND `userId` = '".$getUser['id']."' ");
     if(!$row)
     {
         admin_msg_error("Bài viết không hợp lệ", BASE_URL(''), 500);
@@ -55,8 +55,15 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
     {
         admin_msg_error("Vui lòng chọn danh mục", '', 1000);
     }
-    if(isset($_FILES["fileupload"])){
-        $imgUpload = uploadImage($_FILES["fileupload"],'/uploads/image/');
+    if(check_img('img') == true)
+    {
+//        $imgUpload = uploadImage($_FILES["fileupload"],'/uploads/image/');
+        $rand = random("QWERTYUIOPASDFGHJKLZXCVBNM0123456789", 12);
+        $uploads_dir = '../../assets/storage/images';
+        $tmp_name = $_FILES['img']['tmp_name'];
+        $url_img = "/blog_".$rand.".png";
+        $create = move_uploaded_file($tmp_name, $uploads_dir.$url_img);
+        $imgUpload = 'assets/storage/images'.$url_img;
     }else{
         $imgUpload = $row['image'];
     }
@@ -72,7 +79,7 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
         admin_msg_error("Vui lòng nhập mô tả ngắn", '', 1000);
     }
     $display = $_POST['display'];
-    if(!isset($status))
+    if(!isset($display))
     {
         admin_msg_error("Vui lòng chọn 1 trạng thái", '', 1000);
     }
@@ -147,8 +154,8 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                     <label class="col-sm-3 col-form-label">Ảnh</label>
                                     <div class="col-sm-9">
                                         <div class="form-line">
-                                            <input type="file" name="fileupload" id="fileupload"  class="form-control" required>
-                                            <img src="<?=BASE_URL($row['image']);?>" class="mt-2" width="100px" height="auto" id="showInputFile" alt="Image" onerror="this.src='https://lh3.googleusercontent.com/proxy/Di8xO7cS-XErquhA5cfZfMcrg6XI9wmFHuI3onblumgc7x31EBKRv15V-izLK2dxSj_TupccpjMFmKgjyY4YNv3CULXmZKCRuX1SdfU9YDjfYHitS6aU2MUdcu3S';">
+                                            <input type="file" name="img" id="fileupload"  class="form-control">
+                                            <img src="<?=BASE_URL($row['image']);?>" class="mt-2" width="100px" height="auto" id="showInputFile" alt="Image" onerror="this.src='<?=BASE_URL('template/img/default.jpg');?>';">
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +165,7 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                         <select class="form-control" name="categoryId" required>
                                             <option value="">* Chọn danh mục</option>
                                             <?php foreach($CMSNT->get_list("SELECT * FROM `category_blog` WHERE id > 1") as $category) { ?>
-                                                <option value="<?=$category['id'];?>"><?=$category['name'];?></option>
+                                                <option value="<?=$category['id'];?>" <?=$category['id'] == $row['categoryId']? 'selected':'';?>><?=$category['name'];?></option>
                                             <?php }?>
                                         </select>
                                     </div>
@@ -192,7 +199,7 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                     </div>
                                 </div>
                                 <button type="submit" name="btnSubmit" class="btn btn-primary btn-block waves-effect">
-                                    <span>THÊM NGAY</span>
+                                    <span>LƯU NGAY</span>
                                 </button>
                                 <a type="button" href="<?=BASE_URL('Admin/Blogs');?>"
                                    class="btn btn-danger btn-block waves-effect">
@@ -207,44 +214,6 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
     </div>
 
 
-    <div class="modal fade" id="Listflag" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="defaultModalLabel">DANH SÁCH QUỐC GIA</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="table-responsive">
-                        <table id="datatable" class="table table-bordered table-striped table-hover">
-                            <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>FLAG</th>
-                                <th>FILE NAME</th>
-
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php $i = COUNT(dirToArray('../../template/flag/')); foreach(dirToArray('../../template/flag/') as $row){ ?>
-                                <?php $path_parts = pathinfo('../../template/flag/'.$row); ?>
-                                <tr>
-                                    <td><?=$i--;?></td>
-                                    <td><img width="40px" src="<?=BASE_URL('template/flag/'.$row);?>" />
-                                    </td>
-                                    <td><?=$path_parts['filename'];?></td>
-                                </tr>
-                            <?php }?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger waves-effect"
-                            data-dismiss="modal"><span>ĐÓNG</span></button>
-                </div>
-            </div>
-        </div>
-    </div>
     <script>
         $(function() {
             $("#datatable").DataTable({

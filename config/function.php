@@ -1069,7 +1069,7 @@ function uploadImage($file,$path){
     $image = '';
     if (!isset($file))
     {
-        $image = '/uploads/image/default.jpg';
+        $image = '/template/img/default.jpg';
     }else{
         // Kiểm tra dữ liệu có bị lỗi không
         if ($file['error'] != 0)
