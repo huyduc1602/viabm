@@ -154,9 +154,9 @@
                                 <th><?=lang(77);?></th>
                                 <th width="10%" class="text-center"><?=lang(85);?></th>
                                 <th width="10%" class="text-center"><?=lang(78);?></th>
-<!--                                --><?php //if($CMSNT->site('display_sold') == 'ON') { ?>
+                                <?php if($CMSNT->site('display_sold') == 'ON') { ?>
 <!--                                <th width="10%" class="text-center">--><?//=lang(140);?><!--</th>-->
-<!--                                --><?php //}?>
+                                <?php }?>
                                 <th width="10%" class="text-center"><?=lang(74);?></th>
                             </tr>
                         </thead>
@@ -180,17 +180,17 @@
                                     <img width="40px" src="<?=BASE_URL('template/flag/'.$row['quocgia'].'.svg');?>" />
                                     <?php }?>
                                 </td>
-<!--                                <td class="text-center">-->
-<!--                                    <b style="color: red;;">-->
-<!--                                        --><?//=format_cash($conlai);?>
-<!--                                    </b>-->
-<!--                                </td>-->
-                                <?php if($CMSNT->site('display_sold') == 'ON') { ?>
                                 <td class="text-center">
-                                    <b style="color: green;;">
-                                        <?=format_cash($sold);?>
+                                    <b style="color: red;;">
+                                        <?=format_cash($conlai);?>
                                     </b>
                                 </td>
+                                <?php if($CMSNT->site('display_sold') == 'ON') { ?>
+<!--                                <td class="text-center">-->
+<!--                                    <b style="color: green;;">-->
+<!--                                        --><?//=format_cash($sold);?>
+<!--                                    </b>-->
+<!--                                </td>-->
                                 <?php }?>
                                 <td class="text-center">
                                     <b style="color: blue;"><?=format_currency($row['gia']);?></b>
