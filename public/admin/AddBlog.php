@@ -43,7 +43,20 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
     }
     $imgUpload = uploadImage($_FILES["fileupload"],'/uploads/image/');
     $detail = $_POST['detail'];
+    if(!isset($detail) || $detail == '')
+    {
+        admin_msg_error("Vui lòng nhập nội dung bài viết", '', 1000);
+    }
     $sumary = check_string($_POST['sumary']);
+    if(!isset($sumary) || $sumary == '')
+    {
+        admin_msg_error("Vui lòng nhập mô tả ngắn", '', 1000);
+    }
+    $display = $_POST['display'];
+    if(!isset($status))
+    {
+        admin_msg_error("Vui lòng chọn 1 trạng thái", '', 1000);
+    }
     $create = $CMSNT->insert("blog", array(
         'name'      => $name,
         'slug'        => $slug,
@@ -52,6 +65,7 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
         'sumary'          => $sumary,
         'categoryId'           => $categoryId,
         'userId'       => $userId,
+        'display' => $display,
         'createdDate'   => gettime(),
         'updatedDate'   => gettime()
     ));
@@ -106,7 +120,7 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                 <div class="col-sm-9">
                                     <div class="form-line">
                                         <input type="text" name="slug" id ="Slug" value="" placeholder="Ví dụ: huong-dan-dang-nhap"
-                                            class="form-control">
+                                            class="form-control" required>
                                     </div>
                                 </div>
                             </div>
@@ -115,8 +129,9 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                 <div class="col-sm-9">
                                     <div class="form-line">
                                         <input type="file" name="fileupload"
-                                            class="form-control" required>
+                                            id="fileupload" class="form-control" required>
                                     </div>
+                                    <img src="https://lh3.googleusercontent.com/proxy/Di8xO7cS-XErquhA5cfZfMcrg6XI9wmFHuI3onblumgc7x31EBKRv15V-izLK2dxSj_TupccpjMFmKgjyY4YNv3CULXmZKCRuX1SdfU9YDjfYHitS6aU2MUdcu3S" class="mt-2" id="showInputFile" width="100px" height="auto" alt="Image">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -136,7 +151,7 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                     <div class="form-line">
                                         <textarea class="form-control h-150px"
                                             placeholder="Mô tả ngắn về bài viết" name="sumary"
-                                            rows="6"></textarea>
+                                            rows="6" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -147,6 +162,15 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                         <textarea class="textarea" name="detail"
                                             rows="6">Nội dung  bài viết </textarea>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Hiển thị</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" name="display" required>
+                                        <option value="SHOW">SHOW</option>
+                                        <option value="HIDE">HIDE</option>
+                                    </select>
                                 </div>
                             </div>
                             <button type="submit" name="btnSubmit" class="btn btn-primary btn-block waves-effect">
@@ -256,7 +280,16 @@ $(function() {
         // return
         return str;
     }
-</script>
+    </script>
+    <!--    image show-->
+    <script>
+        fileupload.onchange = evt => {
+            const [file] = fileupload.files
+            if (file) {
+                showInputFile.src = URL.createObjectURL(file);
+            }
+        }
+    </script>
 <?php 
     require_once("../../public/admin/Footer.php");
 ?>

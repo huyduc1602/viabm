@@ -45,6 +45,7 @@ CREATE TABLE blog (
 	sumary nvarchar(255) NULL,
 	categoryId int NOT NULL,
 	userId int NOT NULL,
+	display varchar(4) DEFAULT('HIDE'),
 	createdDate datetime NOT NULL default(now()),
 	updatedDate datetime NOT NULL default(now()),
     FOREIGN KEY (categoryId) REFERENCES category_blog(id)
