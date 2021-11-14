@@ -116,6 +116,42 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-blog"></i>
+                                <p>
+                                    Quản lý tin tức
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="<?=BASE_URL('Admin/Blog/Add');?>" class="nav-link">
+                                        <i class="nav-icon fas fa-folder-plus"></i>
+                                        <p>
+                                            Thêm bài viết
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?=BASE_URL('Admin/Blogs');?>" class="nav-link">
+                                        <i class="nav-icon fas fa-folder-open"></i>
+                                        <p>
+                                            Quản lý bài viết
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?=BASE_URL('Admin/CategoryBlogs');?>" class="nav-link">
+                                        <i class="nav-icon fas fa-list-ul"></i>
+                                        <p>
+                                            Danh mục bài viết
+                                        </p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
 
                         <li class="nav-header">SẢN PHẨM</li>
                         <li class="nav-item">

@@ -1063,3 +1063,91 @@ function getFileType(string $url):string{
     return $type;
 }
 /* CMSNT.CO TEAM LEADER - NTTHANH - DEV PHP */
+
+/* Upload File */
+function uploadImage($file,$path){
+    $image = '';
+    if (!isset($file))
+    {
+        $image = '/template/img/default.jpg';
+    }else{
+        // Kiểm tra dữ liệu có bị lỗi không
+        if ($file['error'] != 0)
+        {
+            admin_msg_error("Dữ liệu upload bị lỗi", '', 1000);
+        }
+        //Vị trí file lưu tạm trong server (file sẽ lưu trong uploads, với tên giống tên ban đầu)
+        $rootPath = $_SERVER['DOCUMENT_ROOT'];
+        $target_dir  = $rootPath.$path;
+
+        $target_file   = $target_dir . basename($file["name"]);
+        $allowUpload   = true;
+        //Lấy phần mở rộng của file (jpg, png, ...)
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+        $temp = explode(".", $file["name"]);
+        $newfilename = round(microtime(true)) . '.' . end($temp);
+        $newfilePath = $target_dir.$newfilename;
+        $filePathDb = $path.$newfilename;
+        // Cỡ lớn nhất được upload (bytes)
+        $maxfilesize   = 800000;
+
+        ////Những loại file được phép upload
+        $allowtypes    = array('jpg', 'png', 'jpeg', 'gif');
+        //Kiểm tra xem có phải là ảnh bằng hàm getimagesize
+        $check = getimagesize($file["tmp_name"]);
+        if($check !== false)
+        {
+//            echo "Đây là file ảnh - " . $check["mime"] . ".";
+            $allowUpload = true;
+        }
+        else
+        {
+            admin_msg_error("Không phải file ảnh", '', 3000);
+            $allowUpload = false;
+        }
+    }
+    // Kiểm tra nếu file đã tồn tại thì không cho phép ghi đè
+    // Bạn có thể phát triển code để lưu thành một tên file khác
+    if (file_exists($newfilePath))
+    {
+        admin_msg_error("Tên ảnh đã tồn tại trên server, không được ghi đè", '', 3000);
+        $allowUpload = false;
+    }
+    // Kiểm tra kích thước file upload cho vượt quá giới hạn cho phép
+    if ($file["size"] > $maxfilesize)
+    {
+        admin_msg_error("Không được upload ảnh lớn hơn ".$maxfilesize." (bytes).", '', 3000);
+        $allowUpload = false;
+    }
+
+
+    // Kiểm tra kiểu file
+    if (!in_array($imageFileType,$allowtypes )){
+        admin_msg_error("Chỉ được upload các định dạng JPG, PNG, JPEG, GIF", '', 3000);
+        $allowUpload = false;
+    }
+
+    if ($allowUpload)
+    {
+        // Xử lý di chuyển file tạm ra thư mục cần lưu trữ, dùng hàm move_uploaded_file
+        if (move_uploaded_file($file["tmp_name"], $newfilePath))
+        {
+    //            echo "File ". basename( $file["name"]).
+    //                " Đã upload thành công.";
+    //
+    //            echo "File lưu tại " . $target_file;
+            $image = $filePathDb;
+        }
+        else
+        {
+            admin_msg_error("Có lỗi xảy ra khi upload ảnh", '', 3000);
+        }
+    }
+    else
+    {
+        admin_msg_error("Không upload được file, có thể do file lớn, kiểu file không đúng ...", '', 3000);
+    }
+    return $image;
+}
+
+
