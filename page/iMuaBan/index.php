@@ -390,7 +390,7 @@
                     <div class="image-box js-tilt">
                         <div class="bg-layer wow zoomIn animated" data-wow-delay="00ms" data-wow-duration="1500ms" style="background-image: url(<?=BASE_URL('page/iMuaBan/');?>img/image-bg-1.png);"></div>
                         <figure class="image wow slideInRight" data-wow-delay="00ms" data-wow-duration="1500ms">
-                            <img src="<?=BASE_URL('page/iMuaBan/');?>img/imuaban-370x390.png" alt="">
+                            <img src="<?=$CMSNT->site('logo');?>" alt="">
                         </figure>
                     </div>
                 </div>
@@ -411,7 +411,7 @@
             <div class="team-details-content">
                 <div class="pattern-layer" style="background-image: url(<?=BASE_URL('page/iMuaBan/');?>img/pattern-26.png);"></div>
                 <figure class="image-box">
-                    <img src="<?=BASE_URL('page/iMuaBan/');?>img/imuaban-370x390.png" alt="">
+                    <img src="<?=$CMSNT->site('logo');?>" alt="">
                 </figure>
                 <div class="inner">
                     <div class="top-box">
