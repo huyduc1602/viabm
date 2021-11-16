@@ -176,6 +176,7 @@ if(isset($_POST['btnSaveOption']) && $getUser['level'] == 'admin')
                                         </option>
                                         <option value="Trafalgar">Trafalgar</option>
                                         <option value="JoBest">JoBest</option>
+                                        <option value="iMuaBan">iMuaBan</option>
                                         <option value="">Tắt</option>
                                     </select>
                                 </div>
