@@ -165,7 +165,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="#" data-wpel-link="internal"><i class="fas fa-rss-square"></i> Bài viết</a></li>
+                                    <li><a href="#" data-wpel-link="internal">Tin tức</a></li>
                                     <li><a href="https://viabm.store/Auth/Login" data-wpel-link="internal"><i class="fas fa-user"></i> Đăng nhập</a></li>
                                     <li><a href="https://viabm.store/Auth/Register" data-wpel-link="internal"><i class="fas fa-user-plus"></i> Đăng ký</a></li>
                                 </ul>
