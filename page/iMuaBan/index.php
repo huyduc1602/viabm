@@ -105,7 +105,7 @@
     <div class="popup-inner">
         <div class="overlay-layer"></div>
         <div class="search-form">
-            <form role="search" method="get" class="search-form" action="https://viabm.store/">
+            <form role="search" method="get" class="search-form" action="<?=BASE_URL('/');?>">
                 <div class="form-group">
                     <fieldset>
                         <input type="search" search-form-1 class="form-control" name="search-input" value="" placeholder="nhập nội dung tìm kiếm" name="s" required>
@@ -115,15 +115,15 @@
             </form>
             <h3>Từ khoá tìm kiếm nhiều</h3>
             <ul class="recent-searches">
-                <li><a href="https://viabm.store/" data-wpel-link="internal">viabm.store</a>
+                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal">viabm.store</a>
                 </li>
-                <li><a href="https://viabm.store/" data-wpel-link="internal">iMuaBan</a>
+                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal">iMuaBan</a>
                 </li>
-                <li><a href="https://viabm.store/" data-wpel-link="internal">Mua Bán BM</a>
+                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal">Mua Bán BM</a>
                 </li>
-                <li><a href="https://viabm.store/" data-wpel-link="internal">Mua Bán Clone</a>
+                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal">Mua Bán Clone</a>
                 </li>
-                <li><a href="https://viabm.store/" data-wpel-link="internal">Mua Bán Mail</a>
+                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal">Mua Bán Mail</a>
                 </li>
             </ul>
         </div>
@@ -137,7 +137,7 @@
             <div class="outer-box clearfix">
                 <div class="logo-box pull-left">
                     <figure class="logo">
-                        <a href="https://viabm.store/" data-wpel-link="internal">
+                        <a href="<?=BASE_URL('/');?>" data-wpel-link="internal">
                             <img src="<?=$CMSNT->site('logo');?>" alt="">
                         </a>
                     </figure>
@@ -157,17 +157,17 @@
                                     </li>
                                     <li class="dropdown"><a href="#" data-wpel-link="internal">Dịch Vụ Mua Bán</a>
                                         <ul>
-                                            <li><a href="https://viabm.store/Auth/Login" data-wpel-link="internal">Dịch Vụ Link BM</a>
+                                            <li><a href=""<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal">Dịch Vụ Link BM</a>
                                             </li>
-                                            <li><a href="https://viabm.store/Auth/Login" data-wpel-link="internal">Dịch Vụ Clone</a>
+                                            <li><a href="<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal">Dịch Vụ Clone</a>
                                             </li>
-                                            <li><a href="https://viabm.store/Auth/Login" data-wpel-link="internal">Dịch Vụ Mail</a>
+                                            <li><a href="<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal">Dịch Vụ Mail</a>
                                             </li>
                                         </ul>
                                     </li>
                                     <li><a href="#" data-wpel-link="internal">Tin tức</a></li>
-                                    <li><a href="https://viabm.store/Auth/Login" data-wpel-link="internal"><i class="fas fa-user"></i> Đăng nhập</a></li>
-                                    <li><a href="https://viabm.store/Auth/Register" data-wpel-link="internal"><i class="fas fa-user-plus"></i> Đăng ký</a></li>
+                                    <li><a href="<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal"><i class="fas fa-user"></i> Đăng nhập</a></li>
+                                    <li><a href="<?=BASE_URL('Auth/Register');?>" data-wpel-link="internal"><i class="fas fa-user-plus"></i> Đăng ký</a></li>
                                 </ul>
                             </div>
                         </nav>
