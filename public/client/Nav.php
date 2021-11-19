@@ -71,6 +71,18 @@
                                 <li><a href="<?=BASE_URL('Recharge-Thesieure');?>">THESIEURE <strong
                                             class="badge badge-danger">Auto</strong></a></li>
                                 <?php }?>
+                                <?php if($CMSNT->site('status_paypal') != 'OFF') { ?>
+                                    <li><a href="<?=BASE_URL('Recharge-Paypal');?>"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/PayPal_logo.svg/1200px-PayPal_logo.svg.png" width="30px"> Paypal
+                                            <!--                                                <strong class="badge badge-danger">Auto</strong>-->
+                                        </a>
+                                    </li>
+                                <?php }?>
+                                <?php if($CMSNT->site('status_usdt') != 'OFF') { ?>
+                                    <li><a href="<?=BASE_URL('Recharge-Crypto');?>"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/BTC_Logo.svg" width="30px"> Crypto
+                                            <!--                                                <strong class="badge badge-danger">Auto</strong>-->
+                                        </a>
+                                    </li>
+                                <?php }?>
                                 <li><a href="<?=BASE_URL('Recharge-Bank');?>"><img src="<?=BASE_URL('assets/img/bank-icon.png');?>" width="30px"> <?=lang(62);?> <strong
                                             class="badge badge-danger">Auto</strong></a></li>
                             </ul>
