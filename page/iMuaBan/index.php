@@ -165,7 +165,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="#" data-wpel-link="internal">Tin tức</a></li>
+                                    <li><a href="<?=BASE_URL('page/iMuaBan/blog.html');?>" data-wpel-link="internal">Tin tức</a></li>
                                     <li><a href="<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal"><i class="fas fa-user"></i> Đăng nhập</a></li>
                                     <li><a href="<?=BASE_URL('Auth/Register');?>" data-wpel-link="internal"><i class="fas fa-user-plus"></i> Đăng ký</a></li>
                                 </ul>

@@ -9703,3 +9703,106 @@ h3 a:hover{
 #ez-toc-container {   
     margin-top: 1em;
 }
+
+/*css blog*/
+.item-blog{
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  height: 100%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+@media screen and (min-width: 640px) {
+  .item-blog {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 640px){
+  .item-blog .image-blog{
+    -webkit-flex-basis: 40%;
+    -ms-flex-preferred-size: 40%;
+    flex-basis: 40%;
+    margin: 0.5rem;
+    margin-right: 0;
+  }
+}
+.item-blog .image-blog{
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 0;
+    color: #667eea;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-flex-basis: 33.333333%;
+    -ms-flex-preferred-size: 33.333333%;
+    flex-basis: 33.333333%;
+    margin: 0.5rem;
+    margin-right: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+    position: relative;
+    display: block;
+}
+.css-t35k2q {
+  height: 100%;
+  vertical-align: middle;
+  min-height: 8.3rem;
+  max-height: none;
+}
+.gatsby-image-wrapper-constrained {
+  display: inline-block;
+  vertical-align: top;
+}
+.gatsby-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.item-blog .category .badge{
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  border-radius: 2px;
+  display: inline-block;
+  border-radius: 0.51rem;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  font-weight: 600;
+  vertical-align: middle;
+  -webkit-transition: all 250ms ease;
+  transition: all 250ms ease;
+  background-color: #e2e8f0;
+  color: #718096;
+  padding: 10px;
+}
+.item-blog .image-blog img{
+  transform: translateZ(0);
+  transition: opacity .25s linear;
+  will-change: opacity;
+  border-radius: 0.5rem;
+  object-fit: none;
+}
+.content-wrapper-blog{
+  margin-top: 150px;
+  background-color: rgb(248,248,248);
+}
