@@ -1,9 +1,3 @@
-<?php
-require_once("../../config/config.php");
-require_once("../../config/function.php");
-require_once(__DIR__."/../../includes/login.php");
-//CheckLogin();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +50,7 @@ require_once(__DIR__."/../../includes/login.php");
             padding: 0 !important;
         }
     </style>
-    <link rel='stylesheet' id='kk-star-ratings-css' href='css/kk-star-ratingsa352.css?ver=4.1.3' type='text/css' media='all'>
+<!--    <link rel='stylesheet' id='kk-star-ratings-css' href='css/kk-star-ratingsa352.css?ver=4.1.3' type='text/css' media='all'>-->
     <style id='kk-star-ratings-inline-css' type='text/css'>
         .kk-star-ratings .kksr-stars .kksr-star {
             margin-right: 5px;
@@ -66,13 +60,9 @@ require_once(__DIR__."/../../includes/login.php");
             margin-right: 0;
         }
     </style>
-    <link rel='stylesheet' id='ez-icomoon-css' href='css/style.min97e1.css?ver=1.7' type='text/css' media='all'>
-    <link rel='stylesheet' id='ez-toc-css' href='css/screen.min97e1.css?ver=1.7' type='text/css' media='all'>
     <style id='ez-toc-inline-css' type='text/css'>
         div#ez-toc-container p.ez-toc-title {font-size: 120%;}div#ez-toc-container p.ez-toc-title {font-weight: 500;}div#ez-toc-container ul li {font-size: 95%;}
     </style>
-    <script type='text/javascript' src='js/jqueryb8ff.js?ver=1.12.4'></script>
-    <script type='text/javascript' src='js/jquery-migrate.min330a.js?ver=1.4.1'></script>
     <script>
         document.documentElement.className = document.documentElement.className.replace( 'no-js', 'js' );
     </script>
@@ -91,6 +81,7 @@ require_once(__DIR__."/../../includes/login.php");
     <link href="<?=BASE_URL('page/iMuaBan/');?>css/animate.css" rel="stylesheet">
     <link href="<?=BASE_URL('page/iMuaBan/');?>css/imagebg.css" rel="stylesheet">
     <link href="<?=BASE_URL('page/iMuaBan/');?>css/color.css" rel="stylesheet">
+    <link href="<?=BASE_URL('page/iMuaBan/');?>css/blog.css" rel="stylesheet">
     <link href="<?=BASE_URL('page/iMuaBan/');?>css/style.css" rel="stylesheet">
     <link href="<?=BASE_URL('page/iMuaBan/');?>css/responsive.css" rel="stylesheet">
     <!-- ===============================================-->
@@ -106,7 +97,7 @@ require_once(__DIR__."/../../includes/login.php");
 <!-- preloader -->
 <!-- search-popup -->
 <div id="search-popup" class="search-popup">
-    <div class="close-search"><span>Đóng</span>
+    <div class="close-search"><span><?=langByVn('Đóng');?></span>
     </div>
     <div class="popup-inner">
         <div class="overlay-layer"></div>
@@ -114,22 +105,22 @@ require_once(__DIR__."/../../includes/login.php");
             <form role="search" method="get" class="search-form" action="<?=BASE_URL('/');?>">
                 <div class="form-group">
                     <fieldset>
-                        <input type="search" search-form-1 class="form-control" name="search-input" value="" placeholder="nhập nội dung tìm kiếm" name="s" required>
-                        <input type="submit" value="Tìm kiếm" class="theme-btn style-four">
+                        <input type="search" search-form-1 class="form-control" name="search-input" value="" placeholder="<?=langByVn('nhập nội dung tìm kiếm');?>" name="s" required>
+                        <input type="submit" value="<?=langByVn('Tìm kiếm');?>" class="theme-btn style-four">
                     </fieldset>
                 </div>
             </form>
-            <h3>Từ khoá tìm kiếm nhiều</h3>
+            <h3><?=langByVn('Từ khoá tìm kiếm nhiều');?></h3>
             <ul class="recent-searches">
-                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal">viabm.store</a>
+                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal"><?=langByVn('viabm.store');?></a>
                 </li>
-                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal">iMuaBan</a>
+                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal"><?=langByVn('Mua bán Viabm');?></a>
                 </li>
-                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal">Mua Bán BM</a>
+                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal"><?=langByVn('Mua Bán BM');?></a>
                 </li>
-                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal">Mua Bán Clone</a>
+                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal"><?=langByVn('Mua Bán Clone');?></a>
                 </li>
-                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal">Mua Bán Mail</a>
+                <li><a href=""<?=BASE_URL('/');?>" data-wpel-link="internal"><?=langByVn('Mua Bán Mail');?></a>
                 </li>
             </ul>
         </div>
@@ -159,21 +150,21 @@ require_once(__DIR__."/../../includes/login.php");
                         <nav class="main-menu navbar-expand-md navbar-light">
                             <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
-                                    <li class="current"><a href="index-2.html" data-wpel-link="internal">Trang chủ</a>
+                                    <li class="current"><a href="/" data-wpel-link="internal"> <?=langByVn('Trang chủ');?></a>
                                     </li>
-                                    <li class="dropdown"><a href="#" data-wpel-link="internal">Dịch Vụ Mua Bán</a>
+                                    <li class="dropdown"><a href="#" data-wpel-link="internal"> <?=langByVn('Dịch Vụ Mua Bán');?></a>
                                         <ul>
-                                            <li><a href=""<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal">Dịch Vụ Link BM</a>
+                                            <li><a href="<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal"> <?=langByVn('Dịch Vụ Link BM');?></a>
                                             </li>
-                                            <li><a href="<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal">Dịch Vụ Clone</a>
+                                            <li><a href="<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal"> <?=langByVn('Dịch Vụ Clone');?></a>
                                             </li>
-                                            <li><a href="<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal">Dịch Vụ Mail</a>
+                                            <li><a href="<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal"> <?=langByVn('Dịch Vụ Mail');?></a>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li><a href="<?=BASE_URL('/blogs');?>" data-wpel-link="internal">Tin tức</a></li>
-                                    <li><a href="<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal"><i class="fas fa-user"></i> Đăng nhập</a></li>
-                                    <li><a href="<?=BASE_URL('Auth/Register');?>" data-wpel-link="internal"><i class="fas fa-user-plus"></i> Đăng ký</a></li>
+                                    <li><a href="<?=BASE_URL('blogs');?>" data-wpel-link="internal"><?=langByVn('Tin tức');?></a></li>
+                                    <li><a href="<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal"><i class="fas fa-user"></i> <?=langByVn('Đăng nhập');?></a></li>
+                                    <li><a href="<?=BASE_URL('Auth/Register');?>" data-wpel-link="internal"><i class="fas fa-user-plus"></i> <?=langByVn('Đăng ký');?></a></li>
                                 </ul>
                             </div>
                         </nav>

@@ -1,12 +1,18 @@
+<?php
+require_once("../../config/config.php");
+require_once("../../config/function.php");
+?>
+<?php
+$title = "It is a long established";
+?>
 <?php include 'header.php';?>
-    <link rel="stylesheet" href="https://preview.colorlib.com/theme/readit/css/open-iconic-bootstrap.min.css+animate.css+owl.carousel.min.css+owl.theme.default.min.css+magnific-popup.css+aos.css+ionicons.min.css+flaticon.css+icomoon.css+style.css.pagespeed.cc.7T2NDtE2fE.css">
-    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url(https://preview.colorlib.com/theme/readit/images/xbg_1.jpg.pagespeed.ic.N8Wtgh_Hsu.webp&quot;); height: 407px; background-position: 50% 50px;" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url(<?=BASE_URL('page/iMuaBan/');?>/img/abadan-the-right-partner.jpg);" data-stellar-background-ratio="0.5" id="banner-single-blog">
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center" style="height: 307px;">
-                <div class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
+                <div class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated content-banner">
                     <h1 class="mb-3 bread">Blog Single</h1>
-                    <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="fas fa-chevron-right"></i></a></span> <span class="mr-2"><a href="blog.html">Blog <i class="fas fa-chevron-right"></i></a></span> <span>Blog Single <i class="fas fa-chevron-right"></i></span></p>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="<?=BASE_URL('/');?>"><?=langByVn('Trang chủ');?> <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="<?=BASE_URL('blogs');?>"><?=langByVn('Tin tức');?> <i class="ion-ios-arrow-forward"></i></a></span> <span><?=$title?> <i class="ion-ios-arrow-forward"></i></span></p>
                 </div>
             </div>
         </div>
@@ -174,11 +180,11 @@
                     <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
                         <div class="categories">
                             <h3>Categories</h3>
-                            <li><a href="#">Illustration <span class="fas fa-chevron-right"></span></a></li>
-                            <li><a href="#">Branding <span class="fas fa-chevron-right"></span></a></li>
-                            <li><a href="#">Application <span class="fas fa-chevron-right"></span></a></li>
-                            <li><a href="#">Design <span class="fas fa-chevron-right"></span></a></li>
-                            <li><a href="#">Marketing <span class="fas fa-chevron-right"></span></a></li>
+                            <li><a href="#">Illustration <span class="ion-ios-arrow-forward"></span></a></li>
+                            <li><a href="#">Branding <span class="ion-ios-arrow-forward"></span></a></li>
+                            <li><a href="#">Application <span class="ion-ios-arrow-forward"></span></a></li>
+                            <li><a href="#">Design <span class="ion-ios-arrow-forward"></span></a></li>
+                            <li><a href="#">Marketing <span class="ion-ios-arrow-forward"></span></a></li>
                         </div>
                     </div>
                     <div class="sidebar-box ftco-animate fadeInUp ftco-animated">

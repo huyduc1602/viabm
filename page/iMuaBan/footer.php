@@ -18,11 +18,11 @@
                             </figure>
                             <div class="widget-content">
                                 <ul class="clearfix">
-                                    <li><i class="fas fa-map-marker-alt"></i>viabm.store - Hà Nội</li>
-                                    <li><i class="fas fa-phone"></i><a href="tel:+84378199999" data-wpel-link="internal">LH: 03781.99999</a>
+                                    <li><i class="fas fa-map-marker-alt"></i><?=langByVn('viabm.store - Hà Nội');?></li>
+                                    <li><i class="fas fa-phone"></i><a href="tel:+84378199999" data-wpel-link="internal"><?=langByVn('Liên hệ');?>: 03781.99999</a>
                                     </li>
-                                    <li><strong>Giờ Hoạt Động:</strong>
-                                        <br>8h - 23h Hàng ngày</li>
+                                    <li><strong><?=langByVn('Giờ Hoạt Động');?>:</strong>
+                                        <br><?=langByVn('8h - 23h Hàng ngày');?></li>
                                 </ul>
                             </div>
                         </div>
@@ -30,13 +30,15 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
                         <div class="links-widget footer-widget wow fadeInUp animated" data-wow-delay="300ms" data-wow-duration="1500ms">
                             <h5 class="widget-title">
-                                <span>Links</span>
+                                <span><?=langByVn('Liên kết');?></span>
                                 <i></i>
                             </h5>
                             <div class="widget-content">
                                 <ul class="links-list clearfix">
-                                    <li><a href="#" data-wpel-link="internal">Liên kết</a></li>
-                                    <li><a href="#" data-wpel-link="internal">Liên kết</a></li>
+                                    <li><a href="<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal"><?=langByVn('Dịch Vụ Mua Bán');?></a></li>
+                                    <li><a href="<?=BASE_URL('blogs');?>" data-wpel-link="internal"><?=langByVn('Tin tức');?></a></li>
+                                    <li><a href="<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal"><?=langByVn('Đăng Nhập');?></a></li>
+                                    <li><a href="<?=BASE_URL('Auth/Register');?>" data-wpel-link="internal"><?=langByVn('Đăng ký');?></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -44,7 +46,7 @@
                     <div class="col-lg-4 col-md-12 col-sm-12 footer-column">
                         <div class="subscribe-widget footer-widget wow fadeInUp animated" data-wow-delay="600ms" data-wow-duration="1500ms">
                             <h3 class="widget-title">
-                                <span>Socials</span>
+                                <span><?=langByVn('Mạng xã hội');?></span>
                                 <i></i>
                             </h3>
                             <ul class="social-links clearfix">
@@ -107,10 +109,7 @@
     });
 </script>
 </body>
-<script type='text/javascript' src='js/kk-star-ratingsa352.js?ver=4.1.3'></script>
-<script type='text/javascript' src='js/wp-embed.minca80.js?ver=4.9.15'></script>
 <script>
     /(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener("hashchange",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1);
 </script>
-<script data-ad-client="ca-pub-5210489224967357" async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
 </html>
