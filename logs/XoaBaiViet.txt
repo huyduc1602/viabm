@@ -1,0 +1,5 @@
+[LOG] Baì viết ID 9 đã bị xóa khỏi hệ thống vào lúc 2021/11/27 17:17:49
+[LOG] Baì viết ID 8 đã bị xóa khỏi hệ thống vào lúc 2021/11/27 17:17:54
+[LOG] Baì viết ID 7 đã bị xóa khỏi hệ thống vào lúc 2021/11/27 17:17:59
+[LOG] Baì viết ID 6 đã bị xóa khỏi hệ thống vào lúc 2021/11/27 17:18:04
+[LOG] Baì viết ID 5 đã bị xóa khỏi hệ thống vào lúc 2021/11/27 17:18:07

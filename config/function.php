@@ -1149,5 +1149,55 @@ function uploadImage($file,$path){
     }
     return $image;
 }
+//Hàm thực hiện thêm hoặc cập nhật ngôn ngữ cho bảng
+function insertOrUpdateTableLang($table_name,$array_field,$record_id)
+{
+    global $CMSNT;
+    $sql = "SELECT * FROM table_lang WHERE record_id =".$record_id;
+    if( count($CMSNT->get_list($sql)) == 0) {
+        $row_last = $CMSNT->get_list('SELECT id FROM '.$table_name.' ORDER BY id DESC LIMIT 1');
+        if($row_last){
+            $id_last = $row_last[0]['id'];
+        }
+        foreach ($array_field as $field){
+            $create_lang = $CMSNT->insert("table_lang", array(
+                'table_name' => 'blog',
+                'field_name' => $field['name'],
+                'record_id' => $id_last,
+                'text_vi' => $field['vi'],
+                'text_en' => $field['en']
+            ));
+        }
+        return $create_lang;
+    }else{
+        foreach ($array_field as $field) {
+            $create_lang = $CMSNT->update("table_lang", array(
+                'table_name' => 'blog',
+                'field_name' => $field['name'],
+                'text_vi' => $field['vi'],
+                'text_en' => $field['en']
+            ), " `record_id` = '" . $record_id . "' ");
+        }
+        return $create_lang;
+    }
+}
+function selectTableLang($table_name,$field_name,$record_id,$vn){
+    global $CMSNT;
+    if(isset($_SESSION['lang']))
+    {
+        if($_SESSION['lang'] == 'en')
+        {
+            return $CMSNT->get_row("SELECT * FROM `table_lang` WHERE `table_name` = ".$table_name." AND  `field_name` = ".$field_name." AND  `record_id` = '$record_id'")['text_en'] ?? $vn;
+        }
+        else
+        {
+            return $vn;
+        }
+    }
+    else
+    {
+        return $vn;
+    }
+}
 
 

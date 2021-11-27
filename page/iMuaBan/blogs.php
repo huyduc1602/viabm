@@ -2,6 +2,25 @@
 require_once("../../config/config.php");
 require_once("../../config/function.php");
 ?>
+<?php
+$limit = 4;
+$blogs = $CMSNT->get_list(" SELECT * FROM `blog`  ORDER BY updatedDate DESC LIMIT ".$limit." OFFSET 0");
+$numberPage = count($CMSNT->get_list(" SELECT * FROM `blog`"));
+if($numberPage > $limit){
+    $numberPage = ceil($numberPage/$limit);
+}else{
+    $numberPage = 0;
+}
+$page = 1;
+if(isset($_GET['page'])){
+    $page = $_GET['page'];
+    $offset = 0;
+    if($page > 1){
+        $offset = ($page-1)*$limit;
+    }
+    $blogs = $CMSNT->get_list("SELECT * FROM `blog`  ORDER BY updatedDate DESC LIMIT ".$limit." OFFSET ".$offset);
+}
+?>
 <?php include 'header.php';?>
     <div class="hero-wrap js-fullheight" style="background-image: url(<?=BASE_URL('page/iMuaBan/');?>/img/abadan-the-right-partner.jpg); background-position: 50% 0px;" data-stellar-background-ratio="0.5" id="banner-blog">
         <div class="overlay"></div>
@@ -33,215 +52,74 @@ require_once("../../config/function.php");
     </div>
     <section class="ftco-section" id="section-blog">
         <div class="container">
+            <input type="hidden" id="page" value="<?=$page;?>">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="case">
+             <?php if(count($blogs) > 0){
+                    foreach ($blogs as $row){ ?>
+                    <div class="case item-blog">
                         <div class="row">
                             <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-                                <a href="blog/tin-tuc" class="img w-100 mb-3 mb-md-0" style="background-image:url(https://preview.colorlib.com/theme/readit/images/ximage_1.jpg.pagespeed.ic.ndb4JOHu-q.webp)"></a>
+                                <a href="blog/<?=$row['slug'];?>" class="img w-100 mb-3 mb-md-0" style="background-image:url(<?=BASE_URL('/').$row['image'];?>)"></a>
                             </div>
                             <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
                                 <div class="text w-100 pl-md-3">
-                                    <span class="subheading">Illustration</span>
-                                    <h2><a href="blog/tin-tuc">Build a website in minutes with Adobe Templates</a></h2>
-                                    <p class="text-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis, eius mollitia suscipit, quisquam doloremque distinctio perferendis et doloribus unde architecto optio laboriosam porro adipisci sapiente officiis nemo accusamus ad praesentium</p>
+                                    <?php
+                                        $category = $CMSNT->get_row("SELECT * FROM category_blog WHERE id = ".$row['categoryId']);
+                                        if(count($category) > 0){
+                                            $category['name'] = selectTableLang('category_blog','name',$row['categoryId'],$category['name']);
+                                        }else{
+                                            $category['name'] = 'Uncategorized';
+                                        }
+                                        $last_read = $row['last_read'];
+                                        if($last_read == $row['createdDate']){
+                                            $last_read = "Đã đọc 1 ".langByVn('phút trước');
+                                        }
+                                        $sumary = $row['sumary'] ?? '';
+                                        if(strlen($row['sumary']) > 150){
+                                            $sumary = substr($row['sumary'],0,150).'...';
+                                        }
+                                    ?>
+                                    <span class="subheading"><?=$category['name'];?></span>
+                                    <h2><a href="blog/<?=$row['slug'];?>"><?=$row['name'];?></a></h2>
+                                    <p class="text-description"><?=$sumary;?></p>
                                     <ul class="media-social list-unstyled">
                                         <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span><i class="fab fa-twitter"></i></span></a></li>
                                         <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span><i class="fab fa-facebook-f"></i></span></a></li>
                                         <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span><i class="fab fa-instagram"></i></span></a></li>
                                     </ul>
                                     <div class="meta">
-                                        <p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
+                                        <p class="mb-0"><a href="javacript:void(0);"><?=date_format(date_create($row['createdDate']),"d/m/Y");?></a> | <a href="#"><?=$last_read;?></a></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="case">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-                                <a href="blog/tin-tuc" class="img w-100 mb-3 mb-md-0" style="background-image:url(https://preview.colorlib.com/theme/readit/images/ximage_2.jpg.pagespeed.ic.pkTf90Znlu.webp)"></a>
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-                                <div class="text w-100 pl-md-3">
-                                    <span class="subheading">Application</span>
-                                    <h2><a href="blog/tin-tuc">Build a website in minutes with Adobe Templates</a></h2>
-                                    <ul class="media-social list-unstyled">
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-twitter"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-facebook"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-instagram"></span></a></li>
-                                    </ul>
-                                    <div class="meta">
-                                        <p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="case">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-                                <a href="blog/tin-tuc" class="img w-100 mb-3 mb-md-0" style="background-image:url(https://preview.colorlib.com/theme/readit/images/ximage_3.jpg.pagespeed.ic.rARWmZ5Gcd.webp)"></a>
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-                                <div class="text w-100 pl-md-3">
-                                    <span class="subheading">Design</span>
-                                    <h2><a href="blog/tin-tuc">Build a website in minutes with Adobe Templates</a></h2>
-                                    <ul class="media-social list-unstyled">
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-twitter"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-facebook"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-instagram"></span></a></li>
-                                    </ul>
-                                    <div class="meta">
-                                        <p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="case">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-                                <a href="blog/tin-tuc" class="img w-100 mb-3 mb-md-0" style="background-image:url(https://preview.colorlib.com/theme/readit/images/ximage_4.jpg.pagespeed.ic.yg5yuZN2F7.webp)"></a>
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-                                <div class="text w-100 pl-md-3">
-                                    <span class="subheading">Illustration</span>
-                                    <h2><a href="blog/tin-tuc">Build a website in minutes with Adobe Templates</a></h2>
-                                    <ul class="media-social list-unstyled">
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-twitter"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-facebook"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-instagram"></span></a></li>
-                                    </ul>
-                                    <div class="meta">
-                                        <p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="case">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-                                <a href="blog/tin-tuc" class="img w-100 mb-3 mb-md-0" style="background-image:url(https://preview.colorlib.com/theme/readit/images/ximage_5.jpg.pagespeed.ic.QdXddGFXSM.webp)"></a>
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-                                <div class="text w-100 pl-md-3">
-                                    <span class="subheading">Illustration</span>
-                                    <h2><a href="blog/tin-tuc">Build a website in minutes with Adobe Templates</a></h2>
-                                    <ul class="media-social list-unstyled">
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-twitter"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-facebook"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-instagram"></span></a></li>
-                                    </ul>
-                                    <div class="meta">
-                                        <p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="case">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-                                <a href="blog/tin-tuc" class="img w-100 mb-3 mb-md-0" style="background-image:url(https://preview.colorlib.com/theme/readit/images/ximage_6.jpg.pagespeed.ic.RuUDoMGkgx.webp)"></a>
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-                                <div class="text w-100 pl-md-3">
-                                    <span class="subheading">Illustration</span>
-                                    <h2><a href="blog/tin-tuc">Build a website in minutes with Adobe Templates</a></h2>
-                                    <ul class="media-social list-unstyled">
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-twitter"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-facebook"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-instagram"></span></a></li>
-                                    </ul>
-                                    <div class="meta">
-                                        <p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="case">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-                                <a href="blog/tin-tuc" class="img w-100 mb-3 mb-md-0" style="background-image:url(https://preview.colorlib.com/theme/readit/images/ximage_7.jpg.pagespeed.ic.Ttuk3_PSqA.webp)"></a>
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-                                <div class="text w-100 pl-md-3">
-                                    <span class="subheading">Illustration</span>
-                                    <h2><a href="blog/tin-tuc">Build a website in minutes with Adobe Templates</a></h2>
-                                    <ul class="media-social list-unstyled">
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-twitter"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-facebook"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-instagram"></span></a></li>
-                                    </ul>
-                                    <div class="meta">
-                                        <p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="case">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-                                <a href="blog/tin-tuc" class="img w-100 mb-3 mb-md-0" style="background-image:url(https://preview.colorlib.com/theme/readit/images/ximage_8.jpg.pagespeed.ic.fjkF9m4QOe.webp)"></a>
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-                                <div class="text w-100 pl-md-3">
-                                    <span class="subheading">Illustration</span>
-                                    <h2><a href="blog/tin-tuc">Build a website in minutes with Adobe Templates</a></h2>
-                                    <ul class="media-social list-unstyled">
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-twitter"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-facebook"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-instagram"></span></a></li>
-                                    </ul>
-                                    <div class="meta">
-                                        <p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="case">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-                                <a href="blog/tin-tuc" class="img w-100 mb-3 mb-md-0" style="background-image:url(https://preview.colorlib.com/theme/readit/images/ximage_9.jpg.pagespeed.ic.mcymwVF5NF.webp)"></a>
-                            </div>
-                            <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-                                <div class="text w-100 pl-md-3">
-                                    <span class="subheading">Illustration</span>
-                                    <h2><a href="blog/tin-tuc">Build a website in minutes with Adobe Templates</a></h2>
-                                    <ul class="media-social list-unstyled">
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-twitter"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-facebook"></span></a></li>
-                                        <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-instagram"></span></a></li>
-                                    </ul>
-                                    <div class="meta">
-                                        <p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php } ?>
+             <?php }else{ ?>
+                 <h4 class="text-center"><?=langByVn('Chưa có bài viết nào để hiển thị'); ?></h4>
+             <?php } ?>
                 </div>
             </div>
+            <?php if($numberPage > 1){ ?>
             <div class="row mt-5">
                 <div class="col text-center">
                     <div class="block-27">
                         <ul>
                             <li><a href="#">&lt;</a></li>
-                            <li class="active"><span>1</span></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
+                            <?php for ($i = 1; $i <= $numberPage; $i++) {
+                                    if ($i == $page){
+                                        echo '<li class="active"><span>'.$i.'</span></li>';
+                                    }else{
+                                        echo '<li><a href="#">'.$i.'</a></li>';
+                                    }
+                            } ?>
                             <li><a href="#">&gt;</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </section>
 <?php include 'footer.php';?>

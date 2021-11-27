@@ -41,6 +41,11 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
     if(strlen($name) < 2 || strlen($name) > 255)
     {
         admin_msg_error("Vui lòng nhập tên từ 2 đến 255 ký tự", '', 1000);
+    }else{
+        $name_en = check_string($_POST['name_en']);
+        if(!isset($name_en) || $name_en == ''){
+            $name_en = $name;
+        }
     }
     $slug = check_string($_POST['slug']);
     if(strlen($slug) < 2 || strlen($slug) > 255)
@@ -72,11 +77,21 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
     if(!isset($detail) || $detail == '')
     {
         admin_msg_error("Vui lòng nhập nội dung bài viết", '', 1000);
+    }else{
+        $detail_en = check_string($_POST['detail_en']);
+        if(!isset($detail_en) || $detail_en == ''){
+            $detail_en = $detail;
+        }
     }
     $sumary = check_string($_POST['sumary']);
     if(!isset($sumary) || $sumary == '')
     {
         admin_msg_error("Vui lòng nhập mô tả ngắn", '', 1000);
+    }else{
+        $sumary_en = check_string($_POST['sumary_en']);
+        if(!isset($sumary_en) || $sumary_en == ''){
+            $sumary_en = $sumary;
+        }
     }
     $display = $_POST['display'];
     if(!isset($display))
@@ -87,17 +102,30 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
 
     $create = $CMSNT->update("blog", array(
         'name'      => $name,
+        'name_en'      => $name_en,
         'slug'        => $slug,
         'image'           => $imgUpload,
         'detail'    => $detail,
         'sumary'          => $sumary,
+        'detail_en'    => $detail_en,
+        'sumary_en'          => $sumary_en,
         'categoryId'           => $categoryId,
         'display' => $display,
         'updatedDate'   => gettime()
     ), " `id` = '".check_string($_GET['id'])."' ");
     if($create)
     {
-        admin_msg_success("Thay đổi thông tin bài viết thành công", "", 1000);
+        //Sửa ngôn ngữ
+        $field_lang =   [
+            ["name"=>"name","vi"=>$name,"en"=>$name_en],
+            ["name"=>"detail","vi"=>$detail,"en"=>$detail_en],
+            ["name"=>"sumary","vi"=>$sumary,"en"=>$sumary_en],
+        ];
+        $create_lang = insertOrUpdateTableLang('blog',$field_lang,check_string($_GET['id']));
+
+        if($create_lang){
+            admin_msg_success("Thay đổi thông tin bài viết thành công", "", 1000);
+        }
     }
     else
     {
@@ -136,8 +164,24 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                     <label class="col-sm-3 col-form-label">Tên bài viết (*)</label>
                                     <div class="col-sm-9">
                                         <div class="form-line">
-                                        <textarea class="form-control h-150px" placeholder="VD: Hướng dẫn đăng nhập..." name="name" id="Name" rows="1"
-                                                  required><?=$row['name'];?></textarea>
+                                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="vi-tab" data-toggle="tab" href="#name_vi" role="tab" aria-controls="name_vi" aria-selected="true">Việt</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="en-tab" data-toggle="tab" href="#name_en" role="tab" aria-controls="name_en" aria-selected="false">Anh</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="tab-pane fade show active" id="name_vi" role="tabpanel" aria-labelledby="home-tab">
+                                              <textarea class="form-control h-150px" placeholder="VD: Hướng dẫn đăng nhập..." name="name" id="Name" rows="1"
+                                                        required><?=$row['name'];?></textarea>
+                                                </div>
+                                                <div class="tab-pane fade" id="name_en" role="tabpanel" aria-labelledby="profile-tab">
+                                                <textarea class="form-control h-150px" placeholder="VD: Hướng dẫn đăng nhập..." name="name_en" id="Name_EN" rows="1"
+                                                          ><?=$row['name_en'];?></textarea>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -156,6 +200,7 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                         <div class="form-line">
                                             <input type="file" name="img" id="fileupload"  class="form-control">
                                             <img src="<?=BASE_URL($row['image']);?>" class="mt-2" width="100px" height="auto" id="showInputFile" alt="Image" onerror="this.src='<?=BASE_URL('template/img/default.jpg');?>';">
+                                            <p class="badge badge-info">Nên chọn cỡ ảnh width / height = 4/3</p>
                                         </div>
                                     </div>
                                 </div>
@@ -174,18 +219,53 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                     <label class="col-sm-3 col-form-label">Mô tả ngắn</label>
                                     <div class="col-sm-9">
                                         <div class="form-line">
-                                        <textarea class="form-control h-150px"
-                                                  placeholder="Mô tả ngắn về bài viết" name="sumary"
-                                                  rows="6" required><?=$row['sumary'];?></textarea>
-                                        </div>
+                                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="vi-tab" data-toggle="tab" href="#sumary_vi" role="tab" aria-controls="sumary_vi" aria-selected="true">Việt</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="en-tab" data-toggle="tab" href="#sumary_en" role="tab" aria-controls="sumary_en" aria-selected="false">Anh</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="tab-pane fade show active" id="sumary_vi" role="tabpanel" aria-labelledby="sumary_vi">
+                                                <textarea class="form-control h-150px"
+                                                          placeholder="Mô tả ngắn về bài viết" name="sumary"
+                                                          rows="6" required><?=$row['sumary'];?></textarea>
+                                                </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="sumary-en" role="tabpanel" aria-labelledby="sumary-en">
+                                                <textarea class="form-control h-150px"
+                                                          placeholder="Mô tả ngắn về bài viết" name="sumary_en"
+                                                          rows="6" required><?=$row['sumary_en'];?></textarea>
+                                                </div>
+                                                </div>
+                                            </div>
+
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">Nội dung</label>
                                     <div class="col-sm-9">
                                         <div class="form-line">
-                                        <textarea class="textarea" name="detail"
-                                                  rows="6"><?=$row['detail'];?> </textarea>
+                                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="vi-tab" data-toggle="tab" href="#detail_vi" role="tab" aria-controls="detail_vi" aria-selected="true">Việt</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="en-tab" data-toggle="tab" href="#detail_en" role="tab" aria-controls="detail_en" aria-selected="false">Anh</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="tab-pane fade show active" id="detail_vi" role="tabpanel" aria-labelledby="home-tab">
+                                                <textarea class="textarea" name="detail"
+                                                          rows="6"><?=$row['detail'];?> </textarea>
+                                                </div>
+                                                <div class="tab-pane fade" id="detail_en" role="tabpanel" aria-labelledby="profile-tab">
+                                                 <textarea class="textarea" name="detail_en"
+                                                           rows="6"><?=$row['detail_en'];?> </textarea>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
