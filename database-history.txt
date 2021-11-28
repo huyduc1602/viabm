@@ -54,13 +54,10 @@ CREATE TABLE blog (
 CREATE TABLE blog (
 	id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
 	name varchar(255) NOT NULL,
-	name_en varchar(255) NOT NULL,
 	slug varchar(255) NULL,
 	image varchar(255) NULL,
 	detail text NULL,
-    detail_en text NULL,
 	sumary varchar(255) NULL,
-    sumary_en varchar(255) NULL,
 	categoryId int NOT NULL,
 	userId int NOT NULL,
 	display varchar(4) DEFAULT('HIDE'),

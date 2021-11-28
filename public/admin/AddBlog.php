@@ -86,13 +86,10 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
     }
     $create = $CMSNT->insert("blog", array(
         'name'      => $name,
-        'name_en'      => $name_en,
         'slug'        => $slug,
         'image'           => $imgUpload,
         'detail'    => $detail,
         'sumary'          => $sumary,
-        'detail_en'    => $detail_en,
-        'sumary_en'          => $sumary_en,
         'categoryId'           => $categoryId,
         'userId'       => $userId,
         'display' => $display,

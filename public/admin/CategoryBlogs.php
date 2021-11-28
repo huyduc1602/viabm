@@ -43,6 +43,12 @@ if(isset($_POST['ThemDanhMuc']) && $getUser['level'] == 'admin' )
     if(!isset($_POST['name']))
     {
         admin_msg_error("Vui lòng nhập tên danh mục", '', 1000);
+    }else{
+        $name = check_string($_POST['name']);
+        $name_en = check_string($_POST['name_en']);
+        if(!isset($name_en) || $name_en == ''){
+            $name_en = $name;
+        }
     }
     if(!isset($_POST['slug']))
     {
@@ -53,7 +59,14 @@ if(isset($_POST['ThemDanhMuc']) && $getUser['level'] == 'admin' )
         'slug'     => check_string($_POST['slug']),
         'parentId'   => check_string($_POST['parentId'])
     ));
-    admin_msg_success("Thêm thành công", '', 500);
+    //Thêm ngôn ngữ
+    $field_lang =   [
+        ["name"=>"name","vi"=>$name,"en"=>$name_en],
+    ];
+    $create_lang = insertOrUpdateTableLang('category_blog',$field_lang,0);
+    if($create_lang){
+        admin_msg_success("Thêm thành công", '', 500);
+    }
 }
 if(isset($_POST['LuuDanhMuc']) && $getUser['level'] == 'admin' )
 {
@@ -64,6 +77,12 @@ if(isset($_POST['LuuDanhMuc']) && $getUser['level'] == 'admin' )
     if(!isset($_POST['name']))
     {
         admin_msg_error("Vui lòng nhập tên danh mục", '', 1000);
+    }else{
+        $name = check_string($_POST['name']);
+        $name_en = check_string($_POST['name_en']);
+        if(!isset($name_en) || $name_en == ''){
+            $name_en = $name;
+        }
     }
     if(!isset($_POST['slug']))
     {
@@ -74,7 +93,14 @@ if(isset($_POST['LuuDanhMuc']) && $getUser['level'] == 'admin' )
         'slug'     => check_string($_POST['slug']),
         'parentId'   => check_string($_POST['parentId'])
     ), " `id` = '".check_string($_POST['id'])."' ");
-    admin_msg_success("Lưu thành công", '', 500);
+    //Thêm ngôn ngữ
+    $field_lang =   [
+        ["name"=>"name","vi"=>$name,"en"=>$name_en],
+    ];
+    $create_lang = insertOrUpdateTableLang('category_blog',$field_lang,0);
+    if($create_lang){
+        admin_msg_success("Lưu thành công", '', 500);
+    }
 }
 ?>
 
@@ -108,7 +134,22 @@ if(isset($_POST['LuuDanhMuc']) && $getUser['level'] == 'admin' )
                                 <label class="col-sm-3 col-form-label">Tên</label>
                                 <div class="col-sm-9">
                                     <div class="form-line">
-                                        <input type="text" name="name" id ="Name" class="form-control" placeholder="VD: Thủ thuật" required>
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="vi-tab" data-toggle="tab" href="#name_vi" role="tab" aria-controls="name_vi" aria-selected="true">Việt</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="en-tab" data-toggle="tab" href="#name_en" role="tab" aria-controls="name_en" aria-selected="false">Anh</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="name_vi" role="tabpanel" aria-labelledby="home-tab">
+                                                <input type="text" name="name" id ="Name" class="form-control" placeholder="VD: Thủ thuật" required>
+                                            </div>
+                                            <div class="tab-pane fade" id="name_en" role="tabpanel" aria-labelledby="profile-tab">
+                                                <input type="text" name="name_en" id ="Name_EN" class="form-control" placeholder="VD: Thủ thuật">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -177,7 +218,8 @@ if(isset($_POST['LuuDanhMuc']) && $getUser['level'] == 'admin' )
                                         <td><?=$categoryParent['name'];?></td>
                                         <td>
                                             <button class="btn btn-primary btnEdit" data-id="<?=$row['id'];?>"
-                                                    data-name="<?=$row['name'];?>" data-slug="<?=$row['slug'];?>" data-parentId="<?=$row['parentId'];?>" >
+                                                    data-name="<?=$row['name'];?>" data-slug="<?=$row['slug'];?>"
+                                                    data-parentId="<?=$row['parentId'];?>" data-nameEn = <?=selectTableLang('blog','name',$row['id'],$row['name'])?>>
                                                 <i class="fas fa-edit"></i>
                                                 <span>EDIT</span>
                                             </button>
@@ -220,7 +262,22 @@ if(isset($_POST['LuuDanhMuc']) && $getUser['level'] == 'admin' )
                         <label class="col-sm-3 col-form-label">Tên</label>
                         <div class="col-sm-9">
                             <div class="form-line">
-                                <input type="text" name="name" id="name" class="form-control" placeholder="VD: Thủ thuật" required>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="vi-tab" data-toggle="tab" href="#name_vi" role="tab" aria-controls="name_vi" aria-selected="true">Việt</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="en-tab" data-toggle="tab" href="#name_en" role="tab" aria-controls="name_en" aria-selected="false">Anh</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="name_vi" role="tabpanel" aria-labelledby="home-tab">
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="VD: Thủ thuật" required>
+                                    </div>
+                                    <div class="tab-pane fade" id="name_en" role="tabpanel" aria-labelledby="profile-tab">
+                                        <input type="text" name="name_en" id="name_en" class="form-control" placeholder="VD: Thủ thuật">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -289,6 +346,7 @@ $('.btnEdit').on('click', function(e) {
     var btn = $(this);
     $("#name").val(btn.attr("data-name"));
     $("#slug").val(btn.attr("data-slug"));
+    $("#name_en").val(btn.attr("data-nameEn"));
     if(btn.attr("data-parentId") >= 1){
         $("#parentId").val(btn.attr("data-parentId"));
     }

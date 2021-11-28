@@ -5546,3 +5546,16 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+
+/*custom css*/
+.search-popup .search-form fieldset input[type="search"] {
+  position: relative;
+  height: 70px!important;
+  padding: 20px 250px 20px 30px;
+  background: #ffffff;
+  line-height: 30px;
+  font-size: 24px;
+  color: #233145;
+  border-radius: 7px;
+}

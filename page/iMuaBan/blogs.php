@@ -33,7 +33,6 @@ if(isset($_GET['page'])){
                             <div class="text-banner">
                                 <p><?=langByVn('Bán Clone Facebook - Hệ thống bán Clone Trên Toàn Thế Giới , Thẻ Ngoại Chạy Quảng Cáo Facebook');?></p>
                                 <p><?=langByVn('Mua bán BM Facebook, BM Limit 50$, BM Limit 350$, BM 5TKQC, BM Xác minh doanh nghiệp');?></p>
-<!--                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>-->
                                 <div class="mouse">
                                     <a href="#" class="mouse-icon">
                                         <div class="mouse-wheel">
@@ -60,7 +59,7 @@ if(isset($_GET['page'])){
                     <div class="case item-blog">
                         <div class="row">
                             <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-                                <a href="blog/<?=$row['slug'];?>" class="img w-100 mb-3 mb-md-0" style="background-image:url(<?=BASE_URL('/').$row['image'];?>)"></a>
+                                <a href="/blog/<?=$row['slug'];?>" class="img w-100 mb-3 mb-md-0" style="background-image:url(<?=BASE_URL('/').$row['image'];?>)"></a>
                             </div>
                             <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
                                 <div class="text w-100 pl-md-3">
@@ -75,13 +74,14 @@ if(isset($_GET['page'])){
                                         if($last_read == $row['createdDate']){
                                             $last_read = "Đã đọc 1 ".langByVn('phút trước');
                                         }
-                                        $sumary = $row['sumary'] ?? '';
+                                        $name = selectTableLang('blog','name',$row['id'],$row['name']) ?? '';
+                                        $sumary = selectTableLang('blog','name',$row['id'],$row['sumary']) ?? '';
                                         if(strlen($row['sumary']) > 150){
                                             $sumary = substr($row['sumary'],0,150).'...';
                                         }
                                     ?>
-                                    <span class="subheading"><?=$category['name'];?></span>
-                                    <h2><a href="blog/<?=$row['slug'];?>"><?=$row['name'];?></a></h2>
+                                    <span class="subheading"><?=selectTableLang('category_blog','name',$row['id'],$category['name'])?></span>
+                                    <h2><a href="blog/<?=$row['slug'];?>"><?=$name;?></a></h2>
                                     <p class="text-description"><?=$sumary;?></p>
                                     <ul class="media-social list-unstyled">
                                         <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span><i class="fab fa-twitter"></i></span></a></li>
@@ -105,16 +105,16 @@ if(isset($_GET['page'])){
             <div class="row mt-5">
                 <div class="col text-center">
                     <div class="block-27">
-                        <ul>
-                            <li><a href="#">&lt;</a></li>
+                        <ul class="paginate-hd">
+                            <li class="prev"><a href="javascript:void(0);">&lt;</a></li>
                             <?php for ($i = 1; $i <= $numberPage; $i++) {
                                     if ($i == $page){
-                                        echo '<li class="active"><span>'.$i.'</span></li>';
+                                        echo '<li class="active page-number"><span>'.$i.'</span></li>';
                                     }else{
-                                        echo '<li><a href="#">'.$i.'</a></li>';
+                                        echo '<li class="page-number"><a href="javascript:void(0);">'.$i.'</a></li>';
                                     }
                             } ?>
-                            <li><a href="#">&gt;</a></li>
+                            <li class="next"><a href="javascript:void(0);">&gt;</a></li>
                         </ul>
                     </div>
                 </div>
