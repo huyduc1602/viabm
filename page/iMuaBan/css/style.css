@@ -9703,3 +9703,35 @@ h3 a:hover{
 #ez-toc-container {   
     margin-top: 1em;
 }
+
+/*css blog*/
+.hero-wrap .mouse-wheel svg{
+  transform: scale(2.5);
+}
+#banner-blog{
+  height: 550px;
+}
+#banner-single-blog{
+  height: 407px;
+}
+#banner-single-blog h1{
+  font-size: 6vw;
+}
+@media(max-width: 767px){
+  .hero-wrap{
+      height: 60vh;
+      background-image: none;
+  }
+  .hero-wrap .content-banner{
+      padding: 20px;
+  }
+  .hero-wrap .text-banner p{
+    font-size: 12px;
+  }
+  #banner-single-blog h1{
+    font-size: 30px;
+  }
+  #banner-single-blog .content-banner{
+    padding: 20px;
+  }
+}
