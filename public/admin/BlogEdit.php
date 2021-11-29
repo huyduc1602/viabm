@@ -60,19 +60,23 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
     {
         admin_msg_error("Vui lòng chọn danh mục", '', 1000);
     }
-    if(check_img('img') == true)
+//    if(check_img('img') == true)
+//    {
+////        $imgUpload = uploadImage($_FILES["fileupload"],'/uploads/image/');
+//        $rand = random("QWERTYUIOPASDFGHJKLZXCVBNM0123456789", 12);
+//        $uploads_dir = '../../assets/storage/images';
+//        $tmp_name = $_FILES['img']['tmp_name'];
+//        $url_img = "/blog_".$rand.".png";
+//        $create = move_uploaded_file($tmp_name, $uploads_dir.$url_img);
+//        $imgUpload = 'assets/storage/images'.$url_img;
+//    }else{
+//        $imgUpload = $row['image'];
+//    }
+    $image = $_POST['image'];
+    if(!isset($image) || $image == '')
     {
-//        $imgUpload = uploadImage($_FILES["fileupload"],'/uploads/image/');
-        $rand = random("QWERTYUIOPASDFGHJKLZXCVBNM0123456789", 12);
-        $uploads_dir = '../../assets/storage/images';
-        $tmp_name = $_FILES['img']['tmp_name'];
-        $url_img = "/blog_".$rand.".png";
-        $create = move_uploaded_file($tmp_name, $uploads_dir.$url_img);
-        $imgUpload = 'assets/storage/images'.$url_img;
-    }else{
-        $imgUpload = $row['image'];
+        admin_msg_error("Vui lòng chọn ảnh", '', 1000);
     }
-
     $detail = $_POST['detail'];
     if(!isset($detail) || $detail == '')
     {
@@ -103,7 +107,7 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
     $create = $CMSNT->update("blog", array(
         'name'      => $name,
         'slug'        => $slug,
-        'image'           => $imgUpload,
+        'image'           => $image,
         'detail'    => $detail,
         'sumary'          => $sumary,
         'categoryId'           => $categoryId,
@@ -170,11 +174,11 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                                 </li>
                                             </ul>
                                             <div class="tab-content" id="myTabContent">
-                                                <div class="tab-pane fade show active" id="name_vi" role="tabpanel" aria-labelledby="home-tab">
+                                                <div class="tab-pane fade show active" id="name_vi" role="tabpanel" aria-labelledby="name_vi">
                                               <textarea class="form-control h-150px" placeholder="VD: Hướng dẫn đăng nhập..." name="name" id="Name" rows="1"
                                                         required><?=$row['name'];?></textarea>
                                                 </div>
-                                                <div class="tab-pane fade" id="name_en" role="tabpanel" aria-labelledby="profile-tab">
+                                                <div class="tab-pane fade" id="name_en" role="tabpanel" aria-labelledby="name_en">
                                                 <textarea class="form-control h-150px" placeholder="VD: Hướng dẫn đăng nhập..." name="name_en" id="Name_EN" rows="1"
                                                           ><?=$row['name_en'];?></textarea>
                                                 </div>
@@ -195,10 +199,14 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                     <label class="col-sm-3 col-form-label">Ảnh</label>
                                     <div class="col-sm-9">
                                         <div class="form-line">
-                                            <input type="file" name="img" id="fileupload"  class="form-control">
-                                            <img src="<?=BASE_URL($row['image']);?>" class="mt-2" width="100px" height="auto" id="showInputFile" alt="Image" onerror="this.src='<?=BASE_URL('template/img/default.jpg');?>';">
-                                            <p class="badge badge-info">Nên chọn cỡ ảnh width / height = 4/3</p>
+<!--                                            <input type="file" name="img" id="fileupload"  class="form-control">-->
+                                            <input type="text" name="image" id ="Image" value="<?=$row['image'];?>" placeholder="Nhập đường link ảnh"
+                                                   class="form-control" required>
+                                            <i>Upload ảnh lên <a target="_blank" href="https://imgur.com/upload?beta">đây</a>,
+                                                sau đó copy địa chỉ hình ảnh dán vào ô trên.</i>
                                         </div>
+                                        <img src="<?=$row['image'];?>" class="mt-2" width="100px" height="auto" id="showInputFile" alt="Image" onerror="this.src='<?=BASE_URL('template/img/default.jpg');?>';">
+                                        <p class="badge badge-info">Nên chọn cỡ ảnh width / height = 4/3</p>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -225,19 +233,20 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                                 </li>
                                             </ul>
                                             <div class="tab-content" id="myTabContent">
-                                                <div class="tab-pane fade show active" id="sumary_vi" role="tabpanel" aria-labelledby="sumary_vi">
+                                                <div class="tab-pane fade show active" id="sumary_vi" role="tabpanel" aria-labelledby="home-tab">
                                                 <textarea class="form-control h-150px"
                                                           placeholder="Mô tả ngắn về bài viết" name="sumary"
                                                           rows="6" required><?=$row['sumary'];?></textarea>
                                                 </div>
-                                                </div>
-                                                <div class="tab-pane fade" id="sumary-en" role="tabpanel" aria-labelledby="sumary-en">
+                                                <div class="tab-pane fade" id="sumary_en" role="tabpanel" aria-labelledby="profile-tab">
                                                 <textarea class="form-control h-150px"
                                                           placeholder="Mô tả ngắn về bài viết" name="sumary_en"
-                                                          rows="6" required><?=$row['sumary_en'];?></textarea>
-                                                </div>
+                                                          rows="6"><?=$row['sumary_en'];?></textarea>
                                                 </div>
                                             </div>
+
+                                        </div>
+                                    </div>
 
                                     </div>
                                 </div>
@@ -308,12 +317,15 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
     </script>
     <!--    image show-->
     <script>
-        fileupload.onchange = evt => {
-            const [file] = fileupload.files
-            if (file) {
-                showInputFile.src = URL.createObjectURL(file);
-            }
-        }
+        // fileupload.onchange = evt => {
+        //     const [file] = fileupload.files
+        //     if (file) {
+        //         showInputFile.src = URL.createObjectURL(file);
+        //     }
+        // }
+        $('#Image').blur(function(){
+            showInputFile.src = $('#Image').val();
+        });
     </script>
 <?php
 require_once("../../public/admin/Footer.php");

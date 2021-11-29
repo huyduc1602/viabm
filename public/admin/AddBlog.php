@@ -48,16 +48,21 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
     }
 //    $imgUpload = uploadImage($_FILES["fileupload"],'/uploads/image/');
 
-    if(check_img('img') == true)
+//    if(check_img('img') == true)
+//    {
+//        $rand = random("QWERTYUIOPASDFGHJKLZXCVBNM0123456789", 12);
+//        $uploads_dir = '../../assets/storage/images';
+//        $tmp_name = $_FILES['img']['tmp_name'];
+//        $url_img = "/blog_".$rand.".png";
+//        $create = move_uploaded_file($tmp_name, $uploads_dir.$url_img);
+//        $imgUpload = 'assets/storage/images'.$url_img;
+//    }else{
+//        $imgUpload = 'template/img/default.jpg';
+//    }
+    $image = $_POST['image'];
+    if(!isset($image))
     {
-        $rand = random("QWERTYUIOPASDFGHJKLZXCVBNM0123456789", 12);
-        $uploads_dir = '../../assets/storage/images';
-        $tmp_name = $_FILES['img']['tmp_name'];
-        $url_img = "/blog_".$rand.".png";
-        $create = move_uploaded_file($tmp_name, $uploads_dir.$url_img);
-        $imgUpload = 'assets/storage/images'.$url_img;
-    }else{
-        $imgUpload = 'template/img/default.jpg';
+        admin_msg_error("Vui lòng chọn ảnh", '', 1000);
     }
     $detail = $_POST['detail'];
     if(!isset($detail) || $detail == '')
@@ -87,7 +92,7 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
     $create = $CMSNT->insert("blog", array(
         'name'      => $name,
         'slug'        => $slug,
-        'image'           => $imgUpload,
+        'image'           => $image,
         'detail'    => $detail,
         'sumary'          => $sumary,
         'categoryId'           => $categoryId,
@@ -181,8 +186,12 @@ if(isset($_POST['btnSubmit']) && isset($_POST['name']) && isset($_POST['category
                                 <label class="col-sm-3 col-form-label">Ảnh</label>
                                 <div class="col-sm-9">
                                     <div class="form-line">
-                                        <input type="file" name="img"
-                                            id="fileupload" class="form-control" required>
+<!--                                        <input type="file" name="img"-->
+<!--                                            id="fileupload" class="form-control" required>-->
+                                        <input type="text" name="image" id ="Image" value="" placeholder="Nhập đường link ảnh"
+                                               class="form-control" required>
+                                        <i>Upload ảnh lên <a target="_blank" href="https://imgur.com/upload?beta">đây</a>,
+                                            sau đó copy địa chỉ hình ảnh dán vào ô trên.</i>
                                     </div>
                                     <img src="<?=BASE_URL('template/img/default.jpg');?>" class="mt-2" id="showInputFile" width="100px" height="auto" onerror="this.src='<?=BASE_URL('template/img/default.jpg');?>';" alt="Image">
                                     <p class="badge badge-info">Nên chọn cỡ ảnh width / height = 4/3</p>
@@ -371,12 +380,15 @@ $(function() {
     </script>
     <!--    image show-->
     <script>
-        fileupload.onchange = evt => {
-            const [file] = fileupload.files
-            if (file) {
-                showInputFile.src = URL.createObjectURL(file);
-            }
-        }
+        // fileupload.onchange = evt => {
+        //     const [file] = fileupload.files
+        //     if (file) {
+        //         showInputFile.src = URL.createObjectURL(file);
+        //     }
+        // }
+        $('#Image').blur(function(){
+            showInputFile.src = $('#Image').val();
+        });
     </script>
 <?php 
     require_once("../../public/admin/Footer.php");
