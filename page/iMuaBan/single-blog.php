@@ -18,7 +18,7 @@ if(isset($_GET['slug']))
         $name_cut = $name;
     }
     $detail = selectTableLang('blog','name',$row['id'],$row['detail']);
-    $image = BASE_URL('/').$row['image'];
+    $image = $row['image'];
     //Danh mục bài viết
     $categoryBlog = $CMSNT->get_list(" SELECT * FROM `category_blog` WHERE slug <> 'uncategorized' ORDER BY id DESC");
     //Bài viết liên quan
@@ -128,7 +128,7 @@ else
                                 }
                                 ?>
                                 <div class="block-21 mb-4 d-flex">
-                                    <a class="blog-img mr-4" style="background-image:url(<?=BASE_URL('/').$row['image'];?>)"></a>
+                                    <a class="blog-img mr-4" style="background-image:url(<?=$row['image'];?>)"></a>
                                     <div class="text">
                                         <h3 class="heading"><a href="/blog/<?=$row['slug'];?>"><?=selectTableLang('blog','name',$row['id'],$row['name'])?></a></h3>
                                         <div class="meta">
