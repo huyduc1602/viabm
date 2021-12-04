@@ -178,12 +178,12 @@ function langByVn($vn)
         }
         else
         {
-            return  $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['vn'] ?? $vn;
+            return  $vn;
         }
     }
     else
     {
-        return $CMSNT->get_row("SELECT * FROM `lang` WHERE `vn` = '$vn' ")['vn'] ?? $vn;
+        return $vn;
     }
 }
 function format_date($time){
@@ -1181,13 +1181,15 @@ function insertOrUpdateTableLang($table_name,$array_field,$record_id)
         return $create_lang;
     }
 }
+//Dich ngon ngu
 function selectTableLang($table_name,$field_name,$record_id,$vn){
     global $CMSNT;
     if(isset($_SESSION['lang']))
     {
         if($_SESSION['lang'] == 'en')
         {
-            return $CMSNT->get_row("SELECT * FROM `table_lang` WHERE `table_name` = ".$table_name." AND  `field_name` = ".$field_name." AND  `record_id` = '$record_id'")['text_en'] ?? $vn;
+            $sql= "SELECT * FROM `table_lang` WHERE `table_name` = '".$table_name."' AND  `field_name` = '".$field_name."' AND  `record_id` = " .$record_id;
+            return $CMSNT->get_row($sql)['text_en'] ?? $vn;
         }
         else
         {
@@ -1199,5 +1201,71 @@ function selectTableLang($table_name,$field_name,$record_id,$vn){
         return $vn;
     }
 }
-
-
+//Chuyen thoi gian thanh da doc bao nhieu gio truoc
+function timestamp_to_timeAgo($timestamp) {
+    $time =  strtotime($timestamp);
+    $diff     = time() - $time;
+    $sec     = $diff;
+    $min     = round($diff / 60 );
+    $hrs     = round($diff / 3600);
+    $days     = round($diff / 86400 );
+    $weeks     = round($diff / 604800);
+    $mnths     = round($diff / 2600640 );
+    $yrs     = round($diff / 31207680 );
+    if($sec <= 60) {
+        echo $sec.langByVn(" giây trước");
+    }
+    else if($min <= 60) {
+        if($min==1) {
+            return langByVn("1 phút trước");
+        }
+        else {
+            return $min.langByVn(" phút trước");
+        }
+    }
+    // Check for hours
+    else if($hrs <= 24) {
+        if($hrs == 1) {
+            return langByVn("1 giờ trước");
+        }
+        else {
+            return $hrs.langByVn(" giờ trước");
+        }
+    }
+    // Check for days
+    else if($days <= 7) {
+        if($days == 1) {
+            return langByVn("Hôm qua");
+        }
+        else {
+            return $days.langByVn(" ngày trước");
+        }
+    }
+    // Check for weeks
+    else if($weeks <= 4.3) {
+        if($weeks == 1) {
+            return langByVn("1 tuần trước");
+        }
+        else {
+            return $weeks.langByVn(" tuần trước");
+        }
+    }
+    // Check for months
+    else if($mnths <= 12) {
+        if($mnths == 1) {
+            return langByVn("1 tháng trước");
+        }
+        else {
+            return $mnths.langByVn(" tháng trước");
+        }
+    }
+    // Check for years
+    else {
+        if($yrs == 1) {
+            return langByVn("1 năm trước");
+        }
+        else {
+            return $yrs.langByVn(" năm trước");
+        }
+    }
+}
