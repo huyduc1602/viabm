@@ -12,7 +12,9 @@
                         <tr>
                             <th><?=lang(77);?></th>
                             <th width="10%" class="text-center"><?=lang(85);?></th>
+                            <?php if($CMSNT->site('display_sold') == 'ON') { ?>
                             <th width="10%" class="text-center"><?=lang(78);?></th>
+                            <?php }?>
 <!--                            --><?php //if($CMSNT->site('display_sold') == 'ON') { ?>
 <!--                            <th width="10%" class="text-center">--><?//=lang(140);?><!--</th>-->
 <!--                            --><?php //}?>
