@@ -134,7 +134,7 @@
             <div class="outer-box clearfix">
                 <div class="logo-box pull-left">
                     <figure class="logo">
-                        <a href="<?=BASE_URL('/');?>" data-wpel-link="internal">
+                        <a href="/" data-wpel-link="internal">
                             <img src="<?=$CMSNT->site('logo');?>" alt="">
                         </a>
                     </figure>
