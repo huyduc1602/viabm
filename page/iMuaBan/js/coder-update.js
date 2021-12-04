@@ -56,5 +56,67 @@
         window.location.href = updateQueryStringParameter($hrefBlog,'search',$key);
     }
 
+    //language
+    var langArray = [];
+    $('.langOption option').each(function(){
+        var img = $(this).attr("data-thumbnail");
+        var text = this.innerText;
+        var value = $(this).val();
+        var item = '<li><img src="'+ img +'" alt="" value="'+value+'"/><span>'+ text +'</span></li>';
+        langArray.push(item);
+    })
+
+    $('#langlg').html(langArray);
+
+    //Set the button value to the first el of the array
+    $('.btn-select').html(langArray[0]);
+    $('.btn-select').attr('value', 'en');
+
+    //change button stuff on click
+    $('#langlg li').click(function(){
+        var img = $(this).find('img').attr("src");
+        var value = $(this).find('img').attr('value');
+        var text = this.innerText;
+        var item = '<li><img src="'+ img +'" alt="" /><span>'+ text +'</span></li>';
+        $('.btn-select').html(item);
+        $('.btn-select').attr('value', value);
+        $(".boxlang").toggle();
+        if(value == 'en'){
+            $.ajax({
+                url: "/assets/ajaxs/Lang.php",
+                method: "POST",
+                data: {
+                type: 'ChangeLanguage',
+                    lang: 'en'
+            },
+            success: function(response) {
+                setTimeout(function() {
+                    location.href = ""
+                }, 0);
+            }
+        });
+        }
+        if(value == 'vn'){
+            $.ajax({
+                url: "/assets/ajaxs/Lang.php",
+                method: "POST",
+                data: {
+                type: 'ChangeLanguage',
+                    lang: 'vn'
+            },
+            success: function(response) {
+                setTimeout(function() {
+                    location.href = ""
+                }, 0);
+            }
+        });
+        }
+    });
+
+    $(".btn-select").click(function(){
+        $(".boxlang").toggle();
+    });
+
+
 
 })(window.jQuery);

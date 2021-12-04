@@ -127,6 +127,11 @@
     </div>
 </div>
 <!-- search-popup end -->
+<!--select language-->
+<select class="langOption">
+    <option value="vn" data-thumbnail="<?=BASE_URL('template/img/flags-icons/vn.png');?>"></option>
+    <option value="en" class="test" data-thumbnail="<?=BASE_URL('template/img/flags-icons/en.png');?>"></option>
+</select>
 <!-- main header -->
 <header class="main-header">
     <div class="auto-container">
@@ -165,6 +170,14 @@
                                     <li><a href="<?=BASE_URL('blogs');?>" data-wpel-link="internal"><?=langByVn('Tin tức');?></a></li>
                                     <li><a href="<?=BASE_URL('Auth/Login');?>" data-wpel-link="internal"><i class="fas fa-user"></i> <?=langByVn('Đăng nhập');?></a></li>
                                     <li><a href="<?=BASE_URL('Auth/Register');?>" data-wpel-link="internal"><i class="fas fa-user-plus"></i> <?=langByVn('Đăng ký');?></a></li>
+                                    <li>
+                                        <div class="lang-select">
+                                            <button class="btn-select" value=""></button>
+                                            <div class="boxlang">
+                                                <ul id="langlg"></ul>
+                                            </div>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                         </nav>

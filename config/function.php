@@ -1188,7 +1188,8 @@ function selectTableLang($table_name,$field_name,$record_id,$vn){
     {
         if($_SESSION['lang'] == 'en')
         {
-            return $CMSNT->get_row("SELECT * FROM `table_lang` WHERE `table_name` = ".$table_name." AND  `field_name` = ".$field_name." AND  `record_id` = '$record_id'")['text_en'] ?? $vn;
+            $sql= "SELECT * FROM `table_lang` WHERE `table_name` = '".$table_name."' AND  `field_name` = '".$field_name."' AND  `record_id` = " .$record_id;
+            return $CMSNT->get_row($sql)['text_en'] ?? $vn;
         }
         else
         {
