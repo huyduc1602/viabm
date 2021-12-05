@@ -1,24 +1,13 @@
 <!--    Thêm nút liên hệ và messager-->
 <div id="button-contact-vr" class="">
     <div id="gom-all-in-one">
-<!--        <div id="zalo-vr" class="button-contact">-->
-<!--            <div class="phone-vr">-->
-<!--                <div class="phone-vr-circle-fill"></div>-->
-<!--                <div class="phone-vr-img-circle">-->
-<!--                    <a target="_blank" href="https://zalo.me/0985630916">-->
-<!--                        <img data-lazyloaded="1" data-placeholder-resp="100x95" src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/zalo.png" width="100" height="95" data-src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/zalo.png" class="litespeed-loaded" data-was-processed="true">-->
-<!--                        <noscript><img width="100" height="95" src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/zalo.png" /></noscript>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
         <div id="phone-vr" class="button-contact">
             <div class="phone-vr">
                 <div class="phone-vr-circle-fill"></div>
                 <div class="phone-vr-img-circle">
                     <a href="tel:0985630916">
-                        <img data-lazyloaded="1" data-placeholder-resp="50x50" src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/phone.png" width="50" height="50" data-src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/phone.png" class="litespeed-loaded" data-was-processed="true">
-                        <noscript><img width="50" height="50" src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/phone.png" /></noscript>
+                        <img data-lazyloaded="1" data-placeholder-resp="50x50" src="<?=BASE_URL('template/');?>img/phone.png" width="50" height="50" data-src="https://maitek.com.vn/wp-content/plugins/button-contact-vr/img/phone.png" class="litespeed-loaded" data-was-processed="true">
+                        <noscript><img width="50" height="50" src="<?=BASE_URL('template/');?>img/phone.png" /></noscript>
                     </a>
                 </div>
             </div>
