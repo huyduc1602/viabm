@@ -1,0 +1,78 @@
+// Date: 13/10/2021
+== Add language
+INSERT INTO lang(id,vn,en) VALUES (158,'vừa mua','bought');
+INSERT INTO lang(id,vn,en) VALUES (159,'tài khoản','account');
+INSERT INTO lang(id,vn,en) VALUES (160,'THÔNG BÁO','NOTIFICATION');
+INSERT INTO lang(id,vn,en) VALUES (161,'giây trước','seconds ago');
+INSERT INTO lang(id,vn,en) VALUES (162,'phút trước','minute ago');
+INSERT INTO lang(id,vn,en) VALUES (163,'tiếng trước','hour ago');
+INSERT INTO lang(id,vn,en) VALUES (164,'Hôm qua','Yesterday');
+INSERT INTO lang(id,vn,en) VALUES (165,'ngày trước','yesterday');
+INSERT INTO lang(id,vn,en) VALUES (166,'tuần trước','last week');
+INSERT INTO lang(id,vn,en) VALUES (167,'tháng trước','last month');
+INSERT INTO lang(id,vn,en) VALUES (168,'năm trước','last year');
+INSERT INTO lang(id,vn,en) VALUES (168,'năm trước','last year');
+==  Add paypal option
+INSERT INTO `options`(`name`,`value`) VALUES("status_paypal","ON");
+INSERT INTO `options`(`name`,`value`) VALUES("tk_paypal","0947838128");
+INSERT INTO `options`(`name`,`value`) VALUES("name_paypal","NGUYEN TAN THANH");
+INSERT INTO `options`(`name`,`value`) VALUES("paypal_note","Vui lòng nhập đúng nội dung");
+INSERT INTO `options`(`name`,`value`) VALUES("status_paypal","ON");
+INSERT INTO `options`(`name`,`value`) VALUES("token_paypal","");
+==  Add crypto option
+INSERT INTO `options`(`name`,`value`) VALUES("wallet_address_usdt","0xbc69e9c7dd58928382d8fa92255990a57afe120a3");
+INSERT INTO `options`(`name`,`value`) VALUES("network_usdt","BSC (BEP20)");
+INSERT INTO `options`(`name`,`value`) VALUES("usdt_note","Vui lòng nhập đúng nội dung");
+INSERT INTO `options`(`name`,`value`) VALUES("status_usdt","ON");
+INSERT INTO `options`(`name`,`value`) VALUES("currency_usdt","USDT (TetherUS)");
+INSERT INTO `options`(`name`,`value`) VALUES("qrcode_usdt","https://bmface.net/img/qr-usdt-bep20.png");
+
+== Add blog, category of blog
+CREATE TABLE category_blog(
+	id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	name varchar(255) NOT NULL,
+    slug varchar(255) NULL,
+	parentId int NOT NULL default(0)
+);
+INSERT INTO category_blog(name,slug,parentId) VALUES('Uncategorized','uncategorized',1)
+
+CREATE TABLE blog (
+	id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	name varchar(255) NOT NULL,
+	slug varchar(255) NULL,
+	image varchar(255) NULL,
+	detail text NULL,
+	sumary varchar(255) NULL,
+	categoryId int NOT NULL,
+	userId int NOT NULL,
+	display varchar(4) DEFAULT('HIDE'),
+	createdDate datetime NOT NULL default(now()),
+	updatedDate datetime NOT NULL default(now()),
+    FOREIGN KEY (categoryId) REFERENCES category_blog(id)
+);
+//Update 26/11/2021
+CREATE TABLE blog (
+	id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	name varchar(255) NOT NULL,
+	slug varchar(255) NULL,
+	image varchar(255) NULL,
+	detail text NULL,
+	sumary varchar(255) NULL,
+	categoryId int NOT NULL,
+	userId int NOT NULL,
+	display varchar(4) DEFAULT('HIDE'),
+    view_count int DEFAULT(0),
+    last_read datetime NOT NULL default(now()),
+	createdDate datetime NOT NULL default(now()),
+	updatedDate datetime NOT NULL default(now()),
+    FOREIGN KEY (categoryId) REFERENCES category_blog(id)
+);
+//Update 27/11/2021
+CREATE TABLE table_lang (
+	id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+	table_name varchar(255) NOT NULL,
+	field_name varchar(255) NOT NULL,
+	record_id varchar(255) NOT NULL,
+    text_vi text NOT NULL,
+    text_en text
+)
