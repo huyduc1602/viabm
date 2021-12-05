@@ -77,7 +77,7 @@
 
 #button-contact-vr {
     position: fixed;
-    bottom: 80px;
+    bottom: 0px;
     z-index: 99999;
     right: 16px;
 }
