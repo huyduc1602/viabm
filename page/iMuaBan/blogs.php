@@ -62,8 +62,6 @@ foreach ($blogs as $b){
 
     array_push($blogArr,$blog);
 }
-//echo '<pre>';
-//var_dump($blogArr);die;
 ?>
 <?php include 'header.php';?>
     <div class="hero-wrap js-fullheight" style="background-image: url(<?=BASE_URL('page/iMuaBan/');?>/img/abadan-the-right-partner.jpg); background-position: 50% 0px;" data-stellar-background-ratio="0.5" id="banner-blog">
