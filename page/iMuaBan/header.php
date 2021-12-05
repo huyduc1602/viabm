@@ -31,10 +31,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="<?=$CMSNT->site('favicon');?>">
     <link rel="shortcut icon" type="image/x-icon" href="<?=$CMSNT->site('favicon');?>">
     <meta name="theme-color" content="#ffffff">
-<!--    <div id="fb-root"></div>-->
-<!--    <script async defer crossorigin="anonymous"-->
-<!--            src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=281459696201789&autoLogAppEvents=1"-->
-<!--            nonce="Zqk3CX9Z"></script>-->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v10.0&appId=281459696201789&autoLogAppEvents=1"
+            nonce="Zqk3CX9Z"></script>
 
     <style type="text/css">
         img.wp-smiley,

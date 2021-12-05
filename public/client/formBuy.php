@@ -1,6 +1,8 @@
 <? if (!defined('IN_SITE')) die ('The Request Not Found'); ?>
 
-<?php foreach($CMSNT->get_list("SELECT * FROM `category` WHERE `display` = 'SHOW' ORDER BY `stt` ") as $category) { ?>
+<?php
+$buy = $CMSNT->get_list("SELECT * FROM `category` WHERE `display` = 'SHOW' ORDER BY `stt`");
+foreach($buy as $category) { ?>
 <div class="col-sm-12">
     <div class="element-wrapper">
         <h6 class="element-header"><?=strtoupper($category['title']);?></h6>
@@ -8,7 +10,9 @@
             <!--box product-->
             <div id="CATEGORY_<?=$category['id']?>" class="tab-pane fade container p-0 active show box-product" role="tabpanel">
                 <div class="row">
-                    <?php foreach($CMSNT->get_list("SELECT * FROM `dichvu` WHERE `display` = 'SHOW' AND `loai` = '".$category['title']."'  ORDER BY `gia` ASC ") as $row){ ?>
+                    <?php
+                    $cat = $CMSNT->get_list("SELECT * FROM `dichvu` WHERE `display` = 'SHOW' AND `loai` = '".$category['title']."'  ORDER BY `gia` ASC LIMIT 10");
+                    foreach($cat as $row){ ?>
                         <?php $conlai = $CMSNT->num_rows(" SELECT * FROM `taikhoan` WHERE `dichvu` = '".$row['id']."' AND `trangthai` = 'LIVE' AND `code` IS NULL ");
                         if($conlai > 0){
                             $textconlai = format_cash($conlai) > 99 ? format_cash($conlai).'+':format_cash($conlai);
@@ -99,6 +103,12 @@
                 </div>
             </div>
             <!--box product-->
+            <?php if(count($cat) > 10){ ?>
+            <a class="btn btn-link btn-underlined float-right mb-2" href="<?=BASE_URL('Category/'.$category['id']);?>">
+                <span><?=langByVn('Xem thêm')?></span>
+                <i class="os-icon os-icon-arrow-right4"></i>
+            </a>
+            <?php }?>
         </div>
     </div>
 </div>
