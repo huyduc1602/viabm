@@ -56,13 +56,14 @@ new ClipboardJS('.copy');
 </html>
 
 <script type="text/javascript">
-$.ajax({
-    url: "<?=BASE_URL('Update.php');?>",
-    type: "GET",
-    dateType: "text",
-    data: {},
-    success: function(result) {
-            
-    }
-});
+    // Tắt cập nhật
+//$.ajax({
+//    url: "<?//=BASE_URL('Update.php');?>//",
+//    type: "GET",
+//    dateType: "text",
+//    data: {},
+//    success: function(result) {
+//
+//    }
+//});
 </script>
