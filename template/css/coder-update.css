@@ -440,7 +440,13 @@ h4:hover, .text-truncate:hover {
     100% {left: -100%;}
 }
 @media(min-width: 768px){
-    box-product{
+    .box-product{
         min-width: 700px!important;
+    }
+}
+/*css box giao dịch*/
+@media(max-width: 767px){
+    .box-giao-dich .element-box-tp{
+        overflow-x: scroll;
     }
 }

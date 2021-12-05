@@ -43,28 +43,32 @@
             </div>
         </div>
     </div>
+
+</div>
+<?php }?>
+</div>
+<!--box danh sách giao dịch-->
+<div class="content-box box-giao-dich">
     <div class="element-wrapper">
         <h6 class="element-header"><?=lang(42);?></h6>
         <div class="element-box-tp">
             <div class="activity-boxes-w">
                 <?php foreach($CMSNT->get_list("SELECT * FROM `orders` ORDER BY id DESC limit 10 ") as $orders) { ?>
-                <div class="activity-box-w">
-                    <div class="activity-time"><?=timeAgo($orders['time']);?></div>
-                    <div class="activity-box">
-                        ****<?=substr($orders['username'], 4);?> <?=lang(158);?> <?=$orders['soluong'];?> <?=lang(159);?>
-                        <?=$orders['dichvu'];?>
+                    <div class="activity-box-w">
+                        <div class="activity-time"><?=timeAgo($orders['time']);?></div>
+                        <div class="activity-box">
+                            ****<?=substr($orders['username'], 4);?> <?=lang(158);?> <?=$orders['soluong'];?> <?=lang(159);?>
+                            <?=$orders['dichvu'];?>
+                        </div>
                     </div>
-                </div>
                 <?php }?>
             </div>
         </div>
     </div>
 </div>
-<?php }?>
+<!--box danh sách giao dịch-->
 </div>
 </div>
-</div>
-
 <?php if(!isset($_SESSION['thongbaonoi'])) { $_SESSION['thongbaonoi'] = True;?>
 <div class="onboarding-modal modal fade animated" id="thongbaonoi" role="dialog" style="display: none;">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -165,32 +169,32 @@ $("#add_phone").on("click", function() {
 
 <!--Thêm messager-->
     <!-- Messenger Plugin chat Code -->
-    <div id="fb-root"></div>
+<!--    <div id="fb-root"></div>-->
 
     <!-- Your Plugin chat code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
-    </div>
+<!--    <div id="fb-customer-chat" class="fb-customerchat">-->
+<!--    </div>-->
 
-    <script>
-        var chatbox = document.getElementById('fb-customer-chat');
-        chatbox.setAttribute("page_id", "110302188130824");
-        chatbox.setAttribute("attribution", "biz_inbox");
-
-        window.fbAsyncInit = function() {
-            FB.init({
-                xfbml            : true,
-                version          : 'v12.0'
-            });
-        };
-
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
+<!--    <script>-->
+<!--        var chatbox = document.getElementById('fb-customer-chat');-->
+<!--        chatbox.setAttribute("page_id", "110302188130824");-->
+<!--        chatbox.setAttribute("attribution", "biz_inbox");-->
+<!---->
+<!--        window.fbAsyncInit = function() {-->
+<!--            FB.init({-->
+<!--                xfbml            : true,-->
+<!--                version          : 'v12.0'-->
+<!--            });-->
+<!--        };-->
+<!---->
+<!--        (function(d, s, id) {-->
+<!--            var js, fjs = d.getElementsByTagName(s)[0];-->
+<!--            if (d.getElementById(id)) return;-->
+<!--            js = d.createElement(s); js.id = id;-->
+<!--            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';-->
+<!--            fjs.parentNode.insertBefore(js, fjs);-->
+<!--        }(document, 'script', 'facebook-jssdk'));-->
+<!--    </script>-->
 <!--Thêm messager-->
 
 <?=$CMSNT->site('script');?>
