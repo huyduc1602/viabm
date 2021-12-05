@@ -281,18 +281,20 @@
                         </a>
                     </li>
                     <?php }?>
+                    <?php if($CMSNT->site('status_top_nap') == 'ON') { ?>
                     <li class=""><a href="<?=BASE_URL('Top/Nap-tien');?>">
                             <div class="icon-w">
                                 <div class="os-icon os-icon-bar-chart-down"></div>
                             </div><span><?=lang(104);?></span>
                         </a>
                     </li>
-                    <li class=""><a target="_blank" href="https://documenter.getpostman.com/view/9826758/TzzANcVu">
-                            <div class="icon-w">
-                                <div class="os-icon os-icon-file-text"></div>
-                            </div><span><?=lang(152);?></span>
-                        </a>
-                    </li>
+                    <?php }?>
+<!--                    <li class=""><a target="_blank" href="https://documenter.getpostman.com/view/9826758/TzzANcVu">-->
+<!--                            <div class="icon-w">-->
+<!--                                <div class="os-icon os-icon-file-text"></div>-->
+<!--                            </div><span>--><?//=lang(152);?><!--</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
                     <?php if($CMSNT->site('chinhsach_baohanh') != '') { ?>
                     <li class=""><a href="<?=BASE_URL('Policy');?>">
                             <div class="icon-w">
