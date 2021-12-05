@@ -3,7 +3,7 @@
 <?php foreach($CMSNT->get_list("SELECT * FROM `category` WHERE `display` = 'SHOW' ORDER BY `stt` ") as $category) { ?>
 <div class="col-sm-12">
     <div class="element-wrapper">
-        <h6 class="element-header"><?=strtoupper($category['title']);?>22</h6>
+        <h6 class="element-header"><?=strtoupper($category['title']);?></h6>
         <div class="element-box-tp">
             <!--box product-->
             <div id="CATEGORY_<?=$category['id']?>" class="tab-pane fade container p-0 active show box-product" role="tabpanel">
