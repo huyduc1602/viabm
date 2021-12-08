@@ -450,3 +450,17 @@ h4:hover, .text-truncate:hover {
         overflow-x: scroll;
     }
 }
+/*css tab*/
+.collapse:not(.show) {
+    display: none;
+}
+.collapse-history{
+    padding-left: 5px;
+    cursor: pointer;
+}
+.row-history{
+    position: relative;
+}
+.row-history h6{
+    display: inline-block;
+}
