@@ -40,4 +40,15 @@ var linkExcel = 'https://docs.google.com/spreadsheets/d/1ddg8ucQN8zmD-fx6r8nZOoo
 var time = 120000;//2 phút
 readNotifyExcel(linkExcel,time);
 
+//css tab history
+// khi vào màn di động
+function checkPosition() {
+    if (window.matchMedia('(max-width: 767px)').matches) {
+        $('#thongkechitiet').removeClass('show');
+    }
+}
+$( document ).ready(function() {
+    checkPosition();
+});
+
 
