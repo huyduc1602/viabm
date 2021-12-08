@@ -81,11 +81,11 @@
                                             ?>
                                         <div class="readmore <?=$read=='MORE'?'':'hide'?>">
                                             <?=$thongbaorutgon?>
-                                           <a href="javascript:void(0);" class="linkreadmore" data-content="toggle-text"><?=langByVn('Xem thêm')?></a>
+                                           <a href="javascript:void(0);" class="linkreadmore font-weight-bold" data-content="toggle-text"><?=langByVn('Xem thêm')?></a>
                                         </div>
                                         <div class="readless <?=$read=='LESS'?'':'hide'?>"">
                                             <?=$thongbao?>
-                                            <a href="javascript:void(0);" class="linkreadless" data-content="toggle-text"><?=langByVn('Rút gọn')?></a>
+                                            <a href="javascript:void(0);" class="linkreadless font-weight-bold" data-content="toggle-text"><?=langByVn('Rút gọn')?></a>
                                         </div>
                                     </div>
 
