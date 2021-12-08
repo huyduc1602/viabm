@@ -20,8 +20,13 @@ foreach($buy as $category) { ?>
                             $textconlai = langByVn('Hết </br> hàng');
                         }
                         ?>
+
+                        <?php if($CMSNT->site('right_panel') == 'ON') { ?>
                         <div class="col-md-6 pr-2 pl-2 col-mobile-tablet item-product">
-                            <div class="rounded p-3 m-md-3 m-0 mb-3 d-block hvr-underline-from-center">
+                        <?php }else { ?>
+                        <div class="col-md-4 pr-2 pl-2 col-mobile-tablet item-product">
+                        <?php } ?>
+                            <div class="rounded p-3 m-0 mb-3 d-block hvr-underline-from-center">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label class="custom-control-label p-2" for="type-select-7">
