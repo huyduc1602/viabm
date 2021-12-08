@@ -47,8 +47,24 @@ function checkPosition() {
         $('#thongkechitiet').removeClass('show');
     }
 }
+//Thu gọn thông báo
+function readMore(){
+    $(".readmore a").on("click", function () {
+        $(this).parent().addClass('hide')
+        $('.readless').removeClass('hide');
+    });
+    $(".readless a").on("click", function () {
+        $(this).parent().addClass('hide')
+        $('.readmore').removeClass('hide');
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $(".readmore").offset().top
+        }, 500);
+    });
+}
+
 $( document ).ready(function() {
     checkPosition();
+    readMore();
 });
 
 

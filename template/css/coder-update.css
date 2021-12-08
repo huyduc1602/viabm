@@ -464,3 +464,6 @@ h4:hover, .text-truncate:hover {
 .row-history h6{
     display: inline-block;
 }
+.hide{
+    display: none;
+}

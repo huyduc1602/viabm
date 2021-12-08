@@ -67,7 +67,28 @@
                             </div>
                             <div class="col-lg-12 col-xxl-12">
                                 <div class="alert alert-warning borderless">
-                                    <?=$CMSNT->site('thongbao');?>
+                                    <?php
+                                        $thongbao = $CMSNT->site('thongbao');
+                                        $thongbaorutgon = $CMSNT->site('thongbaorutgon');
+                                    ?>
+                                    <div class="content-notify">
+                                        <?php
+                                            if(strlen($thongbao) > strlen($thongbaorutgon)){
+                                                $read = 'MORE';
+                                            }else{
+                                                $read = 'LESS';
+                                            }
+                                            ?>
+                                        <div class="readmore <?=$read=='MORE'?'':'hide'?>">
+                                            <?=$thongbaorutgon?>
+                                           <a href="javascript:void(0);" class="linkreadmore" data-content="toggle-text"><?=langByVn('Xem thêm')?></a>
+                                        </div>
+                                        <div class="readless <?=$read=='LESS'?'':'hide'?>"">
+                                            <?=$thongbao?>
+                                            <a href="javascript:void(0);" class="linkreadless" data-content="toggle-text"><?=langByVn('Rút gọn')?></a>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
