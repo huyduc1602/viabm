@@ -350,6 +350,15 @@ if(isset($_POST['btnSaveOption']) && $getUser['level'] == 'admin')
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Thông báo rút gọn</label>
+                                <div class="col-sm-9">
+                                    <div class="form-line">
+                                        <textarea class="form-control" name="thongbaorutgon"
+                                                  rows="3" maxlength="300"><?=$CMSNT->site('thongbaorutgon');?></textarea>
+                                    </div>
+                                </div>
+                            </div>
                             <hr>
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Điều khoản sử dụng</label>
