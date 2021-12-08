@@ -467,3 +467,65 @@ h4:hover, .text-truncate:hover {
 .hide{
     display: none;
 }
+/*css hai button header*/
+.btn-sodu {
+    background-color: #3bb5d1;
+    color: white;
+    font-weight: 450;
+    border: 0px solid #919191 !important;
+    padding: 0px;
+    border-radius: 50px;
+    height: auto;
+    justify-content: center;
+    outline: 0px!important;
+    width: fit-content;
+    width: -webkit-fill-available;
+}
+.btn-sodu b{
+    padding: 0 5px;
+}
+.btn-sodu 1{
+    padding-left:5px;
+}
+.btn-naptien {
+    background-color: #3bb5d1;
+    color: white;
+    font-weight: 450;
+    border: 0px solid #919191 !important;
+    border-radius: 50px;
+    height: 35px;
+    width: 100px;
+    justify-content: center;
+    cursor: pointer;
+    width: 100%;
+    min-width: 117px;
+    max-width: 158px;
+    outline: 0px!important;
+}
+.btn-naptien a:hover{
+    color: #fff!important;
+}
+.btn-naptien:hover{
+    -webkit-box-shadow: 0 4px 10px 0 rgb(0 0 0 / 20%), 0 4px 20px 0 rgb(0 0 0 / 10%);
+    box-shadow: 0 4px 10px 0 rgb(0 0 0 / 20%), 0 4px 20px 0 rgb(0 0 0 / 10%);
+}
+.btn-sodu:hover{
+    -webkit-box-shadow: 0 4px 10px 0 rgb(0 0 0 / 20%), 0 4px 20px 0 rgb(0 0 0 / 10%);
+    box-shadow: 0 4px 10px 0 rgb(0 0 0 / 20%), 0 4px 20px 0 rgb(0 0 0 / 10%);
+}
+@media (max-width:767px) {
+    .bankpay-mobile{
+        display: none!important;
+    }
+}
+@media (min-width:768px) {
+    .bankpay-deskop{
+        display: none!important;
+    }
+    .bankpay-mobile .btn-sodu{
+        min-width:158px ;
+    }
+    .bankpay-mobile .btn-naptien {
+        min-width:158px ;
+    }
+}
