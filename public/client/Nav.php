@@ -240,8 +240,8 @@
                             <div class="sub-menu-i">
                                 <ul class="sub-menu">
                                     <?php if($CMSNT->site('api_card') != '') { ?>
-<!--                                    <li><a href="--><?//=BASE_URL('Recharge-Card');?><!--"><img src="--><?//=BASE_URL('assets/img/the-cao.png');?><!--" width="30px"> --><?//=langByVn('Thẻ cào');?><!-- <strong-->
-<!--                                                class="badge badge-danger">Auto</strong></a></li>-->
+                                    <li><a href="<?=BASE_URL('Recharge-Card');?>"><img src="<?=BASE_URL('assets/img/the-cao.png');?>" width="30px"> <?=langByVn('Thẻ cào');?> <strong
+                                                class="badge badge-danger">Auto</strong></a></li>
                                     <?php }?>
                                     <?php if($CMSNT->site('status_cron_momo') != 'OFF') { ?>
                                     <li><a href="<?=BASE_URL('Recharge-Momo');?>"><img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" width="30px"> MOMO <strong
