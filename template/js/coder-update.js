@@ -61,6 +61,23 @@ function readMore(){
         }, 500);
     });
 }
+// tab product
+function tabProduct(){
+    $(".click-open-group").click(function(){
+        let idGroup = $(this).data("groupid");
+        $(".divbuy").addClass("d-none");
+        $("#CATEGORY_"+idGroup).removeClass("d-none");
+    });
+    $(".btn-back").click(function(){
+        $(".divbuy").addClass("d-none");
+        $(".divbuy.main").removeClass("d-none");
+    });
+}
+$( document ).ready(function() {
+    checkPosition();
+    readMore();
+    tabProduct();
+=======
 
 $( document ).ready(function() {
     checkPosition();
