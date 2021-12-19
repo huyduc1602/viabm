@@ -77,6 +77,11 @@ $( document ).ready(function() {
     checkPosition();
     readMore();
     tabProduct();
+=======
+
+$( document ).ready(function() {
+    checkPosition();
+    readMore();
 });
 
 
