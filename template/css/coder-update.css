@@ -529,3 +529,98 @@ h4:hover, .text-truncate:hover {
         min-width:158px ;
     }
 }
+/*css tab product*/
+.col-full{
+    -ms-flex:0 0 100%;
+    flex:0 0 100%;
+    max-width:100%
+    position:relative;
+    width:100%;
+    min-height:1px;
+}
+
+.panel-home .card-body{
+    background:#fff;
+}
+
+.panel-home .card-header,
+.panel-home .card-header a{
+    background-color:#2b65b1;
+    color:#fff;
+}
+
+.panel-home .panel-heading a{
+    text-decoration: none;
+}
+
+.panel-home .block-buy {
+    padding: 23px;
+}
+
+.panel-home .block-buy .one-block{
+    padding: 19px 22px;
+}
+
+.click-open-group{
+    cursor:pointer
+}
+
+.panel-home .block-buy .one-block .row,.one-block .row div{
+    padding:0;
+    margin:0;
+    text-align: center;
+}
+
+.panel-home .block-buy .one-block .row{
+    background:#fafafa;
+    border-radius: 5px;
+    border: 2px solid #e9ecef;
+}
+
+.panel-home .block-buy .one-block i{
+    text-align: center;
+    font-size:1rem
+}
+
+.panel-home .block-buy .one-block h3{
+    font-weight: 700; text-align: center !important; margin-top: 7px;
+}
+.header-tab-chuyen-muc {
+    background-color: #ff6e013b;
+    border-radius: 0.45rem 0.45rem 0 0;
+}
+.tab-chuyen-muc {
+    padding-right: 6px;
+}
+.nav-pills .nav-link.active,.nav-pills .show>.nav-link{
+    color:#fff;
+    background-color:#ff6e01
+}
+
+.nav-fill .nav-item{
+    -ms-flex:1 1 auto;
+    flex:1 1 auto;
+    text-align:center
+}
+
+.nav-justified .nav-item{
+    -ms-flex-preferred-size:0;
+    flex-basis:0;
+    -ms-flex-positive:1;
+    flex-grow:1;
+    text-align:center
+}
+.w-fl {
+    width: 90%;
+}
+.btn-back-chuyen-muc {
+    color:#fff;
+    background-color:#ff9b50;
+    height: 49px;
+    border-radius: 0.1rem 0.45rem 0.1rem 0.1rem!important;
+}
+.btn-back-chuyen-muc:hover {
+    background-color: #ff0000;
+    border-radius: 0.1rem 0.45rem 0.1rem 0.1rem!important;
+}
+
