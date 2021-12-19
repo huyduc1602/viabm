@@ -8,9 +8,9 @@
                 <div class="mm-logo-buttons-w"><a class="mm-logo" href="<?=BASE_URL('Dashbroad');?>"><img
                             src="<?=$CMSNT->site('logo');?>"><span><?=$CMSNT->site('tenweb');?></span></a>
                     <div class="mm-buttons">
-                        <div class="content-panel-open">
-                            <div class="os-icon os-icon-grid-circles"></div>
-                        </div>
+<!--                        <div class="content-panel-open">-->
+<!--                            <div class="os-icon os-icon-grid-circles"></div>-->
+<!--                        </div>-->
                         <div class="mobile-menu-trigger">
                             <div class="os-icon os-icon-hamburger-menu-1"></div>
                         </div>
@@ -25,6 +25,14 @@
                         </div>
                     </div>
                     <ul class="main-menu">
+                        <li>
+                            <div class="d-flex flex-row flex-md-row justify-content-center mb-2 bankpay-deskop">
+                                <button id="show-btn-sodu" class="btn-sodu mr-2"><i class="fas fa-money-bill-alt" aria-hidden="true"></i> <b><?=format_currency($getUser['money']);?></b></button>
+                                <button id="show-btn-naptien" class="btn-naptien mr-2"><i class="fas fa-university" aria-hidden="true"></i>
+                                    <a href="<?=BASE_URL('Recharge-Bank');?>" class="text-light"><?=lang(37);?></a>
+                                </button>
+                            </div>
+                        </li>
                         <li class=""><a href="<?=BASE_URL('Dashbroad');?>">
                                 <div class="icon-w">
                                     <div class="os-icon os-icon-layout"></div>
@@ -49,44 +57,42 @@
                                 </div><span><?=lang(36);?></span>
                             </a>
                         </li>
-                        <li class="has-sub-menu"><a href="#">
-                                <div class="icon-w">
-                                    <div class="os-icon os-icon-dollar-sign"></div>
-                                </div><span><?=lang(37);?></span>
-                            </a>
-                            <ul class="sub-menu">
-                                <?php if($CMSNT->site('api_card') != '') { ?>
-                                <li><a href="<?=BASE_URL('Recharge-Card');?>"><img src="<?=BASE_URL('assets/img/the-cao.png');?>" width="30px"> Thẻ cào <strong
-                                            class="badge badge-danger">Auto</strong></a></li>
-                                <?php }?>
-                                <?php if($CMSNT->site('status_cron_momo') != 'OFF') { ?>
-                                <li><a href="<?=BASE_URL('Recharge-Momo');?>"><img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" width="50px"> MOMO <strong
-                                            class="badge badge-danger">Auto</strong></a></li>
-                                <?php }?>
-                                <?php if($CMSNT->site('status_zalopay') != 'OFF') { ?>
-                                <li><a href="<?=BASE_URL('Recharge-ZaloPay');?>"><img src="https://i.imgur.com/fccfZ9o.png" width="30px"> Zalo Pay <strong
-                                            class="badge badge-danger">Auto</strong></a></li>
-                                <?php }?>
-                                <?php if($CMSNT->site('tk_tsr') != '' && $CMSNT->site('mk_tsr') != '') { ?>
-                                <li><a href="<?=BASE_URL('Recharge-Thesieure');?>">THESIEURE <strong
-                                            class="badge badge-danger">Auto</strong></a></li>
-                                <?php }?>
-                                <?php if($CMSNT->site('status_paypal') != 'OFF') { ?>
-                                    <li><a href="<?=BASE_URL('Recharge-Paypal');?>"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/PayPal_logo.svg/1200px-PayPal_logo.svg.png" width="30px"> Paypal
-                                            <!--                                                <strong class="badge badge-danger">Auto</strong>-->
-                                        </a>
-                                    </li>
-                                <?php }?>
-                                <?php if($CMSNT->site('status_usdt') != 'OFF') { ?>
-                                    <li><a href="<?=BASE_URL('Recharge-Crypto');?>"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/BTC_Logo.svg" width="30px"> Crypto
-                                            <!--                                                <strong class="badge badge-danger">Auto</strong>-->
-                                        </a>
-                                    </li>
-                                <?php }?>
-                                <li><a href="<?=BASE_URL('Recharge-Bank');?>"><img src="<?=BASE_URL('assets/img/bank-icon.png');?>" width="30px"> <?=lang(62);?> <strong
-                                            class="badge badge-danger">Auto</strong></a></li>
-                            </ul>
-                        </li>
+<!--                        <li class="has-sub-menu"><a href="#">-->
+<!--                                <div class="icon-w">-->
+<!--                                    <div class="os-icon os-icon-dollar-sign"></div>-->
+<!--                                </div><span>--><?//=lang(37);?><!--</span>-->
+<!--                            </a>-->
+<!--                            <ul class="sub-menu">-->
+<!--                                --><?php //if($CMSNT->site('api_card') != '') { ?>
+<!--                                <li><a href="--><?//=BASE_URL('Recharge-Card');?><!--"><img src="--><?//=BASE_URL('assets/img/the-cao.png');?><!--" width="30px"> Thẻ cào <strong-->
+<!--                                            class="badge badge-danger">Auto</strong></a></li>-->
+<!--                                --><?php //}?>
+<!--                                --><?php //if($CMSNT->site('status_cron_momo') != 'OFF') { ?>
+<!--                                <li><a href="--><?//=BASE_URL('Recharge-Momo');?><!--"><img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" width="50px"> MOMO <strong-->
+<!--                                            class="badge badge-danger">Auto</strong></a></li>-->
+<!--                                --><?php //}?>
+<!--                                --><?php //if($CMSNT->site('status_zalopay') != 'OFF') { ?>
+<!--                                <li><a href="--><?//=BASE_URL('Recharge-ZaloPay');?><!--"><img src="https://i.imgur.com/fccfZ9o.png" width="30px"> Zalo Pay <strong-->
+<!--                                            class="badge badge-danger">Auto</strong></a></li>-->
+<!--                                --><?php //}?>
+<!--                                --><?php //if($CMSNT->site('tk_tsr') != '' && $CMSNT->site('mk_tsr') != '') { ?>
+<!--                                <li><a href="--><?//=BASE_URL('Recharge-Thesieure');?><!--">THESIEURE <strong-->
+<!--                                            class="badge badge-danger">Auto</strong></a></li>-->
+<!--                                --><?php //}?>
+<!--                                --><?php //if($CMSNT->site('status_paypal') != 'OFF') { ?>
+<!--                                    <li><a href="--><?//=BASE_URL('Recharge-Paypal');?><!--"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/PayPal_logo.svg/1200px-PayPal_logo.svg.png" width="30px"> Paypal-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                --><?php //}?>
+<!--                                --><?php //if($CMSNT->site('status_usdt') != 'OFF') { ?>
+<!--                                    <li><a href="--><?//=BASE_URL('Recharge-Crypto');?><!--"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/BTC_Logo.svg" width="30px"> Crypto-->
+<!--                                        </a>-->
+<!--                                    </li>-->
+<!--                                --><?php //}?>
+<!--                                <li><a href="--><?//=BASE_URL('Recharge-Bank');?><!--"><img src="--><?//=BASE_URL('assets/img/bank-icon.png');?><!--" width="30px"> --><?//=lang(62);?><!-- <strong-->
+<!--                                            class="badge badge-danger">Auto</strong></a></li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
                         <?php if($CMSNT->site('status_ref') == 'ON') { ?>
                         <li class=""><a href="<?=BASE_URL('Referral');?>">
                                 <div class="icon-w">
@@ -229,50 +235,48 @@
                             </div><span><?=lang(36);?></span>
                         </a>
                     </li>
-                    <li class="has-sub-menu"><a href="#">
-                            <div class="icon-w">
-                                <div class="os-icon os-icon-dollar-sign"></div>
-                            </div><span><?=lang(37);?></span>
-                        </a>
-                        <div class="sub-menu-w">
-                            <div class="sub-menu-header"><?=lang(37);?></div>
-                            <div class="sub-menu-icon"><i class="os-icon os-icon-layers"></i></div>
-                            <div class="sub-menu-i">
-                                <ul class="sub-menu">
-                                    <?php if($CMSNT->site('api_card') != '') { ?>
+<!--                    <li class="has-sub-menu"><a href="#">-->
+<!--                            <div class="icon-w">-->
+<!--                                <div class="os-icon os-icon-dollar-sign"></div>-->
+<!--                            </div><span>--><?//=lang(37);?><!--</span>-->
+<!--                        </a>-->
+<!--                        <div class="sub-menu-w">-->
+<!--                            <div class="sub-menu-header">--><?//=lang(37);?><!--</div>-->
+<!--                            <div class="sub-menu-icon"><i class="os-icon os-icon-layers"></i></div>-->
+<!--                            <div class="sub-menu-i">-->
+<!--                                <ul class="sub-menu">-->
+<!--                                    --><?php //if($CMSNT->site('api_card') != '') { ?>
 <!--                                    <li><a href="--><?//=BASE_URL('Recharge-Card');?><!--"><img src="--><?//=BASE_URL('assets/img/the-cao.png');?><!--" width="30px"> --><?//=langByVn('Thẻ cào');?><!-- <strong-->
 <!--                                                class="badge badge-danger">Auto</strong></a></li>-->
-                                    <?php }?>
-                                    <?php if($CMSNT->site('status_cron_momo') != 'OFF') { ?>
-                                    <li><a href="<?=BASE_URL('Recharge-Momo');?>"><img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" width="30px"> MOMO <strong
-                                                class="badge badge-danger">Auto</strong></a></li>
-                                    <?php }?>
-                                    <?php if($CMSNT->site('status_zalopay') != 'OFF') { ?>
-                                    <li><a href="<?=BASE_URL('Recharge-ZaloPay');?>"><img src="https://i.imgur.com/fccfZ9o.png" width="30px"> Zalo Pay <strong
-                                                class="badge badge-danger">Auto</strong></a></li>
-                                    <?php }?>
-                                    <?php if($CMSNT->site('tk_tsr') != '' && $CMSNT->site('mk_tsr') != '') { ?>
-                                    <li><a href="<?=BASE_URL('Recharge-Thesieure');?>">THESIEURE <strong
-                                                class="badge badge-danger">Auto</strong></a></li>
-                                    <?php }?>
-                                    <?php if($CMSNT->site('status_paypal') != 'OFF') { ?>
-                                        <li><a href="<?=BASE_URL('Recharge-Paypal');?>"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/PayPal_logo.svg/1200px-PayPal_logo.svg.png" width="30px"> Paypal
-<!--                                                <strong class="badge badge-danger">Auto</strong>-->
-                                            </a>
-                                        </li>
-                                    <?php }?>
-                                    <?php if($CMSNT->site('status_usdt') != 'OFF') { ?>
-                                        <li><a href="<?=BASE_URL('Recharge-Crypto');?>"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/BTC_Logo.svg" width="30px"> Crypto
-                                                <!--                                                <strong class="badge badge-danger">Auto</strong>-->
-                                            </a>
-                                        </li>
-                                    <?php }?>
-                                    <li><a href="<?=BASE_URL('Recharge-Bank');?>"><img src="<?=BASE_URL('assets/img/bank-icon.png');?>" width="30px"> <?=lang(62);?> <strong
-                                                class="badge badge-danger">Auto</strong></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
+<!--                                    --><?php //}?>
+<!--                                    --><?php //if($CMSNT->site('status_cron_momo') != 'OFF') { ?>
+<!--                                    <li><a href="--><?//=BASE_URL('Recharge-Momo');?><!--"><img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" width="30px"> MOMO <strong-->
+<!--                                                class="badge badge-danger">Auto</strong></a></li>-->
+<!--                                    --><?php //}?>
+<!--                                    --><?php //if($CMSNT->site('status_zalopay') != 'OFF') { ?>
+<!--                                    <li><a href="--><?//=BASE_URL('Recharge-ZaloPay');?><!--"><img src="https://i.imgur.com/fccfZ9o.png" width="30px"> Zalo Pay <strong-->
+<!--                                                class="badge badge-danger">Auto</strong></a></li>-->
+<!--                                    --><?php //}?>
+<!--                                    --><?php //if($CMSNT->site('tk_tsr') != '' && $CMSNT->site('mk_tsr') != '') { ?>
+<!--                                    <li><a href="--><?//=BASE_URL('Recharge-Thesieure');?><!--">THESIEURE <strong-->
+<!--                                                class="badge badge-danger">Auto</strong></a></li>-->
+<!--                                    --><?php //}?>
+<!--                                    --><?php //if($CMSNT->site('status_paypal') != 'OFF') { ?>
+<!--                                        <li><a href="--><?//=BASE_URL('Recharge-Paypal');?><!--"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/PayPal_logo.svg/1200px-PayPal_logo.svg.png" width="30px"> Paypal-->
+<!--                                            </a>-->
+<!--                                        </li>-->
+<!--                                    --><?php //}?>
+<!--                                    --><?php //if($CMSNT->site('status_usdt') != 'OFF') { ?>
+<!--                                        <li><a href="--><?//=BASE_URL('Recharge-Crypto');?><!--"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/BTC_Logo.svg" width="30px"> Crypto-->
+<!--                                            </a>-->
+<!--                                        </li>-->
+<!--                                    --><?php //}?>
+<!--                                    <li><a href="--><?//=BASE_URL('Recharge-Bank');?><!--"><img src="--><?//=BASE_URL('assets/img/bank-icon.png');?><!--" width="30px"> --><?//=lang(62);?><!-- <strong-->
+<!--                                                class="badge badge-danger">Auto</strong></a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </li>-->
                     <?php if($CMSNT->site('status_ref') == 'ON') { ?>
                     <li class=""><a href="<?=BASE_URL('Referral');?>">
                             <div class="icon-w">
@@ -281,18 +285,20 @@
                         </a>
                     </li>
                     <?php }?>
+                    <?php if($CMSNT->site('status_top_nap') == 'ON') { ?>
                     <li class=""><a href="<?=BASE_URL('Top/Nap-tien');?>">
                             <div class="icon-w">
                                 <div class="os-icon os-icon-bar-chart-down"></div>
                             </div><span><?=lang(104);?></span>
                         </a>
                     </li>
-                    <li class=""><a target="_blank" href="https://documenter.getpostman.com/view/9826758/TzzANcVu">
-                            <div class="icon-w">
-                                <div class="os-icon os-icon-file-text"></div>
-                            </div><span><?=lang(152);?></span>
-                        </a>
-                    </li>
+                    <?php }?>
+<!--                    <li class=""><a target="_blank" href="https://documenter.getpostman.com/view/9826758/TzzANcVu">-->
+<!--                            <div class="icon-w">-->
+<!--                                <div class="os-icon os-icon-file-text"></div>-->
+<!--                            </div><span>--><?//=lang(152);?><!--</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
                     <?php if($CMSNT->site('chinhsach_baohanh') != '') { ?>
                     <li class=""><a href="<?=BASE_URL('Policy');?>">
                             <div class="icon-w">
@@ -391,6 +397,12 @@
                         </div>
                     </div>
                     <div class="top-menu-controls">
+                        <div class="d-flex flex-row flex-md-row justify-content-center mb-2 bankpay-mobile">
+                            <button id="show-btn-sodu" class="btn-sodu mr-2"><i class="fas fa-money-bill-alt" aria-hidden="true"></i> <b><?=format_currency($getUser['money']);?></b></button>
+                            <button id="show-btn-naptien" class="btn-naptien mr-2"><i class="fas fa-university" aria-hidden="true"></i>
+                                <a href="<?=BASE_URL('Recharge-Bank');?>" class="text-light"><?=lang(37);?></a>
+                            </button>
+                        </div>
                         <div class="logged-user-w">
                             <div class="logged-user-i">
                                 <div class="avatar-w"><img alt="" src="<?=BASE_URL('template/');?>img/avatar1.jpg">

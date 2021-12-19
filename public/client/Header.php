@@ -39,6 +39,7 @@
     <link href="<?=BASE_URL('template/');?>bower_components/toastr/toastr.min.css" rel="stylesheet">
     <link href="<?=BASE_URL('template/');?>css/main.css?version=4.5.0" rel="stylesheet">
     <link rel="stylesheet" href="<?=BASE_URL('template/');?>sweetalert2/default.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link href="<?=BASE_URL('template/');?>css/coder-update.css?version=1.0.0" rel="stylesheet">
     <script src="<?=BASE_URL('template/');?>sweetalert2/sweetalert2.js"></script>
     <script src="<?=BASE_URL('template/');?>jquery.min.js"></script>

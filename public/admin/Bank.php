@@ -384,7 +384,7 @@ if(isset($_POST['btnSaveOption']) && $getUser['level'] == 'admin')
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword3" class="col-sm-3 col-form-label">ON/OFF Auto Paypal</label>
+                                <label for="inputPassword3" class="col-sm-3 col-form-label">ON/OFF Paypal</label>
                                 <div class="col-sm-9">
                                     <select class="custom-select" name="status_paypal">
                                         <option value="ON" <?=$CMSNT->site('status_paypal') == 'ON' ? 'selected' : '';?> >ON</option>
@@ -475,11 +475,11 @@ if(isset($_POST['btnSaveOption']) && $getUser['level'] == 'admin')
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword3" class="col-sm-3 col-form-label">ON/OFF Auto Zalo Pay</label>
+                                <label for="inputPassword3" class="col-sm-3 col-form-label">ON/OFF USDT</label>
                                 <div class="col-sm-9">
-                                    <select class="custom-select" name="status_zalopay">
-                                        <option value="ON" <?=$CMSNT->site('status_zalopay') == 'ON' ? 'selected' : '';?> >ON</option>
-                                        <option value="OFF" <?=$CMSNT->site('status_zalopay') == 'OFF' ? 'selected' : '';?> >OFF</option>
+                                    <select class="custom-select" name="status_usdt">
+                                        <option value="ON" <?=$CMSNT->site('status_usdt') == 'ON' ? 'selected' : '';?> >ON</option>
+                                        <option value="OFF" <?=$CMSNT->site('status_usdt') == 'OFF' ? 'selected' : '';?> >OFF</option>
                                     </select>
                                     <i>Khi bạn chọn OFF, hệ thống sẽ tạm dừng quá trình Auto Zalo Pay.</i>
                                 </div>

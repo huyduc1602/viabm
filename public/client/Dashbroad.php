@@ -22,10 +22,20 @@
                 <div class="element-wrapper compact pt-4">
                     <div class="element-actions"><a class="btn btn-primary btn-sm" href="<?=BASE_URL('History');?>"><i
                                 class="os-icon os-icon-rotate-cw"></i><span><?=lang(36);?></span></a></div>
-                    <h6 class="element-header"><?=lang(35);?></h6>
+                    <div class="row-history" data-toggle="collapse" href="#thongkechitiet" role="button" aria-expanded="false" aria-controls="thongkechitiet">
+                        <h6 class="element-header"><?=lang(35);?></h6>
+                        <a class="collapse-history">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-square" viewBox="0 0 16 16">
+                                <path d="M3.626 6.832A.5.5 0 0 1 4 6h8a.5.5 0 0 1 .374.832l-4 4.5a.5.5 0 0 1-.748 0l-4-4.5z"/>
+                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2z"/>
+                            </svg>
+                        </a>
+                    </div>
+
+
                     <div class="element-box-tp">
                         <div class="row">
-                            <div class="col-lg-12 col-xxl-12">
+                            <div class="col-lg-12 col-xxl-12 collapse show" id="thongkechitiet">
                                 <div class="element-balances">
                                     <div class="balance">
                                         <div class="balance-title"><?=lang(30);?></div>
@@ -57,7 +67,28 @@
                             </div>
                             <div class="col-lg-12 col-xxl-12">
                                 <div class="alert alert-warning borderless">
-                                    <?=$CMSNT->site('thongbao');?>
+                                    <?php
+                                        $thongbao = $CMSNT->site('thongbao');
+                                        $thongbaorutgon = $CMSNT->site('thongbaorutgon');
+                                    ?>
+                                    <div class="content-notify">
+                                        <?php
+                                            if(strlen($thongbao) > strlen($thongbaorutgon)){
+                                                $read = 'MORE';
+                                            }else{
+                                                $read = 'LESS';
+                                            }
+                                            ?>
+                                        <div class="readmore <?=$read=='MORE'?'':'hide'?>">
+                                            <?=$thongbaorutgon?>
+                                           <a href="javascript:void(0);" class="linkreadmore font-weight-bold" data-content="toggle-text"><?=langByVn('Xem thêm')?></a>
+                                        </div>
+                                        <div class="readless <?=$read=='LESS'?'':'hide'?>"">
+                                            <?=$thongbao?>
+                                            <a href="javascript:void(0);" class="linkreadless font-weight-bold" data-content="toggle-text"><?=langByVn('Rút gọn')?></a>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

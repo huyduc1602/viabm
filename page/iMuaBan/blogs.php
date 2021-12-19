@@ -3,22 +3,64 @@ require_once("../../config/config.php");
 require_once("../../config/function.php");
 ?>
 <?php
-$limit = 4;
-$blogs = $CMSNT->get_list(" SELECT * FROM `blog`  ORDER BY updatedDate DESC LIMIT ".$limit." OFFSET 0");
-$numberPage = count($CMSNT->get_list(" SELECT * FROM `blog`"));
-if($numberPage > $limit){
-    $numberPage = ceil($numberPage/$limit);
-}else{
-    $numberPage = 0;
-}
 $page = 1;
+$limit = 4;
+global $CMSNT;
+$sql = "SELECT b.id,b.name,b.slug,b.sumary,b.image,b.last_read,b.createdDate,c.id AS categoryId,c.name AS categoryName FROM `blog` AS b";
+$sql.= " JOIN category_blog AS c WHERE b.categoryId = c.id ORDER BY updatedDate DESC";
 if(isset($_GET['page'])){
     $page = $_GET['page'];
     $offset = 0;
     if($page > 1){
         $offset = ($page-1)*$limit;
     }
-    $blogs = $CMSNT->get_list("SELECT * FROM `blog`  ORDER BY updatedDate DESC LIMIT ".$limit." OFFSET ".$offset);
+    $sql .= " LIMIT ".$limit." OFFSET ".$offset;
+}
+$blogs = $CMSNT->get_list($sql);
+$numberPage = count($blogs);
+if($numberPage > $limit){
+    $numberPage = ceil($numberPage/$limit);
+}else{
+    $numberPage = 0;
+}
+$blogArr = [];
+foreach ($blogs as $b){
+    if(isset($_SESSION['lang'])){
+        if($_SESSION['lang'] == 'en'){
+            $blog =  [];
+            $blog['id'] = $b['id'];
+            $blog['image'] = $b['image'] ?? BASE_URL('template/img/default.jpg');
+            $blog['name'] = selectTableLang('blog','name',$b['id'],$b['name']);
+            $sumary = selectTableLang('blog','sumary',$b['id'],$b['name']);
+            $blog['sumary'] = (substr($sumary,0,150).'...') ? strlen($sumary) > 150 : $sumary;
+            $blog['slug'] = $b['slug'];
+            $blog['last_read'] = langByVn('Đã đọc 1 phút trước') ? $b['last_read'] == $b['createdDate'] : langByVn('Được đọc').timestamp_to_timeAgo($b['createdDate']);
+            $blog['date'] = date_format(date_create($b['createdDate']),"d/m/Y");
+            $blog['categoryName'] = $b['categoryName'] ?? 'Uncategorized';
+        }else{
+            $blog['id'] = $b['id'];
+            $blog['image'] = $b['image'] ?? BASE_URL('template/img/default.jpg');
+            $blog['name'] = $b['name'];
+            $sumary = $b['sumary'];
+            $blog['sumary'] = (substr($sumary,0,150).'...') ? strlen($sumary) > 150 : $sumary;
+            $blog['slug'] = $b['slug'];
+            $blog['last_read'] = langByVn('Đã đọc 1 phút trước') ? $b['last_read'] == $b['createdDate'] : langByVn('Được đọc').timestamp_to_timeAgo($b['last_read']);
+            $blog['date'] = date_format(date_create($b['createdDate']),"d/m/Y");
+            $blog['categoryName'] = $b['categoryName'] ?? 'Uncategorized';
+        }
+    }else{
+        $blog['id'] = $b['id'];
+        $blog['image'] = $b['image'] ?? BASE_URL('template/img/default.jpg');
+        $blog['name'] = $b['name'];
+        $sumary = $b['sumary'];
+        $blog['sumary'] = strlen($sumary) > 150 ? (substr($sumary,0,150).'...') : $sumary;
+        $blog['slug'] = $b['slug'];
+        $blog['last_read'] =  $b['last_read'] == $b['createdDate'] ? langByVn('Được đọc 1 phút trước') : langByVn('Được đọc').timestamp_to_timeAgo($b['last_read']);
+        $blog['date'] = date_format(date_create($b['createdDate']),"d/m/Y");
+        $blog['categoryName'] = $b['categoryName'] ?? 'Uncategorized';
+    }
+
+    array_push($blogArr,$blog);
 }
 ?>
 <?php include 'header.php';?>
@@ -54,8 +96,8 @@ if(isset($_GET['page'])){
             <input type="hidden" id="page" value="<?=$page;?>">
             <div class="row">
                 <div class="col-md-12">
-             <?php if(count($blogs) > 0){
-                    foreach ($blogs as $row){ ?>
+             <?php if(count($blogArr) > 0){
+                    foreach ($blogArr as $row){ ?>
                     <div class="case item-blog">
                         <div class="row">
                             <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
@@ -63,33 +105,16 @@ if(isset($_GET['page'])){
                             </div>
                             <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
                                 <div class="text w-100 pl-md-3">
-                                    <?php
-                                        $category = $CMSNT->get_row("SELECT * FROM category_blog WHERE id = ".$row['categoryId']);
-                                        if(count($category) > 0){
-                                            $category['name'] = selectTableLang('category_blog','name',$row['categoryId'],$category['name']);
-                                        }else{
-                                            $category['name'] = 'Uncategorized';
-                                        }
-                                        $last_read = $row['last_read'];
-                                        if($last_read == $row['createdDate']){
-                                            $last_read = "Đã đọc 1 ".langByVn('phút trước');
-                                        }
-                                        $name = selectTableLang('blog','name',$row['id'],$row['name']) ?? '';
-                                        $sumary = selectTableLang('blog','name',$row['id'],$row['sumary']) ?? '';
-                                        if(strlen($row['sumary']) > 150){
-                                            $sumary = substr($row['sumary'],0,150).'...';
-                                        }
-                                    ?>
-                                    <span class="subheading"><?=selectTableLang('category_blog','name',$row['id'],$category['name'])?></span>
-                                    <h2><a href="blog/<?=$row['slug'];?>"><?=$name;?></a></h2>
-                                    <p class="text-description"><?=$sumary;?></p>
+                                    <span class="subheading"><?=$row['categoryName']?></span>
+                                    <h2><a href="blog/<?=$row['slug'];?>"><?=$row['name'];?></a></h2>
+                                    <p class="text-description"><?=$row['sumary'];?></p>
                                     <ul class="media-social list-unstyled">
                                         <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span><i class="fab fa-twitter"></i></span></a></li>
                                         <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span><i class="fab fa-facebook-f"></i></span></a></li>
                                         <li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span><i class="fab fa-instagram"></i></span></a></li>
                                     </ul>
                                     <div class="meta">
-                                        <p class="mb-0"><a href="javacript:void(0);"><?=date_format(date_create($row['createdDate']),"d/m/Y");?></a> | <a href="#"><?=$last_read;?></a></p>
+                                        <p class="mb-0"><a href="javacript:void(0);"><?=$row['date'];?></a> | <a href="#"><?=$row['last_read'];?></a></p>
                                     </div>
                                 </div>
                             </div>

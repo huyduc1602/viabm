@@ -76,3 +76,5 @@ CREATE TABLE table_lang (
     text_vi text NOT NULL,
     text_en text
 )
+//Update 08/12/2021
+INSERT INTO `options`(`name`,`value`) VALUES("thongbaorutgon","Thong bao rut gon");

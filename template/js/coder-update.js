@@ -37,7 +37,46 @@ function readNotifyExcel(file,time){
 
 // Goi ham readNotifyExcel('lien ket toi file','thoi gian hien thi(mili giay)')
 var linkExcel = 'https://docs.google.com/spreadsheets/d/1ddg8ucQN8zmD-fx6r8nZOoogwsXkSVPNO__Z3InBloE/edit?usp=sharing';
-var time = 10000;
+var time = 120000;//2 phút
 readNotifyExcel(linkExcel,time);
+
+//css tab history
+// khi vào màn di động
+function checkPosition() {
+    if (window.matchMedia('(max-width: 767px)').matches) {
+        $('#thongkechitiet').removeClass('show');
+    }
+}
+//Thu gọn thông báo
+function readMore(){
+    $(".readmore a").on("click", function () {
+        $(this).parent().addClass('hide')
+        $('.readless').removeClass('hide');
+    });
+    $(".readless a").on("click", function () {
+        $(this).parent().addClass('hide')
+        $('.readmore').removeClass('hide');
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $(".readmore").offset().top
+        }, 500);
+    });
+}
+// tab product
+function tabProduct(){
+    $(".click-open-group").click(function(){
+        let idGroup = $(this).data("groupid");
+        $(".divbuy").addClass("d-none");
+        $("#CATEGORY_"+idGroup).removeClass("d-none");
+    });
+    $(".btn-back").click(function(){
+        $(".divbuy").addClass("d-none");
+        $(".divbuy.main").removeClass("d-none");
+    });
+}
+$( document ).ready(function() {
+    checkPosition();
+    readMore();
+    tabProduct();
+});
 
 
