@@ -142,68 +142,86 @@
         </div>
 
         <?php if($CMSNT->site('display_list_login') == 'ON') { ?>
-        <br><br>
-        <?php foreach($CMSNT->get_list("SELECT * FROM `category` WHERE `display` = 'SHOW' ORDER BY `stt` ") as $category) { ?>
-        <div class="element-wrapper">
-            <h6 class="element-header"><?=$category['title'];?></h6>
-            <div class="element-box">
-                <div class="table-responsive">
-                    <table class="table table-padded">
-                        <thead>
-                            <tr>
-                                <th><?=lang(77);?></th>
-                                <th width="10%" class="text-center"><?=lang(85);?></th>
-                                <th width="10%" class="text-center"><?=lang(78);?></th>
-                                <?php if($CMSNT->site('display_sold') == 'ON') { ?>
-<!--                                <th width="10%" class="text-center">--><?//=lang(140);?><!--</th>-->
-                                <?php }?>
-                                <th width="10%" class="text-center"><?=lang(74);?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php 
-                                    foreach($CMSNT->get_list("SELECT * FROM `dichvu` WHERE 
+        <br>
+            <?php
+            if($CMSNT->site('api_stt') == 0)
+            {
+                require_once(__DIR__.'/formBuyAPI.php');
+                require_once(__DIR__.'/formBuy.php');
+            }
+            else
+            {
+                require_once(__DIR__.'/formBuy.php');
+                require_once(__DIR__.'/formBuyAPI.php');
+            }
+            ?>
+            <!--Chuyển sang dùng formBuy nên tắt đi-->
+            <?php /*
+
+            <?php foreach($CMSNT->get_list("SELECT * FROM `category` WHERE `display` = 'SHOW' ORDER BY `stt` ") as $category) { ?>
+                <div class="element-wrapper">
+                    <h6 class="element-header"><?=$category['title'];?></h6>
+                    <div class="element-box">
+                        <div class="table-responsive">
+                            <table class="table table-padded">
+                                <thead>
+                                <tr>
+                                    <th><?=lang(77);?></th>
+                                    <th width="10%" class="text-center"><?=lang(85);?></th>
+                                    <th width="10%" class="text-center"><?=lang(78);?></th>
+                                    <?php if($CMSNT->site('display_sold') == 'ON') { ?>
+                                        <!--                                <th width="10%" class="text-center">--><?//=lang(140);?><!--</th>-->
+                                    <?php }?>
+                                    <th width="10%" class="text-center"><?=lang(74);?></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                foreach($CMSNT->get_list("SELECT * FROM `dichvu` WHERE 
                                     `display` = 'SHOW' AND 
                                     `loai` = '".$category['title']."'  ORDER BY `stt` ASC ") as $row)
-                                    {
-                                        $conlai = $CMSNT->num_rows(" SELECT * FROM `taikhoan` WHERE `dichvu` = '".$row['id']."' AND `trangthai` = 'LIVE' AND `code` IS NULL "); 
-                                        $sold = $CMSNT->num_rows(" SELECT * FROM `taikhoan` WHERE `dichvu` = '".$row['id']."' AND `code` IS NOT NULL ");
+                                {
+                                    $conlai = $CMSNT->num_rows(" SELECT * FROM `taikhoan` WHERE `dichvu` = '".$row['id']."' AND `trangthai` = 'LIVE' AND `code` IS NULL ");
+                                    $sold = $CMSNT->num_rows(" SELECT * FROM `taikhoan` WHERE `dichvu` = '".$row['id']."' AND `code` IS NOT NULL ");
                                     ?>
-                            <tr>
-                                <td><img src="<?=BASE_URL($category['img']);?>" width="30px"
-                                        title="<?=$category['title'];?>">
-                                    <b data-content="<?=$row['mota'];?>" data-toggle="popover"
-                                        title="<?=$row['dichvu'];?>"><?=$row['dichvu'];?></b>
-                                </td>
-                                <td class="text-center">
-                                    <?php if($row['quocgia']) { ?>
-                                    <img width="40px" src="<?=BASE_URL('template/flag/'.$row['quocgia'].'.svg');?>" />
-                                    <?php }?>
-                                </td>
-                                <td class="text-center">
-                                    <b style="color: red;;">
-                                        <?=format_cash($conlai);?>
-                                    </b>
-                                </td>
-                                <?php if($CMSNT->site('display_sold') == 'ON') { ?>
-<!--                                <td class="text-center">-->
-<!--                                    <b style="color: green;;">-->
-<!--                                        --><?//=format_cash($sold);?>
-<!--                                    </b>-->
-<!--                                </td>-->
+                                    <tr>
+                                        <td><img src="<?=BASE_URL($category['img']);?>" width="30px"
+                                                 title="<?=$category['title'];?>">
+                                            <b data-content="<?=$row['mota'];?>" data-toggle="popover"
+                                               title="<?=$row['dichvu'];?>"><?=$row['dichvu'];?></b>
+                                        </td>
+                                        <td class="text-center">
+                                            <?php if($row['quocgia']) { ?>
+                                                <img width="40px" src="<?=BASE_URL('template/flag/'.$row['quocgia'].'.svg');?>" />
+                                            <?php }?>
+                                        </td>
+                                        <td class="text-center">
+                                            <b style="color: red;;">
+                                                <?=format_cash($conlai);?>
+                                            </b>
+                                        </td>
+                                        <?php if($CMSNT->site('display_sold') == 'ON') { ?>
+                                            <!--                                <td class="text-center">-->
+                                            <!--                                    <b style="color: green;;">-->
+                                            <!--                                        --><?//=format_cash($sold);?>
+                                            <!--                                    </b>-->
+                                            <!--                                </td>-->
+                                        <?php }?>
+                                        <td class="text-center">
+                                            <b style="color: blue;"><?=format_currency($row['gia']);?></b>
+                                        </td>
+                                    </tr>
                                 <?php }?>
-                                <td class="text-center">
-                                    <b style="color: blue;"><?=format_currency($row['gia']);?></b>
-                                </td>
-                            </tr>
-                            <?php }?>
-                        </tbody>
-                    </table>
-                </div>
+                                </tbody>
+                            </table>
+                        </div>
 
-            </div>
-        </div>
-        <?php }?>
+                    </div>
+                </div>
+            <?php }?>
+            */ ?>
+            <!--Chuyển sang dùng formBuy nên tắt đi-->
+
         <?php }?>
 
 
